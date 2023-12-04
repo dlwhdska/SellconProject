@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org"
-				xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-				layout:decorate="~{layout/default_layout}"
->	
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/default_layout}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notice Page</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notice Page</title>
 
-    <link rel="stylesheet" href="css/notice.css">
+<link rel="stylesheet" href="css/notice.css">
 
-    <style>
-        .hidden-content {
-            display: none;
-            padding: 10px;
-            border: 1px solid #ccc;
-            margin-top: 10px;
-        }
-    </style>
+<style>
+.hidden-content {
+	display: none;
+	padding: 10px;
+	border: 1px solid #ccc;
+	margin-top: 10px;
+}
+</style>
 
-    <script>
+<script>
         function showHiddenContent(elementId) {
             var hiddenContent = document.getElementById(elementId);
             if (hiddenContent.style.display === 'none') {
@@ -29,80 +28,66 @@
             }
         }
     </script>
-    <script>
-        function goToIndex() {
-            window.location.href = 'index.html';
-        }
-    </script>
 </head>
 <body>
-    <section layout:fragment="content" class="notice">
-        <div class="page-title" id="wrap">
-            <div class="container">
-                <h3>공지사항</h3>
-            </div>
-        </div>
+	<section layout:fragment="content" class="notice">
+		<div class="page-title" id="wrap">
+			<div class="container">
+				<h3>공지사항</h3>
+			</div>
+		</div>
 
-        <div id="board-search">
-            <div class="container">
-                <div class="search-window">
-                    <form action="">
-                        <div class="search-wrap">
-                            <label for="search" class="blind">공지사항 내용 검색</label>
-                            <input id="search" type="search" name="" placeholder="검색어를 입력해주세요." value="">
-                            <button type="submit" class="btn btn-dark">검색</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+		<div id="board-search">
+			<div class="container">
+				<div class="search-window">
+					<form action="">
+						<div class="search-wrap">
+							<label for="search" class="blind">공지사항 내용 검색</label> <input
+								id="search" type="search" name="" placeholder="검색어를 입력해주세요."
+								value="">
+							<button type="submit" class="btn btn-dark">검색</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
 
-        <div id="board-list">
-            <div class="container">
-                <table class="board-table">
-                    <thead>
-                        <tr>
-                            <th scope="col" class="th-num">번호</th>
-                            <th scope="col" class="th-title">제목</th>
-                            <th scope="col" class="th-date">등록일</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>
-                                <a href="#!" onclick="showHiddenContent('hiddenContent1')">공지사항 안내입니다.</a>
-                                <div id="hiddenContent1" class="hidden-content">
-                                    뿡
-                                </div>
-                            </td>
-                            <td>2023.11.27</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>
-                                <a href="#!" onclick="showHiddenContent('hiddenContent2')">공지사항 내용입니다.</a>
-                                <div id="hiddenContent2" class="hidden-content">
-                                    뿡
-                                </div>
-                            </td>
-                            <td>2023.11.28</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>
-                                <a href="#!" onclick="showHiddenContent('hiddenContent3')">공지사항 내용입니다.</a>
-                                <div id="hiddenContent3" class="hidden-content">
-                                    뿡
-                                </div>
-                            </td>
-                            <td>2023.11.29</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <button type="button" class="btn btn-dark" onclick="goToIndex()">목록</button>
-            </div>
-        </div>
-    </section>
+		<div id="board-list">
+			<div class="container">
+				<table class="board-table">
+					<thead>
+						<tr>
+							<th scope="col" class="th-num">번호</th>
+							<th scope="col" class="th-title">제목</th>
+							<th scope="col" class="th-date">등록일</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td><a href="#!"
+								onclick="showHiddenContent('hiddenContent1')">공지사항 안내입니다.</a>
+								<div id="hiddenContent1" class="hidden-content">뿡</div></td>
+							<td>2023.11.27</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td><a href="#!"
+								onclick="showHiddenContent('hiddenContent2')">공지사항 내용입니다.</a>
+								<div id="hiddenContent2" class="hidden-content">뿡</div></td>
+							<td>2023.11.28</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td><a href="#!"
+								onclick="showHiddenContent('hiddenContent3')">공지사항 내용입니다.</a>
+								<div id="hiddenContent3" class="hidden-content">뿡</div></td>
+							<td>2023.11.29</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
 </body>
 </html>

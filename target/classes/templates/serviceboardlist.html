@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/default_layout}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QnA Board - 게시물 리스트</title>
+    <th:block layout:fragment="css">
+        <link rel="stylesheet" href="css/serviceboardlist.css">
+    </th:block>
+</head>
+<body layout:fragment="content" id="wrap">
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <h1>QnA Board - 게시물 리스트</h1>
+    <table>
+        <tr>
+            <th>번호</th>
+            <th>카테고리</th>
+            <th>작성일</th>
+            <th>제목</th>
+            <th>답변 유무</th>
+        </tr>
+        <tr th:each="post, rowStat : ${postList}">
+            <td th:text="${rowStat.index + 1}"></td>
+            <td th:text="${post.type}"></td>
+            <td th:text="${post.regDate}"></td>
+            <td th:text="${post.title}"></td>
+            <td>
+    			<span th:if="${post.repyn == 'y'}">답변 O</span>
+            	<span th:unless="${post.repyn == 'y'}">답변 X</span>
+        	</td>
+        </tr>
+    </table>
+     <button onclick="location.href='qna.html'" class="write-button">글쓰기</button>
+</body>
+</html>
