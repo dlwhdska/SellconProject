@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+				xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+				layout:decorate="~{layout/default_layout}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>장바구니</title>
+  <link href="//fonts.googleapis.com/earlyaccess/notosanskr.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap" rel="stylesheet">
+  <th:block layout:fragment="css"><link rel="stylesheet" href="css/cart.css"></th:block>
+  <script src="js/cart.js" defer></script>
+  <script src="js/product.js" defer></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+
+<div layout:fragment="content" id="wrap">
+
+<form th:action="@{/orders}" method="post" enctype="multipart/form-data">
+<input type="hidden" id="member_id" name="member_id" value="member">
+  <div class="container">
+	<div class="layoutFix">
+
+		<div class="cart_page">
+			<!-- 상품 전체를 감싸는 부분 -->
+
+			<div class="cart_wrapper">
+
+				<!-- 상품 목록 감싸는 부분 -->
+				<div class="cart_list">
+
+					<div class="selectAllProduct">
+						<input type="checkbox" id="selectAll" class="selectAll" onclick="toggleAllCheckBoxes(this)"/>
+						<span>전체 상품(<span th:text="${cartItems.size()}"></span>)</span>
+						<div class="del_btn" onclick="selectDeleteCart()"></div>
+					</div>
+
+					<!-- 개별 상품 정보 -->
+					<!-- 타임리프를 사용한 반복 -->
+					<div th:each="cartItem, stat : ${cartItems}" class="prdInfo">
+						<input type="checkbox" id="'selectCheckbox' + ${stat.index}" class="selectCheckbox" th:attr="data-sseq=${cartItem.sseq}" th:onclick="toggleIndividualCheckbox(this)">
+						<div class="description">
+							<img th:src="${cartItem.image}" class="prdImg">
+							<div class="preDesc">
+								<strong class="pName" title="상품명" th:text="${cartItem.product_name}"></strong>
+								<div class="priceAll">
+									<p th:text="${#numbers.formatInteger(cartItem.price, 3, 'COMMA')}" class="price" title="원가"></p>
+									<p th:text="${#numbers.formatInteger(cartItem.selling_price, 3, 'COMMA')}" class="sell_price" title="판매가격"></p>
+									<p class="discount" title="할인율">%</p>
+								</div>
+								<p>만료기간
+								<strong th:text="${#dates.format(cartItem.valid, 'yyyy년 MM월 dd일')}" class="validity"></strong>
+								</p>
+							</div>
+						</div><!-- description 닫는 태그 -->
+							<div class="del_btn" th:onclick="deleteCart([[${cartItem.sseq}]])"></div>
+							<input type="hidden" th:value="${cartItem.sseq}">
+					</div><!-- prdInfo 닫는 태그 -->
+
+
+				</div><!-- cart_list 닫는 태그 -->
+			</div><!-- cart_wrapper 닫는 태그 -->
+
+
+			<div class="total_order_wrapper">
+
+				<div class="total_order_inner">
+					<!-- 가격 정보 -->
+					<div class="totalsummary">
+						<div class="priceArea">
+								<p>총 상품금액</p>
+								<strong class="totalProductPrice"></strong>
+						</div>
+						<div class="priceArea">
+								<p>상품할인금액</p>
+								<strong class="totalDiscount"></strong>
+						</div>
+						<div class="priceArea_final">
+								<h4>총 결제예정금액</h3>
+								<strong class="finalPayment"></strong>
+						</div>
+				</div><!-- totalsummary 닫는 태그 -->
+
+					<!-- 결제 버튼 -->
+					<div class="btn_box">
+						<input type="submit" value="주문하기" class="buy_btn">
+					</div>
+
+				</div><!-- total_order_inner 닫는 태그 -->
+			</div><!-- total_order_wrapper 닫는 태그 -->
+
+
+
+		</div><!-- cart_page 닫는 태그 -->
+	</div><!-- layoutFix 닫는 태그 -->
+</div><!-- container 닫는 태그 -->
+</form>
+</div>
+</body>
+</html>

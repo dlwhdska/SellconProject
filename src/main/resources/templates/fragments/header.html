@@ -18,7 +18,8 @@
                     <div class="top_menu_size">
                         <div class="top_menu_element">
                             <a th:href="@{/join}"><span class="top_menu_join">회원가입</span></a>
-                            <a th:href="@{/login}"><span class="top_menu_login">로그인</span></a>
+                            <a th:unless="${session.member != null}" th:href="@{/login}"><span class="top_menu_login">로그인</span></a>
+                            <a th:if="${session.member != null}" th:href="@{/logout}" th:text="LOGOUT"></a>
                         </div>
                     </div>
                 </div>
@@ -39,7 +40,7 @@
                     <div class="main_menu_icon">
                         <div class="search_icon menu_icon" id="search_open"></div>
                         <div class="basket_icon menu_icon">
-                            <a href=""><img src="/images/icon_cart.svg"></a>
+                            <a th:href="@{/cart}"><img src="images/icon_cart.svg"></a>
                         </div>
                     </div>
                 </div>
