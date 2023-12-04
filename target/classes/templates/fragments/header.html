@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="//fonts.googleapis.com/earlyaccess/notosanskr.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{css/header.css}">
+</head>
+<body>
+
+    <header th:fragment="headerFragment">
+        <div id="header_menu">
+            <div id="header_wrap">
+
+                <div class="top_menu">
+                    <div class="top_menu_size">
+                        <div class="top_menu_element">
+                            <a href=""><span class="top_menu_join">회원가입</span></a>
+                            <a href=""><span class="top_menu_login">로그인</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main_menu">
+                    <div class="main_menu_logo">
+                        <a th:href="@{/main}"><img src="/images/logo_n.png"></a>
+                    </div>
+                    <div class="main_menu_element">
+                        <ul>
+                            <li><a href="">NEW</a></li>
+                            <li><a th:href="@{/product}">PRODUCT</a></li>
+                            <li><a th:href="@{/notice}">NOTICE</a></li>
+                            <li><a href="">SELL</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="main_menu_icon">
+                        <div class="search_icon menu_icon" id="search_open"></div>
+                        <div class="basket_icon menu_icon">
+                            <a href=""><img src="/images/icon_cart.svg"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="search_form_hd">
+                    <div class="search_form_wrap">
+
+                        <div class="search_form">
+                            <form>
+                                <input type="hidden">
+                                <div class="search_layout">
+                                    <input class="search_keyword">
+                                    <button type="button" class="search_btn">
+                                        <span class="search_btn_icon"></span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="keyword_sample">
+                            <ul>
+                                <li><a href="">#마감임박 기프티콘</a></li>
+                                <li><a href="">#내가찾는 브랜드</a></li>
+                                <li><a href="">#기프티콘 판매하기</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+<script src="js/header.js"></script>
+</body>
+
+</html>

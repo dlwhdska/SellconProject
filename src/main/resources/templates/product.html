@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/default_layout}">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link href="//fonts.googleapis.com/earlyaccess/notosanskr.css">
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap"
+	rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<th:block layout:fragment="css">
+	<link rel="stylesheet" href="css/product.css">
+</th:block>
+</head>
+
+<body>
+	<div layout:fragment="content" id="wrap">
+		<div id="container">
+			<div id="contents">
+
+				<div class="product_container">
+
+					<div class="product_menu_wrap">
+
+						<div class="product_menu">
+							<div class="product_menu_element">
+								<div class="product_title_sub">
+									<div class="product_title">
+										<ul>
+											<li><a href="">NEW</a></li>
+										</ul>
+									</div>
+									<div class="product_sub">
+										<ul>
+											<li><a href="/product" data-category="">ALL</a></li>
+											<li><a href="/product?category=1" data-category="1">카페
+													/ 디저트</a></li>
+											<li><a href="/product?category=2" data-category="2">패스트푸드</a></li>
+											<li><a href="/product?category=3" data-category="3">여행
+													/ 숙박</a></li>
+											<li><a href="/product?category=4" data-category="4">편의점
+													/ 마트</a></li>
+											<li><a href="/product?category=5" data-category="5">상품권</a></li>
+											<li><a href="/product?category=6" data-category="6">영화
+													/ 엔터</a></li>
+											<li><a href="/product?category=7" data-category="7">뷰티</a></li>
+											<li><a href="/product?category=8" data-category="8">땡처리</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="product_section2" id="product_section2">
+							<div class="product_section_set product_find_brand_list">
+								<div class="brand_list">
+									<div class="product_find_brand">
+										<span value="" name="" th:each="brand : ${brandList}">
+											<a
+											th:href="@{/product(category=${categoryKind}, brand=${brand.bseq})}"
+											th:data-brandcategory="${categoryKind}"
+											th:data-brand="${brand.bseq}"}> <img
+												th:src="${brand.brand_image}">
+										</a>
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="product_list_wrap">
+						<div class="product_list_elements"
+							th:fragment="product_list_elements">
+							<div class="product_list_layout">
+
+								<div class="product_list_menu">
+									<div class="product_list_sort_wrap">
+										<div class="product_list_tatal_solt">
+											<p class="total">
+												총<strong id="product_total" th:text="${totalProducts}"></strong>개
+											</p>
+											<div class="pd_sort" id="Product_ListMenu">
+												<a href="#" class="latest" data-sort="latest">최신순</a> <a
+													href="#" class="lowprice" data-sort="lowprice">낮은가격순</a> <a
+													href="#" class="highPrice" data-sort="highprice">높은가격순</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="product_list_product">
+									<div class="product_list_box">
+										<ul class="slides">
+											<li th:each="product : ${sproductList.content}"
+												id="product_id">
+												<div class="product_img">
+													<dl>
+														<a th:href="@{'product_detail=' + ${product.sseq}}"
+															class="img_link"></a>
+														<div class="base_img">
+															<div class="thumb">
+																<img class="thumb_img" th:src="${product.product.image}">
+															</div>
+														</div>
+														<div class="base_text">
+															<dd class="product_brand">
+																<p class="brand"
+																	th:text=${product.product.brand.getBrand_name}></p>
+															</dd>
+															<dd class="product_name">
+																<p class="name" th:text=${product.product.product_name}>
+																</p>
+															</dd>
+															<dd class="product_price">
+																<p class="discount">20%</p>
+																<p class="sell_price"
+																	th:text="${#numbers.formatInteger(product.sellingprice, 3, 'COMMA')}">
+																</p>
+																<p class="price"
+																	th:text="${#numbers.formatInteger(product.product.price, 3, 'COMMA')}">
+																</p>
+															</dd>
+															<dd class="product_validity">
+																<span class="validity_icon"> <img
+																	src="images/icon_new_white.gif">
+																</span>
+																<p class="validity"
+																	th:text="${#dates.format(product.valid, 'yyyy년 MM월 dd일')}">
+																</p>
+															</dd>
+															<div class="cart_in_icon">
+																<img src="">
+															</div>
+														</div>
+													</dl>
+												</div>
+											</li>
+										</ul>
+									</div>
+
+									<div class="product_paginate_container">
+										<a th:href="@{${'/product(page=1)' }}" class="pagenate_first"
+											data-page="1"></a> <a
+											th:href="@{${sproductList.hasPrevious() ? '/product(page=' + (sproductList.number - 1) + ')' : '#'}}"
+											class="pagenate_prev" data-page="1"></a>
+
+										<ol>
+											<li
+												th:each="page : ${#numbers.sequence(0, sproductList.totalPages - 1)}"
+												th:class="${sproductList.number == page} ? 'paginate_on' : ''">
+												<a th:href="@{/product(page=${page})}" th:text="${page + 1}"
+												data-page="${page}"></a>
+											</li>
+										</ol>
+
+										<a
+											th:href="@{${sproductList.hasNext() ? '/product(page=' + (sproductList.number + 1) + ')' : '#'}}"
+											class="pagenate_next" data-page="2"></a> <a
+											th:href="@{${'/product(page=' + sproductList.totalPages + ')' }}"
+											class="pagenate_last" data-page="${sproductList.totalPages}"></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<th:block layout:fragment="script">
+			<script src="js/product.js"></script>
+		</th:block>
+</body>
+
+</html>

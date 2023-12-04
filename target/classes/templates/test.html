@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+function ajaxTest() {
+	 $.ajax({
+		type : "GET",
+		url : "testView",
+		dataType : "html",
+		data : { },
+		error : function() {
+			alert('통신실패!!');
+			},
+		success : function(result) {
+			$('#testView').html(result);
+			}
+			});
+}
+</script>
+</head>
+<body>
+ 테스트 페이지 
+ 
+ <button onclick="ajaxTest()"> ajax 테스트 </button> <br>
+ 
+ 
+ <div id="testView">
+ <div>  첫 테스트 페이지 </div>
+ </div>
+</body>
+</html>

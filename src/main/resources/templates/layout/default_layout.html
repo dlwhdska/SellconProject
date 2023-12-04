@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="//fonts.googleapis.com/earlyaccess/notosanskr.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <th:block layout:fragment="css"></th:block>
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+</head>
+
+<body>
+<div th:replace="fragments/header :: headerFragment"></div>
+<th:block layout:fragment="content"></th:block>
+<div th:replace="fragments/footer :: footerFragment"></div>
+
+<script th:src="@{/js/header.js}"></script>
+<th:block layout:fragment="script"></th:block>
+<script th:src="@{/js/footer.js}"></script>
+</body>
+</html>

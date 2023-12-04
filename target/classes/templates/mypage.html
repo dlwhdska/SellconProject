@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>마이페이지</title>
+</head>
+<body>
+    <div id="userInfo">
+        <h1>마이페이지</h1>
+        <form action="/user" method="post" id="userForm">
+            <!-- 사용자명 -->
+            <div>
+                <label for="name">사용자명:</label>
+                <input type="text" id="name" th:value="${member.name}" readonly>
+            </div>
+
+            <!-- 회원 정보 관리 -->
+            <div>
+                <label for="mr">회원 정보 관리:</label>
+                <a th:href="@{/mr}" id="mr">회원 정보 관리 바로가기</a>
+            </div>
+
+            <!-- 구매 -->
+            <div>
+                <label for="purchase">구매:</label>
+                <a th:href="@{/purchase}" id="purchaseLink">구매 바로가기</a>
+            </div>
+
+            <!-- 판매 -->
+            <div>
+                <label for="sell">판매:</label>
+                <a th:href="@{/sell}" id="sellLink">판매 바로가기</a>
+            </div>
+
+            <!-- 문의 -->
+            <div>
+                <label for="inquiry">문의:</label>
+                <a th:href="@{/inquiry}" id="inquiryLink">문의 바로가기</a>
+            </div>
+
+            <!-- 장바구니 -->
+            <div>
+                <label for="cart">장바구니:</label>
+                <a th:href="@{/cart}" id="cart">장바구니 바로가기</a>
+            </div>
+
+            <!-- 미정산 -->
+            <div>
+                <label for="unsettled">미정산:</label>
+                <a th:href="@{/unsettled}" id="unsettledLink">미정산 바로가기</a>
+            </div>
+
+            <!-- 정산 -->
+            <div>
+                <label for="settle">정산:</label>
+                <a th:href="@{/settle}" id="settleLink">정산 바로가기</a>
+            </div>
+
+            <!-- 공지사항 -->
+            <div>
+                <label for="notice">공지사항:</label>
+                <a th:href="@{/notice}" id="notice">공지사항 바로가기</a>
+            </div>
+
+            <!-- 고객센터 -->
+            <div>
+                <label for="customerCenter">고객센터:</label>
+                <a th:href="@{/customerCenter}" id="customerCenterLink">고객센터 바로가기</a>
+            </div>
+
+            <!-- 1:1 문의 -->
+            <div>
+                <label for="oneToOneInquiry">1:1 문의:</label>
+                <a th:href="@{/oneToOneInquiry}" id="oneToOneInquiryLink">1:1 문의 바로가기</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
