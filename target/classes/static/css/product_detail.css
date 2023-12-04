@@ -196,6 +196,7 @@ a{
     background-color: #000;
     box-sizing: border-box;
     line-height: 55px;
+    z-index: 5;
   }
 
 .pd_main_btn_wrap::after {

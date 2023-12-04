@@ -12,6 +12,8 @@
 	href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap"
 	rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="js/cart.js" defer></script>
+<script src="js/product.js" defer></script>
 <th:block layout:fragment="css">
 	<link rel="stylesheet" href="css/product.css">
 </th:block>
@@ -118,7 +120,7 @@
 																</p>
 															</dd>
 															<dd class="product_price">
-																<p class="discount">20%</p>
+																<p class="discount">%</p>
 																<p class="sell_price"
 																	th:text="${#numbers.formatInteger(product.sellingprice, 3, 'COMMA')}">
 																</p>
@@ -134,7 +136,7 @@
 																	th:text="${#dates.format(product.valid, 'yyyy년 MM월 dd일')}">
 																</p>
 															</dd>
-															<div class="cart_in_icon">
+															<div class="cart_in_icon" th:onclick="addCart([[${product.sseq}]])">
 																<img src="">
 															</div>
 														</div>

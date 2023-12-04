@@ -486,6 +486,7 @@ span>a>img{
     border-radius: 0;
     outline: 0;
     cursor: pointer;
+    z-index: 5;
   }
   
   .product_brand{
