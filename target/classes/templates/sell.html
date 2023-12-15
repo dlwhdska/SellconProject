@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/default_layout}">
+<th:block layout:fragment="css">
+	<link rel="stylesheet" href="../css/sell.css">
+</th:block>
+
+<body>
+	<div layout:fragment="content" id="wrap">
+		<div id="container">
+			<div id="contests">
+
+				<div class="product_detail_container">
+					<div class="product_detail_wrap">
+
+						
+						<div class="product_detial_section1">
+							<div class="product_detail_main">
+							
+								<form action="/imgupload" method="post" enctype="multipart/form-data">
+								<div class="pd_main_img_wrap">
+								<input type="file" id="imageInput" name="barcordimage" accept="image/*" onchange="previewImage(this)">
+									<img id="imgPreview" src="#" style="display: none;">
+								</div>
+								</form>
+								
+								<div class="pd_main_text_wrap">
+
+									<div class="pa_main_text">
+
+										<div class="pd_main_text_product">
+											<ul>
+
+												<li class="PD_product_brand PD_product_brnad">
+												<input type="hidden" th:value="${session.member.id}" id="sellerId" name="sellerId"/>
+													<input class="PD_detail_brnad PD_search_result"
+														placeholder="브랜드를 검색해 보세요" id="sellBrandInput"></input>
+													<div class="PD_detail_search">
+														<div class="PD_search_popup">
+															<div class="PD_search_box">
+																<h2>검색
+																	<span class="PD_search_box_coloseBtn">
+																		<img src="images/layerClose_icon.png">
+																	</span>
+																</h2>
+																<div class="PD_search_title">
+																	<img src="images/logo_round.png"><span>브랜드
+																		검색하기</span>
+																</div>
+																<div class="PD_serach_text">
+																	<input type="text" placeholder="브랜드를 검색해 보세요"
+																		oninput="filterBrands()" id="brandSearchInput">
+																</div>
+
+																<div class="brand-results" id="filteredBrandList">
+																	<div th:each="brandList : ${brandList}"
+																		th:attr="data-brandName=${brandList.brandName}"
+																		onclick="selectBrand(this)">
+																		<span th:text="${brandList.brandName}"></span>
+																	</div>
+																</div>
+
+																<div class="PD_search_box_btn">
+																	<a href="#"
+																		onclick="confirmBrand()"><span>확인</span></a>
+																</div>
+															</div>
+														</div>
+													</div>
+												</li>
+
+												<li class="PD_product_name">
+													<input class="PD_detail_name PS_search_result"
+														placeholder="상품명을 입력해 주세요" id="sellProductInput"></input>
+													<input class="sellProductPseq" type="hidden" value="">
+													<div class="PS_detail_search">
+														<div class="PS_search_popup">
+															<div class="PS_search_box">
+																<h2>검색
+																	<span class="PS_search_box_coloseBtn">
+																		<img src="images/layerClose_icon.png">
+																	</span>
+																</h2>
+																<div class="PS_search_title">
+																	<img src="images/logo_round.png"><span>상품
+																		검색하기</span>
+																</div>
+																<div class="PS_serach_text">
+																	<input type="text" placeholder="상품을 검색해 보세요"
+																		oninput="filterProducts()"
+																		id="productSearchInput">
+																</div>
+
+																<div class="product-results" id="filteredProductList">
+																	<div th:each="productList : ${productList}"
+																		th:attr="data-productName=${productList.productName}"
+																		onclick="selectProduct(this)">
+																		<span
+																			th:text="${productList.productName}"></span>
+																	</div>
+																</div>
+																<div class="PS_search_box_btn">
+																	<a href="#"
+																		onclick="confirmProduct()"><span>확인</span></a>
+																</div>
+															</div>
+														</div>
+													</div>
+												</li>
+
+												<li class="PD_product_price">
+													<span class="PD_title">원가</span>
+													<span class="PD_detail_price">
+														<span class="salesPrice text" id="productPrice"></span>
+														<span class="dcPercent">※원가 이상으로는 판매할 수 없습니다</span>
+													</span>
+												</li>
+
+												<li class="PD_product_selling_price">
+													<span class="PD_title">판매가</span>
+													<span class="PD_detail_selling_price">
+														<input type="text" name="selling_price" class="inputbox"><span
+															class="won"> 원</span>
+													</span>
+												</li>
+												
+												<li class="PD_barcodeimg">
+													<span class="PD_title">이미지</span>
+													<span class="">
+														<label for="imageInput" id="selectedImageLabel">이미지를 선택하세요</label>
+													</span>
+												</li>
+
+												<li class="PD_quantity">
+													<span class="PD_title">바코드</span>
+													<input type="text" name="barcode" class="inputbox inputboxshort">
+													<span class="inputboxBar"> -</span>
+													<input type="text" name="barcode" class="inputbox inputboxshort">
+													<span class="inputboxBar"> -</span>
+													<input type="text" name="barcode" class="inputbox inputboxshort">
+												</li>
+
+												<li class="PD_validity">
+													<span class="PD_title">사용기한</span>
+													<input class="PD_detail_validity" type="date"
+														data-placeholder="날짜 선택" required>
+												</li>
+
+											</ul>
+										</div>
+
+										<div class="pd_main_btn_wrap">
+											<a href="" class="PD_btn_buy"> <span id="btn_buy">판매취소</span>
+											</a> <a href="" class="PD_btn_cart" onclick="submitSellForm()"> 판매 신청하기 </a>
+										</div>
+									</div>
+
+								</div>
+
+							</div>
+						</div>
+
+						<div class="product_detail_section2">
+							<div class="product_detail_information">
+
+								<div class="pd_information_wrap">
+									<div class="pd_information_elements">
+										<div class="pd_information_menu">
+
+											<ul class="PD_detail_menu_wrap">
+												<li class="tab current"><a href="">판매현황</a></li>
+												<li class="tab"><a href="">주의사항</a></li>
+												<li class="tab"><a href="">상세정보</a></li>
+											</ul>
+
+											<div class="PD_detail_textContainer">
+												<div class="PD_detailContants">
+													<div class="PD_detailBoard_wrap">
+														<div class="cont current" id="cont1">
+															<h3><span></span> 가격대별 판매현황</h3>
+															<table class="product_info_tbl">
+																<colgroup>
+																	<col width="450px">
+																	<col width="400px">
+																	<col width="*">
+																</colgroup>
+																<tbody>
+																	<tr>
+																		<th>판매 가격</th>
+																		<th>할인률</th>
+																		<th>수량</th>
+																	</tr>
+																</tbody>
+															</table>
+														</div>
+														<div class="cont" id="cont2">
+
+														</div>
+														<div class="cont" id="cont3">
+
+
+														</div>
+													</div>
+												</div>
+
+											</div>
+										</div>
+
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<th:block layout:fragment="script">
+		<script src="../js/sell.js"></script>
+	</th:block>
+</body>
+
+</html>

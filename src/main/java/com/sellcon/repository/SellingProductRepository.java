@@ -32,7 +32,6 @@ public interface SellingProductRepository extends JpaRepository<Selling_Product,
 
 	Page<Selling_Product> findAllByOrderBySellingpriceAsc(Pageable pageable);
 	
-	
 	// 카테고리에따른 상품리스트
 	@Query("SELECT sp FROM Selling_Product sp " +
             "JOIN sp.product p " +
@@ -45,7 +44,12 @@ public interface SellingProductRepository extends JpaRepository<Selling_Product,
 	@Query("SELECT sp FROM Selling_Product sp WHERE sp.product.brand.bseq = :bseq")
 	Page<Selling_Product> findAllByProductBrandBseq(Pageable pageable, Long bseq);
 	
-	//프로덕트 디테일
+	// 프로덕트 디테일
 	List<Selling_Product> findAllBySseq(Long sseq);
+	
+	// 판매페이지
+	@Query("SELECT sp FROM Selling_Product sp JOIN sp.product p WHERE p.productName = :productName")
+	List<Selling_Product> findByProductProductName(String productName);
+
 	
 }

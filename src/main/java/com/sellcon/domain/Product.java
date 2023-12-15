@@ -22,36 +22,36 @@ import lombok.ToString;
 @NoArgsConstructor
 @Entity
 public class Product {
-	
+
 	@Id
 	@GeneratedValue
-	@Column(name="pseq", columnDefinition = "NUMBER(5)")
+	@Column(name = "pseq", columnDefinition = "NUMBER(5)")
 	private Long pseq;
-	
-	@Column(length = 100, nullable=false)
-	private String product_name;
-	
-	@Column(columnDefinition = "number(7)", nullable=false)
+
+	@Column(name = "product_name", length = 100, nullable = false)
+	private String productName;
+
+	@Column(columnDefinition = "number(7)", nullable = false)
 	private int price;
-	
-	@Column(length = 1000, nullable=false)
+
+	@Column(length = 1000, nullable = false)
 	private String content;
-	
-	@Column(columnDefinition = "char(1) default 'Y'", nullable=false)
+
+	@Column(columnDefinition = "char(1) default 'Y'", nullable = false)
 	private char useyn;
-	
-	@Column(length = 100, nullable=false)
+
+	@Column(length = 100, nullable = false)
 	private String image;
-	
-	@Column(insertable=false, updatable=false, columnDefinition="DATE default sysdate")
+
+	@Column(insertable = false, updatable = false, columnDefinition = "DATE default sysdate")
 	private Date regdate;
-	
+
 	@ManyToOne
-	@JoinColumn(name="bseq", updatable=false)
+	@JoinColumn(name = "bseq", updatable = false)
 	private Brand brand;
-	
+
 	public void setBrand(Brand brand) {
 		this.brand = brand;
 	}
-	
+
 }

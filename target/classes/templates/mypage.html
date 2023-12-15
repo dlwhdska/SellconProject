@@ -1,78 +1,185 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>마이페이지</title>
-</head>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/default_layout}">
+<th:block layout:fragment="css"><link rel="stylesheet" href="css/mypage.css"></th:block>
 <body>
-    <div id="userInfo">
-        <h1>마이페이지</h1>
-        <form action="/user" method="post" id="userForm">
-            <!-- 사용자명 -->
-            <div>
-                <label for="name">사용자명:</label>
-                <input type="text" id="name" th:value="${member.name}" readonly>
-            </div>
+    
+    <div layout:fragment="content" id="wrap">
+        <div id="container">
+            <div id="contents">
 
-            <!-- 회원 정보 관리 -->
-            <div>
-                <label for="mr">회원 정보 관리:</label>
-                <a th:href="@{/mr}" id="mr">회원 정보 관리 바로가기</a>
-            </div>
+                <div class="mypage_wrap">
+                    
+                    <div class="page_title_section">
+                        <h2 class="page_title">
+                            <span class="font_size">MY PAGE</span>
+                        </h2>
+                    </div>
 
-            <!-- 구매 -->
-            <div>
-                <label for="purchase">구매:</label>
-                <a th:href="@{/purchase}" id="purchaseLink">구매 바로가기</a>
-            </div>
+                    <div class="mypage_information_wrap">
+                        <div class="mypage_information">
+                            <div class="mypage_message">
+                                <div class="information">
+                                    <div class="member_radius">
+                                        <div class="radius_box" id="radius_box">
+                                            <canvas id="line1"></canvas>
+                                        </div>
+                                    </div>
+                                    <div class="infoBox_wrap">
+                                        <p class="ment">
+                                            <strong>루루</strong>님 반갑습니다.
+                                        </p>
+                                        <p class="info1">
+                                            회원님의 등급은 <strong>[Friend]</strong>입니다.
+                                        </p>
+                                        <p class="info2">
+                                            다음 등급까지 <span>1,000</span>원 남았습니다.
+                                        </p>
+                                        <div class="inforUserLink_wrap">
+                                            <a href="">정보관리</a>
+                                            <a href="">문의내역</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-            <!-- 판매 -->
-            <div>
-                <label for="sell">판매:</label>
-                <a th:href="@{/sell}" id="sellLink">판매 바로가기</a>
-            </div>
+                            <div class="cashBox">
+                                <div class="cashBox_element">
+                                    <ul class="cashBox_list">
+                                        <li>
+                                            <div class="displayTable">
+                                                <div class="displayTableInr">
+                                                    <div class="cash_title">정산금</div>
+                                                    <div class="cash_cont">5,000원</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="displayTable">
+                                                <div class="displayTableInr">
+                                                    <div class="cash_title">정산예정금</div>
+                                                    <div class="cash_cont">99,000원</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="cash_btn">
+                                                <a href="">출금</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
 
-            <!-- 문의 -->
-            <div>
-                <label for="inquiry">문의:</label>
-                <a th:href="@{/inquiry}" id="inquiryLink">문의 바로가기</a>
-            </div>
 
-            <!-- 장바구니 -->
-            <div>
-                <label for="cart">장바구니:</label>
-                <a th:href="@{/cart}" id="cart">장바구니 바로가기</a>
-            </div>
+                        </div>
+                    </div>
 
-            <!-- 미정산 -->
-            <div>
-                <label for="unsettled">미정산:</label>
-                <a th:href="@{/unsettled}" id="unsettledLink">미정산 바로가기</a>
-            </div>
+                    <div class="mypage_sell_wrap MP_layoutFix">
+                        <div class="mypage_sell MP_subSection">
+                            <div class="selllist_title MP_title_wrap">
+                                <h3 class="MP_fontsize">판매내역</h3>
+                                <div class="MP_moreBtn">
+                                    <a href="">+더보기</a>
+                                </div>
+                            </div> 
+                            
+                            <div class="sell_box">
+                                <ul>
+                                    <li>
+                                        <a href="">
+                                            <span>검수중</span>
+                                            <span class="count">
+                                                <span id="sell_count">1</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <span>검수완료</span>
+                                            <span class="count">
+                                                <span id="sell_count">2</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <span>정산예정</span>
+                                            <span class="count">
+                                                <span id="sell_count">1</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <span>정산완료</span>
+                                            <span class="count">
+                                                <span id="sell_count">3</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
 
-            <!-- 정산 -->
-            <div>
-                <label for="settle">정산:</label>
-                <a th:href="@{/settle}" id="settleLink">정산 바로가기</a>
-            </div>
+                    <div class="mypage_order_wrap MP_layoutFix">
+                        <div class="mypage_order MP_subSection">
+                            <div class="order_title MP_title_wrap">
+                                <h3 class="MP_fontsize">구매내역</h3>
+                                <div class="MP_moreBtn">
+                                    <a href="">+더보기</a>
+                                </div>
+                            </div> 
 
-            <!-- 공지사항 -->
-            <div>
-                <label for="notice">공지사항:</label>
-                <a th:href="@{/notice}" id="notice">공지사항 바로가기</a>
-            </div>
+                            <div class="orderlist_table">
+                                <table class="MP_tbl">
+                                    <colgroup>
+                                        <col width="170px">
+                                        <col width="auto">
+                                        <col width="180px">
+                                        <col width="220px">
+                                        <col width="220px">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" class="">브랜드</th>
+                                            <th scope="col" class="">상품이름</th>
+                                            <th scope="col" class="">상품금액</th>
+                                            <th scope="col" class="">구매일시</th>
+                                            <th scope="col" class="">사용일시</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="">스타벅스</td>
+                                            <td class="">카페 아메리카노</td>
+                                            <td class="">4,000원</td>
+                                            <td class="">2023년 12월 1일</td>
+                                            <td class="">2023년 12월 3일</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="">스타벅스</td>
+                                            <td class="">카페 아메리카노</td>
+                                            <td class="">4,000원</td>
+                                            <td class="">2023년 12월 1일</td>
+                                            <td class="">2023년 12월 3일</td>
+                                        </tr>
+                                    </tbody>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="7" class="empty">주문 내역이 없습니다</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
 
-            <!-- 고객센터 -->
-            <div>
-                <label for="customerCenter">고객센터:</label>
-                <a th:href="@{/customerCenter}" id="customerCenterLink">고객센터 바로가기</a>
-            </div>
+                </div>
 
-            <!-- 1:1 문의 -->
-            <div>
-                <label for="oneToOneInquiry">1:1 문의:</label>
-                <a th:href="@{/oneToOneInquiry}" id="oneToOneInquiryLink">1:1 문의 바로가기</a>
             </div>
-        </form>
+        </div>
     </div>
 </body>
 </html>

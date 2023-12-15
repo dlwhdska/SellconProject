@@ -15,4 +15,6 @@ public interface BrandRepository extends JpaRepository<Brand, Long> {
 	@Query("SELECT b FROM Brand b WHERE b.category.kind = :kind")
 	List<Brand> findAllByCategoryKind(@Param("kind") String kind);
 	
+	List<Brand> findByBrandNameContaining(String brandkeyword);
+	
 }

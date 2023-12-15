@@ -144,6 +144,7 @@ h3>a{
   width: 100%;
   height: 100%;
   text-align: center;
+  z-index: 2;
 }
 
 .base_img{
@@ -281,6 +282,7 @@ h3>a{
   border-radius: 0;
   outline: 0;
   cursor: pointer;
+  z-index: 3;
 }
 
 .product_brand{
@@ -390,6 +392,10 @@ h3>a{
   border: 1px solid #cdcdcd;
   height: 131.09px;
   margin-top: 21px;
+}
+
+.find_brand img{
+	width : 100%;
 }
 
 .find_brand_btn{

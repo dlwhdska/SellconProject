@@ -21,6 +21,9 @@
 
 <body>
 	<div layout:fragment="content" id="wrap">
+		<input type="hidden" id="selected_brand_category" value="">
+		<input type="hidden" id="selected_brand" value="">
+		<input type="hidden" id="selected_sort" value="">
 		<div id="container">
 			<div id="contents">
 
@@ -39,16 +42,12 @@
 									<div class="product_sub">
 										<ul>
 											<li><a href="/product" data-category="">ALL</a></li>
-											<li><a href="/product?category=1" data-category="1">카페
-													/ 디저트</a></li>
+											<li><a href="/product?category=1" data-category="1">카페 / 디저트</a></li>
 											<li><a href="/product?category=2" data-category="2">패스트푸드</a></li>
-											<li><a href="/product?category=3" data-category="3">여행
-													/ 숙박</a></li>
-											<li><a href="/product?category=4" data-category="4">편의점
-													/ 마트</a></li>
+											<li><a href="/product?category=3" data-category="3">여행 / 숙박</a></li>
+											<li><a href="/product?category=4" data-category="4">편의점 / 마트</a></li>
 											<li><a href="/product?category=5" data-category="5">상품권</a></li>
-											<li><a href="/product?category=6" data-category="6">영화
-													/ 엔터</a></li>
+											<li><a href="/product?category=6" data-category="6">영화 / 엔터</a></li>
 											<li><a href="/product?category=7" data-category="7">뷰티</a></li>
 											<li><a href="/product?category=8" data-category="8">땡처리</a></li>
 										</ul>
@@ -65,9 +64,9 @@
 											<a
 											th:href="@{/product(category=${categoryKind}, brand=${brand.bseq})}"
 											th:data-brandcategory="${categoryKind}"
-											th:data-brand="${brand.bseq}"}> <img
-												th:src="${brand.brand_image}">
-										</a>
+											th:data-brand="${brand.bseq}"}>
+											<img th:src="${brand.brandImage}">
+											</a>
 										</span>
 									</div>
 								</div>
@@ -77,8 +76,7 @@
 					</div>
 
 					<div class="product_list_wrap">
-						<div class="product_list_elements"
-							th:fragment="product_list_elements">
+						<div class="product_list_elements" th:fragment="product_list_elements">
 							<div class="product_list_layout">
 
 								<div class="product_list_menu">
@@ -88,9 +86,9 @@
 												총<strong id="product_total" th:text="${totalProducts}"></strong>개
 											</p>
 											<div class="pd_sort" id="Product_ListMenu">
-												<a href="#" class="latest" data-sort="latest">최신순</a> <a
-													href="#" class="lowprice" data-sort="lowprice">낮은가격순</a> <a
-													href="#" class="highPrice" data-sort="highprice">높은가격순</a>
+												<a href="#" class="latest sort-button active" data-sort="latest">최신순</a>
+												<a href="#" class="lowprice sort-button" data-sort="lowprice">낮은가격순</a>
+												<a href="#" class="highPrice sort-button" data-sort="highprice">높은가격순</a>
 											</div>
 										</div>
 									</div>
@@ -99,12 +97,10 @@
 								<div class="product_list_product">
 									<div class="product_list_box">
 										<ul class="slides">
-											<li th:each="product : ${sproductList.content}"
-												id="product_id">
+											<li th:each="product : ${sproductList.content}" id="product_id">
 												<div class="product_img">
 													<dl>
-														<a th:href="@{'product_detail=' + ${product.sseq}}"
-															class="img_link"></a>
+														<a th:href="@{'product_detail=' + ${product.sseq}}" class="img_link"></a>
 														<div class="base_img">
 															<div class="thumb">
 																<img class="thumb_img" th:src="${product.product.image}">
@@ -112,29 +108,19 @@
 														</div>
 														<div class="base_text">
 															<dd class="product_brand">
-																<p class="brand"
-																	th:text=${product.product.brand.getBrand_name}></p>
+																<p class="brand" th:text=${product.product.brand.getBrandName}></p>
 															</dd>
 															<dd class="product_name">
-																<p class="name" th:text=${product.product.product_name}>
-																</p>
+																<p class="name" th:text=${product.product.productName}></p>
 															</dd>
 															<dd class="product_price">
 																<p class="discount">%</p>
-																<p class="sell_price"
-																	th:text="${#numbers.formatInteger(product.sellingprice, 3, 'COMMA')}">
-																</p>
-																<p class="price"
-																	th:text="${#numbers.formatInteger(product.product.price, 3, 'COMMA')}">
-																</p>
+																<p class="sell_price" th:text="${#numbers.formatInteger(product.sellingprice, 3, 'COMMA')}"></p>
+																<p class="price" th:text="${#numbers.formatInteger(product.product.price, 3, 'COMMA')}"></p>
 															</dd>
 															<dd class="product_validity">
-																<span class="validity_icon"> <img
-																	src="images/icon_new_white.gif">
-																</span>
-																<p class="validity"
-																	th:text="${#dates.format(product.valid, 'yyyy년 MM월 dd일')}">
-																</p>
+																<span class="validity_icon"><img src="images/icon_new_white.gif"></span>
+																<p class="validity" th:text="${#dates.format(product.valid, 'yyyy년 MM월 dd일')}"></p>
 															</dd>
 															<div class="cart_in_icon" th:onclick="addCart([[${product.sseq}]])">
 																<img src="">
@@ -147,25 +133,17 @@
 									</div>
 
 									<div class="product_paginate_container">
-										<a th:href="@{${'/product(page=1)' }}" class="pagenate_first"
-											data-page="1"></a> <a
-											th:href="@{${sproductList.hasPrevious() ? '/product(page=' + (sproductList.number - 1) + ')' : '#'}}"
-											class="pagenate_prev" data-page="1"></a>
+										<a href="#" class="pagenate_first" th:data-page="0"></a>
+										<a href="#" class="pagenate_prev" th:data-page="${currentPage > 0 ? currentPage - 1 : 0}"></a>
 
 										<ol>
-											<li
-												th:each="page : ${#numbers.sequence(0, sproductList.totalPages - 1)}"
-												th:class="${sproductList.number == page} ? 'paginate_on' : ''">
-												<a th:href="@{/product(page=${page})}" th:text="${page + 1}"
-												data-page="${page}"></a>
+											<li th:each="page : ${#numbers.sequence(0, sproductList.totalPages - 1)}" th:class="${sproductList.number == page ? 'paginate_on' : ''}">
+												<a href="#" th:text="${page + 1}" th:data-page="${page}"></a>
 											</li>
 										</ol>
 
-										<a
-											th:href="@{${sproductList.hasNext() ? '/product(page=' + (sproductList.number + 1) + ')' : '#'}}"
-											class="pagenate_next" data-page="2"></a> <a
-											th:href="@{${'/product(page=' + sproductList.totalPages + ')' }}"
-											class="pagenate_last" data-page="${sproductList.totalPages}"></a>
+										<a href="#" class="pagenate_next" th:data-page="${currentPage < totalPages - 1 ? currentPage + 1 : totalPages - 1}"></a>
+										<a href="#" class="pagenate_last" th:data-page="${totalPages - 1}"></a>
 									</div>
 								</div>
 							</div>
@@ -174,11 +152,13 @@
 					</div>
 
 				</div>
+				
 			</div>
 		</div>
-		<th:block layout:fragment="script">
-			<script src="js/product.js"></script>
-		</th:block>
+	</div>
+	<th:block layout:fragment="script">
+		<script src="js/product.js"></script>
+	</th:block>
 </body>
 
 </html>

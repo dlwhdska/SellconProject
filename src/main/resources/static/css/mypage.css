@@ -1,0 +1,356 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Noto Sans KR', sans-serif;
+    list-style: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0;
+}
+  
+a{
+    color: #000;
+}
+  
+#wrap{
+    padding-top: 156px !important;
+    overflow-x: hidden;
+    letter-spacing: 0px;
+}
+
+.page_title_section{
+    padding: 60px 0 30px;
+}
+
+.page_title{
+    padding: 5px 0;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Poppins', 'Noto Sans KR';
+}
+
+.font_size{
+    min-width: 100%;
+    font-size: 28px;
+    display: inline-block;
+    position: relative;
+}
+
+.mypage_information_wrap{
+    margin-top: 8px;
+    color: #fff;
+    background-color: #221f20;
+}
+
+.mypage_information{
+    width: 1200px;
+    margin: 0 auto 10px;
+    padding: 66px 0 77px;
+    position: relative;
+}
+
+.mypage_message{
+    width: 600px;
+    display: inline-block;
+}
+
+.information{
+    display: flex;
+    font-size: 0;
+}
+
+.infoBox_wrap{
+    display: inline-block;
+    vertical-align: top;
+    font-family: 'Noto Sans KR';
+}
+
+.ment{
+    font-size: 26px;
+    line-height: 1;
+    padding-bottom: 12px;
+    font-weight: 300;
+}
+
+.ment>strong{
+    font-weight: 600;
+}
+
+.info1{
+    font-size: 20px;
+    margin-bottom: 30px;
+    font-weight: 300;
+    line-height: 1;
+}
+
+.info1>strong{
+    font-weight: 500;
+}
+
+.info2{
+    font-size: 14px;
+    color: #aaa;
+}
+
+.inforUserLink_wrap{
+    font-size: 0;
+    margin-top: 45px;
+    white-space: nowrap;
+}
+
+.inforUserLink_wrap a{
+    position: relative;
+    font-size: 14px;
+    color: #fff;
+    background: none;
+    height: unset;
+    line-height: unset;
+    text-align: left;
+    width: initial;
+    padding-right: 60px;
+    vertical-align: bottom;
+    display: inline-block;
+    font-family: 'Noto Sans KR';
+}
+
+.inforUserLink_wrap a:after{
+    content: '';
+    display: inline-block;
+    width: 9px;
+    height: 13px;
+    background: url(../images/arrow_more_wh.png) no-repeat center center;
+    object-fit: contain;
+    background-size: 90%;
+    position: absolute;
+    top: 51%;
+    transform: translateY(-50%);
+    left: auto;
+    right: 40px;
+    bottom: auto;
+}
+
+.cashBox{
+    display: inline-block;
+    float: right;
+    margin-top: 40px;
+}
+
+.cashBox_element{
+    overflow: hidden;
+}
+
+.cashBox_list li{
+    display: inline-block;
+    vertical-align: top;
+    width: auto;
+    box-sizing: border-box;
+    text-align: center;
+    margin-left: 65px;
+}
+
+.cashBox_list li:first-child{
+    margin-left: 0;
+}
+
+.displayTable{
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.displayTableInr{
+    display: table-cell;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.cash_title{
+    font-size: 16px;
+    display: inline-block;
+    padding: 7px 3px;
+    border-bottom: 1px solid #fff;
+    width: 120px;
+    font-weight: 300;
+}
+
+.cash_cont{
+    font-size: 25px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+    padding: 25px 0 15px;
+}
+
+.cash_btn{
+    width: 80px;
+    border: 1px solid;
+    border-radius: 10px;
+    height: 80px;
+    margin: auto 0;
+    margin-top: 12px;
+    position: relative;
+}
+
+.cash_btn a{
+    color: #fff;
+    font-size: 16px;
+    position: absolute;
+    top: 47%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%,-50%);
+}
+
+.member_radius{
+    position: relative;
+    display: inline-block;
+    margin-right: 60px;
+}
+
+canvas{
+    width: 170px;
+    height: 170px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    background: url(../images/yello_1.png) no-repeat center;
+    background-size: 80%;
+}
+
+.line{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.MP_layoutFix{
+    width: 1200px;
+    margin: 0 auto;
+    letter-spacing: 0;
+    font-family: 'Noto Sans KR';
+}
+
+.MP_subSection{
+    padding: 60px 0 30px;
+}
+
+.MP_title_wrap .MP_fontsize{
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
+.MP_fontsize{
+    color: #000;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.MP_moreBtn{
+    display: inline-block;
+    float: right;
+}
+
+.MP_moreBtn a{
+    font-size: 15px;
+    color: #000;
+    position: relative;
+}
+
+.sell_box{
+    margin: 55px 0 77px;
+    text-align: center;
+}
+
+.sell_box ul{
+    font-size: 0;
+}
+
+.sell_box ul li{
+    display: inline-block;
+    width: 180px;
+    height: 180px;
+    margin-left: 160px;
+    position: relative;
+    background: #221f20;
+}
+
+.sell_box ul li:first-child{
+    margin-left: 0;
+}
+
+.sell_box ul li:after{
+    content: '';
+    display: inline-block;
+    width: 25px;
+    height: 40px;
+    background: url(../images/swp_right_arrow.png) no-repeat center center;
+    background-size: 90%;
+    position: absolute;
+    top: 50%;
+    left: -50%;
+    transform: translate(0, -50%);
+}
+
+.sell_box ul li:first-child:after{
+    display: none;
+}
+
+.sell_box ul li a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    padding: 45px 0;
+    font-size: 18px;
+}
+
+.sell_box ul li a .count{
+    display: block;
+    font-size: 40px;
+    color: #fff;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.sell_box ul li a .count span{
+    margin-top: 25px;
+    display: block;
+    font-size: 40px;
+    color: #fff;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.orderlist_table{
+    margin: 55px 0 77px;
+    text-align: center;
+}
+
+table{
+    width: 100%;
+    border: 0;
+    border-style: 0;
+    border-collapse: collapse;
+}
+
+thead{
+    width: 100%;
+}
+
+thead th{
+    height: 50px;
+    font-size: 17px;
+    vertical-align: middle;
+    color: #000;
+    background-color: #eeeeee;
+}
+
+tbody td{
+    height: 80px;
+    text-align: center;
+    padding-left: 0;
+    font-size: 15px;
+    color: #000;
+    border-top: 1px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee;
+}

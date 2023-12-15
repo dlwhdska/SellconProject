@@ -26,11 +26,11 @@ public class Brand {
 	@Column(columnDefinition = "number(5)")
 	private Long bseq;
 	
-	@Column(length = 40, nullable = false)
-	private String brand_name;
+	@Column(name="brand_name", length = 40, nullable = false)
+	private String brandName;
 	
-	@Column(length = 100, nullable = false)
-	private String brand_image;
+	@Column(name="brand_image", length = 100, nullable = false)
+	private String brandImage;
 	
 	@ManyToOne
 	@JoinColumn(name="kind", updatable=false)

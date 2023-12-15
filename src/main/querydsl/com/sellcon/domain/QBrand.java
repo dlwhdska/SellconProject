@@ -22,9 +22,9 @@ public class QBrand extends EntityPathBase<Brand> {
 
     public static final QBrand brand = new QBrand("brand");
 
-    public final StringPath brand_image = createString("brand_image");
+    public final StringPath brandImage = createString("brandImage");
 
-    public final StringPath brand_name = createString("brand_name");
+    public final StringPath brandName = createString("brandName");
 
     public final NumberPath<Long> bseq = createNumber("bseq", Long.class);
 

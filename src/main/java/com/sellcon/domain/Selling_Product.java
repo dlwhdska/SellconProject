@@ -34,9 +34,9 @@ public class Selling_Product {
 	private int sellingprice;
 	
 	@Column(columnDefinition = "number(20)", nullable=false)
-	private int barcode;
+	private Long barcode;
 	
-	@Column(length = 100, nullable=false)
+	@Column(length = 1000)
 	private String barcode_image;
 	
 	@Temporal(TemporalType.TIMESTAMP)

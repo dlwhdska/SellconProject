@@ -22,7 +22,7 @@ public class QSelling_Product extends EntityPathBase<Selling_Product> {
 
     public static final QSelling_Product selling_Product = new QSelling_Product("selling_Product");
 
-    public final NumberPath<Integer> barcode = createNumber("barcode", Integer.class);
+    public final NumberPath<Long> barcode = createNumber("barcode", Long.class);
 
     public final StringPath barcode_image = createString("barcode_image");
 

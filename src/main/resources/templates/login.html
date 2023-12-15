@@ -1,87 +1,80 @@
 <!DOCTYPE html>
-<html lang="en" layout:decorate="~{layout/default_layout}"
->
+<html lang="en" layout:decorate="~{layout/default_layout}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="//fonts.googleapis.com/earlyaccess/notosanskr.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/login.css">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link href="//fonts.googleapis.com/earlyaccess/notosanskr.css">
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" href="css/login.css">
+<title>Document</title>
 </head>
 <body>
 	<div layout:fragment="content" id="wrap">
-	    <div id="wrap">
-	        <div id="container">
-	            <div id="contents">
-	
-	                <div id="login_warp">
-	                    <form action="/login" method="post">
-	                        <div class="login_container">
-	                            <!-- <div class="login_contants"> -->
-	                                
-	                                    <div class="login_form">
-	                                        <div class="login_text">
-	                                            <p>회원가입 후 자유롭게,<br><strong>셀콘을 편리하게 이용</strong>해 보세요.</p>
-	                                        </div>
-	                                        <fieldset>
-	                                            <div class="form login">
-	                                                <div>
-	                                                    <span>아이디 입력</span>
-	                                                    <input id="member_id" name="id" type="text">
-	                                                </div>
-	                                                <div>
-	                                                    <span>비밀번호 입력</span>
-	                                                    <input id="member_pw" name="pwd" type="password">
-	                                                </div>
-	                                                <div class="option">
-	                                                    <span class="security">
-	                                                        <img src="images/security_login.png" alt="보안접속">
-	                                                        <em>보안접속</em>
-	                                                    </span>
-	                                                </div>
-	                                                <div class="btn_area type1">
-	                                                    <input type="submit" class="btn_submit" value="로그인">
-	                                                </div>
-	                                                <div class="btn_area type1 sns">
-	                                                    <a href="" class="btn_kakao sns_login_btn">
-	                                                        <span>카카오로 3초만에 시작하기</span>
-	                                                    </a>
-	                                                    <a href="" class="btn_naver sns_login_btn">
-	                                                        <span>네이버로 로그인</span>
-	                                                    </a>
-	                                                    <a href="" class="btn_google sns_login_btn">
-	                                                        <span>Google로 로그인</span>
-	                                                    </a>
-	                                                </div>
-	                                                <div class="btn_area type2">
-	                                                    <a href="" class="find">
-	                                                        <b>로그인이 안되시나요?</b>
-	                                                    </a>
-	                                                    <a href="" class="find_id find">
-	                                                        <b>아이디 찾기</b>
-	                                                    </a>
-	                                                    <a href="" class="find_pw find">
-	                                                        <b>비밀번호 찾기</b>
-	                                                    </a>
-	                                                </div>
-	                                                <div class="btn_area type1 join_btn">
-	                                                    <a href="/join" class="join">회원가입 후 이용하기</a>
-	                                                </div>
-	                                            </div>
-	                                        </fieldset>
-	                                    </div>
-	                                    
-	                            <!-- </div> -->
-	                        </div>
-	                    </form>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-    </div>
+		<div id="container">
+			<div id="contents">
+
+				<div id="login_warp">
+					<form action="/login" method="post">
+						<div class="login_container">
+							<!-- <div class="login_contants"> -->
+
+							<div class="login_form">
+								<div class="login_text">
+									<p>
+										회원가입 후 자유롭게,<br> <strong>셀콘을 편리하게 이용</strong>해 보세요.
+									</p>
+								</div>
+								<fieldset>
+									<div class="form login">
+										<div>
+											<span>아이디 입력</span> <input id="member_id" name="id"
+												type="text">
+										</div>
+										<div>
+											<span>비밀번호 입력</span> <input id="member_pw" name="pwd"
+												type="password">
+										</div>
+										<div class="option">
+											<span class="security"> <img
+												src="images/security_login.png" alt="보안접속"> <em>보안접속</em>
+											</span>
+										</div>
+										<div class="btn_area type1">
+											<input type="submit" class="btn_submit" value="로그인">
+										</div>
+										<div class="btn_area type1 sns">
+											<a href="" class="btn_kakao sns_login_btn"> <span>카카오로
+													3초만에 시작하기</span>
+											</a> <a href="" class="btn_naver sns_login_btn"> <span>네이버로
+													로그인</span>
+											</a> <a href="" class="btn_google sns_login_btn"> <span>Google로
+													로그인</span>
+											</a>
+										</div>
+										<div class="btn_area type2">
+											<a href="" class="find"> <b>로그인이 안되시나요?</b>
+											</a> <a href="" class="find_id find"> <b>아이디 찾기</b>
+											</a> <a href="" class="find_pw find"> <b>비밀번호 찾기</b>
+											</a>
+										</div>
+										<div class="btn_area type1 join_btn">
+											<a href="/join" class="join">회원가입 후 이용하기</a>
+										</div>
+									</div>
+								</fieldset>
+							</div>
+
+							<!-- </div> -->
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

@@ -1,328 +1,351 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org"
-				xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-				layout:decorate="~{layout/default_layout}"
->	
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/default_layout}">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link href="//fonts.googleapis.com/earlyaccess/notosanskr.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap" rel="stylesheet">
-  <th:block layout:fragment="css"><link rel="stylesheet" href="css/main.css"></th:block>
-  <script src="js/cart.js" defer></script>
-  <script src="js/product.js" defer></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link href="//fonts.googleapis.com/earlyaccess/notosanskr.css">
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap"
+	rel="stylesheet">
+<th:block layout:fragment="css">
+	<link rel="stylesheet" href="css/main.css">
+</th:block>
+<script src="js/cart.js" defer></script>
+<script src="js/product.js" defer></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
 
-  <div layout:fragment="content" id="wrap">
-    <div id="container">
-        <div id="contents">
-            
-            <div class="main_container">
-                <div class="main_banner">
-                    <img src="images/main1.jpg">
-                </div>
-            </div>
+	<div layout:fragment="content" id="wrap">
+		<div id="container">
+			<div id="contents">
 
-            <div class="main_category main_section_set">
-                <div class="main_how_list">
-                    <div class="category_box">
-                        <div class="category_img_box">
-                            <a href="">
-                                <div class="c_img_box">
-                                    <img src="images/icon-coffee.png" alt="" data-animated="images/icon-coffee.gif" data-static="images/icon-coffee.png" class="hover-move">
-                                </div>
-                            </a>
-                            <a href="" class="c_text_box">카페 / 디저트</a>
-                        </div>
-                        <div class="category_img_box">
-                            <a href=""><div class="c_img_box"><img src="images/icon-burger.png"  alt="" data-animated="images/icon-burger.gif" data-static="images/icon-burger.png" class="hover-move"></div></a>
-                            <a href="" class="c_text_box">패스트푸드</a>
-                        </div>
-                        <div class="category_img_box">
-                            <a href=""><div class="c_img_box"><img src="images/icon-honeymoons.png"  alt="" data-animated="images/icon-honeymoons.gif" data-static="images/icon-honeymoons.png" class="hover-move"></div></a>
-                            <a href="" class="c_text_box">여행 / 숙박</a>
-                        </div>
-                        <div class="category_img_box">
-                            <a href=""><div class="c_img_box"><img src="images/icon-24hshop.png" alt="" data-animated="images/icon-24hshop.gif" data-static="images/icon-24hshop.png" class="hover-move"></div></a>
-                            <a href="" class="c_text_box">편의점 / 마트</a>
-                        </div>
-                        <div class="category_img_box">
-                            <a href=""><div class="c_img_box"><img src="images/icon-giftcard.png"  alt="" data-animated="images/icon-giftcard.gif" data-static="images/icon-giftcard.png" class="hover-move"></div></a>
-                            <a href="" class="c_text_box">상품권</a>
-                        </div>
-                        <div class="category_img_box">
-                            <a href=""><div class="c_img_box"><img src="images/icon-filmtape.png"  alt="" data-animated="images/icon-filmtape.gif" data-static="images/icon-filmtape.png" class="hover-move"></div></a>
-                            <a href="" class="c_text_box">영화 / 엔터</a>
-                        </div>
-                        <div class="category_img_box">
-                            <a href=""><div class="c_img_box"><img src="images/icon-powder.png"  alt="" data-animated="images/icon-powder.gif" data-static="images/icon-powder.png" class="hover-move"></div></a>
-                            <a href="" class="c_text_box">뷰티</a>
-                        </div>
-                        <div class="category_img_box">
-                            <a href=""><div class="c_img_box"><img src="images/icon-alarm.png"  alt="" data-animated="images/icon-alarm.gif" data-static="images/icon-alarm.png" class="hover-move"></div></a>
-                            <a href="" class="c_text_box">땡처리</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+				<div class="main_container">
+					<div class="main_banner">
+						<img src="images/main1.jpg">
+					</div>
+				</div>
 
-            <div class="main_section1 main_section_set">
-                <h3>
-                    <strong>셀콘이 추천하는 상품</strong>
-                    <a href=""> + 더보기<span class="more"></span></a>
-                </h3>
+				<div class="main_category main_section_set">
+					<div class="main_how_list">
+						<div class="category_box">
+							<div class="category_img_box">
+								<a href="">
+									<div class="c_img_box">
+										<img src="images/icon-coffee.png" alt=""
+											data-animated="images/icon-coffee.gif"
+											data-static="images/icon-coffee.png" class="hover-move">
+									</div>
+								</a> <a href="" class="c_text_box">카페 / 디저트</a>
+							</div>
+							<div class="category_img_box">
+								<a href=""><div class="c_img_box">
+										<img src="images/icon-burger.png" alt=""
+											data-animated="images/icon-burger.gif"
+											data-static="images/icon-burger.png" class="hover-move">
+									</div></a> <a href="" class="c_text_box">패스트푸드</a>
+							</div>
+							<div class="category_img_box">
+								<a href=""><div class="c_img_box">
+										<img src="images/icon-honeymoons.png" alt=""
+											data-animated="images/icon-honeymoons.gif"
+											data-static="images/icon-honeymoons.png" class="hover-move">
+									</div></a> <a href="" class="c_text_box">여행 / 숙박</a>
+							</div>
+							<div class="category_img_box">
+								<a href=""><div class="c_img_box">
+										<img src="images/icon-24hshop.png" alt=""
+											data-animated="images/icon-24hshop.gif"
+											data-static="images/icon-24hshop.png" class="hover-move">
+									</div></a> <a href="" class="c_text_box">편의점 / 마트</a>
+							</div>
+							<div class="category_img_box">
+								<a href=""><div class="c_img_box">
+										<img src="images/icon-giftcard.png" alt=""
+											data-animated="images/icon-giftcard.gif"
+											data-static="images/icon-giftcard.png" class="hover-move">
+									</div></a> <a href="" class="c_text_box">상품권</a>
+							</div>
+							<div class="category_img_box">
+								<a href=""><div class="c_img_box">
+										<img src="images/icon-filmtape.png" alt=""
+											data-animated="images/icon-filmtape.gif"
+											data-static="images/icon-filmtape.png" class="hover-move">
+									</div></a> <a href="" class="c_text_box">영화 / 엔터</a>
+							</div>
+							<div class="category_img_box">
+								<a href=""><div class="c_img_box">
+										<img src="images/icon-powder.png" alt=""
+											data-animated="images/icon-powder.gif"
+											data-static="images/icon-powder.png" class="hover-move">
+									</div></a> <a href="" class="c_text_box">뷰티</a>
+							</div>
+							<div class="category_img_box">
+								<a href=""><div class="c_img_box">
+										<img src="images/icon-alarm.png" alt=""
+											data-animated="images/icon-alarm.gif"
+											data-static="images/icon-alarm.png" class="hover-move">
+									</div></a> <a href="" class="c_text_box">땡처리</a>
+							</div>
+						</div>
+					</div>
+				</div>
 
-                <div class="sub_tap">
-                    <span class="on">all</span>
-                    <span>new</span>
-                    <span>sale</span>
-                </div>
+				<div class="main_section1 main_section_set">
+					<h3>
+						<strong>셀콘이 추천하는 상품</strong> <a href=""> + 더보기<span
+							class="more"></span></a>
+					</h3>
 
-                <div class="main_how_list">
-                    <div class="product_img_container">
-                        <ul class="slides">
-                            <li th:each="product, iterStat : ${sproductList}" th:if="${iterStat.index < 10}">
-                                <div class="product_img">
-                                    <dl>
-                                    <input type="hidden" name="sseq" id="sseq${status.count}" th:value="${product.sseq}" />
-                                        <a href="" class="img_link"></a>
-                                        <div class="base_img">
-                                            <div class="thumb">
-                                                <img class="thumb_img" th:src="${product.product.image}">
-                                            </div>
-                                        </div>
-                                        <div class="base_text">
-                                            <dd class="product_brand">
-                                                <p class="brand" th:text=${product.product.brand.getBrand_name}></p>
-                                            </dd>
-                                            <dd class="product_name">
-                                                <p class="name" th:text=${product.product.product_name}></p>
-                                            </dd>
-                                            <dd class="product_price">
-                                             	<p class="discount"></p>
-												<p class="sell_price" th:text="${#numbers.formatInteger(product.sellingprice, 3, 'COMMA')}"></p>
-												<p class="price" th:text="${#numbers.formatInteger(product.product.price, 3, 'COMMA')}"></p>
-                                            </dd>
-                                            <dd class="product_validity">
-                                                <span class="validity_icon">
-                                                    <img src="images/icon_new_white.gif">
-                                                </span>
-                                                <p class="validity" th:text="${#dates.format(product.valid, 'yyyy년 MM월 dd일')}"></p>
-                                            </dd>
-                                            <div class="cart_in_icon" th:onclick="addCart([[${product.sseq}]])">
-                                                <img src="">
-                                            </div>
-                                        </div>
-                                    </dl>
-                                </div>
-                            </li>
-                            </ul>
-                        <div class="main_how_list_bar">
-                            <div class="main_how_list_bar_in"></div>
-                        </div>
-                    </div>
-                    <div id="right_btn" class="main_how_list_btn_next slide_btn"></div>
-                    <div id="left_btn" class="main_how_list_btn_prev slide_btn"></div>
-                </div>
-            </div>
+					<div class="sub_tap">
+						<span class="on">all</span> <span>new</span> <span>sale</span>
+					</div>
 
-            <div class="main_section2" id="main_section2">
-                <div class="main_section_set find_brand_list">
-                    <h3>
-                        <strong>내가 원하는 브랜드 찾기</strong>
-                    </h3>
+					<div class="main_how_list">
+						<div class="product_img_container">
+							<ul class="slides">
+								<li th:each="product, iterStat : ${sproductList}"
+									th:if="${iterStat.index < 10}">
+									<div class="product_img">
+										<dl>
+											<input type="hidden" name="sseq" id="sseq${status.count}"
+												th:value="${product.sseq}" />
+											<a th:href="@{'product_detail=' + ${product.sseq}}"
+												class="img_link"></a>
+											<div class="base_img">
+												<div class="thumb">
+													<img class="thumb_img" th:src="${product.product.image}">
+												</div>
+											</div>
+											<div class="base_text">
+												<dd class="product_brand">
+													<p class="brand"
+														th:text=${product.product.brand.getBrandName}></p>
+												</dd>
+												<dd class="product_name">
+													<p class="name" th:text=${product.product.productName}></p>
+												</dd>
+												<dd class="product_price">
+													<p class="discount"></p>
+													<p class="sell_price"
+														th:text="${#numbers.formatInteger(product.sellingprice, 3, 'COMMA')}"></p>
+													<p class="price"
+														th:text="${#numbers.formatInteger(product.product.price, 3, 'COMMA')}"></p>
+												</dd>
+												<dd class="product_validity">
+													<span class="validity_icon"> <img
+														src="images/icon_new_white.gif">
+													</span>
+													<p class="validity"
+														th:text="${#dates.format(product.valid, 'yyyy년 MM월 dd일')}"></p>
+												</dd>
+												<div class="cart_in_icon"
+													th:onclick="addCart([[${product.sseq}]])">
+													<img src="">
+												</div>
+											</div>
+										</dl>
+									</div>
+								</li>
+							</ul>
+							<div class="main_how_list_bar">
+								<div class="main_how_list_bar_in"></div>
+							</div>
+						</div>
+						<div id="right_btn" class="main_how_list_btn_next slide_btn"></div>
+						<div id="left_btn" class="main_how_list_btn_prev slide_btn"></div>
+					</div>
+				</div>
 
-                    <div class="brand_list">
-                        <div class="find_brand">
-                            <span value="" name=""></span>
-                            <span value="" name=""></span>
-                            <span value="" name=""></span>
-                            <span value="" name=""></span>
-                            <span value="" name=""></span>
-                            <span value="" name=""></span>
-                            <span value="" name=""></span>
-                            <span value="" name=""></span>
-                            <span value="" name=""></span>
-                            <span value="" name=""></span>
-                            <span value="" name=""></span>
-                            <span value="" name=""></span>
-                            <span value="" name=""></span>
-                            <span value="" name=""></span>
-                            <span value="" name=""></span>
-                            <span value="" name=""></span>
-                        </div>
-                        <div class="find_brand_btn">보러가기</div>
-                    </div>
-                </div>
-            </div>
+				<div class="main_section2" id="main_section2">
+					<div class="main_section_set find_brand_list">
+						<h3>
+							<strong>내가 원하는 브랜드 찾기</strong>
+						</h3>
 
-            <div class="main_section1, main_section_set">
-                <h3>
-                    <strong>크리스마스엔 이런 선물</strong>
-                    <a href=""> + 더보기<span class="more"></span></a>
-                </h3>
+						<div class="brand_list">
+							<div class="find_brand">
+								<span value="" name="" th:each="brand, iterStat : ${brandList}" th:if="${iterStat.index < 16}"> <a
+									th:href="@{/product(category=${categoryKind}, brand=${brand.bseq})}"
+									th:data-brandcategory="${categoryKind}"
+									th:data-brand="${brand.bseq}"}> <img
+										th:src="${brand.brandImage}">
+								</a>
+								</span>
+							</div>
+							<div class="find_brand_btn">보러가기</div>
+						</div>
+					</div>
+				</div>
 
-                <div class="sub_tap">
-                    <span class="on">all</span>
-                    <span>new</span>
-                    <span>sale</span>
-                </div>
+				<div class="main_section1, main_section_set">
+					<h3>
+						<strong>크리스마스엔 이런 선물</strong> <a href=""> + 더보기<span
+							class="more"></span></a>
+					</h3>
 
-                <div class="main_how_list">
-                    <div class="product_img_container">
-                        <ul>
-                            <li>
-                                <div class="product_img">
-                                    <dl>
-                                        <a href="" class="img_link"></a>
-                                        <div class="base_img">
-                                            <div class="thumb">
-                                                <img class="thumb_img">
-                                            </div>
-                                        </div>
-                                        <div class="base_text">
-                                            <dd class="product_brand">
-                                                <p class="brand">스타벅스</p>
-                                            </dd>
-                                            <dd class="product_name">
-                                                <p class="name">아이스 아메리카노</p>
-                                            </dd>
-                                            <dd class="product_price">
-                                                <p class="discount">20%</p>
-                                                <p class="sell_price">3200원</p>
-                                                <p class="price">4000원</p>
-                                            </dd>
-                                            <dd class="product_validity">
-                                                <span class="validity_icon">
-                                                    <img src="icon_201912171144461700.gif">
-                                                </span>
-                                                <p class="validity">2023년 12월 31일</p>
-                                            </dd>
-                                            <div class="cart_in_icon">
-                                                <img src="">
-                                            </div>
-                                        </div>
-                                    </dl>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="product_img">
-                                    <dl>
-                                        <a href="" class="img_link"></a>
-                                        <div class="base_img">
-                                            <div class="thumb">
-                                                <img class="thumb_img">
-                                            </div>
-                                        </div>
-                                        <div class="base_text">
-                                            <dd class="product_brand">
-                                                <p class="brand">스타벅스</p>
-                                            </dd>
-                                            <dd class="product_name">
-                                                <p class="name">아이스 아메리카노</p>
-                                            </dd>
-                                            <dd class="product_price">
-                                                <p class="discount">20%</p>
-                                                <p class="sell_price">3200원</p>
-                                                <p class="price">4000원</p>
-                                            </dd>
-                                            <dd class="product_validity">
-                                                <span class="validity_icon">
-                                                    <img src="icon_201912171144461700.gif">
-                                                </span>
-                                                <p class="validity">2023년 12월 31일</p>
-                                            </dd>
-                                            <div class="cart_in_icon">
-                                                <img src="">
-                                            </div>
-                                        </div>
-                                    </dl>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="product_img">
-                                    <dl>
-                                        <a href="" class="img_link"></a>
-                                        <div class="base_img">
-                                            <div class="thumb">
-                                                <img class="thumb_img">
-                                            </div>
-                                        </div>
-                                        <div class="base_text">
-                                            <dd class="product_brand">
-                                                <p class="brand">스타벅스</p>
-                                            </dd>
-                                            <dd class="product_name">
-                                                <p class="name">아이스 아메리카노</p>
-                                            </dd>
-                                            <dd class="product_price">
-                                                <p class="discount">20%</p>
-                                                <p class="sell_price">3200원</p>
-                                                <p class="price">4000원</p>
-                                            </dd>
-                                            <dd class="product_validity">
-                                                <span class="validity_icon">
-                                                    <img src="icon_201912171144461700.gif">
-                                                </span>
-                                                <p class="validity">2023년 12월 31일</p>
-                                            </dd>
-                                            <div class="cart_in_icon">
-                                                <img src="">
-                                            </div>
-                                        </div>
-                                    </dl>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="product_img">
-                                    <dl>
-                                        <a href="" class="img_link"></a>
-                                        <div class="base_img">
-                                            <div class="thumb">
-                                                <img class="thumb_img">
-                                            </div>
-                                        </div>
-                                        <div class="base_text">
-                                            <dd class="product_brand">
-                                                <p class="brand">스타벅스</p>
-                                            </dd>
-                                            <dd class="product_name">
-                                                <p class="name">아이스 아메리카노</p>
-                                            </dd>
-                                            <dd class="product_price">
-                                                <p class="discount">20%</p>
-                                                <p class="sell_price">3200원</p>
-                                                <p class="price">4000원</p>
-                                            </dd>
-                                            <dd class="product_validity">
-                                                <span class="validity_icon">
-                                                    <img src="icon_201912171144461700.gif">
-                                                </span>
-                                                <p class="validity">2023년 12월 31일</p>
-                                            </dd>
-                                            <div class="cart_in_icon">
-                                                <img src="">
-                                            </div>
-                                        </div>
-                                    </dl>
-                                </div>
-                            </li>
-                        </ul>
-                        <div class="main_how_list_bar">
-                            <div class="main_how_list_bar_in"></div>
-                        </div>
-                    </div>
-                    <div class="main_how_list_btn_next"></div>
-                    <div class="main_how_list_btn_prev"></div>
-                </div>
-            </div>
+					<div class="sub_tap">
+						<span class="on">all</span> <span>new</span> <span>sale</span>
+					</div>
 
-        </div>
-    </div>
-</div>
-<th:block layout:fragment="script"><script src="js/main.js"></script></th:block>
+					<div class="main_how_list">
+						<div class="product_img_container">
+							<ul>
+								<li>
+									<div class="product_img">
+										<dl>
+											<a href="" class="img_link"></a>
+											<div class="base_img">
+												<div class="thumb">
+													<img class="thumb_img">
+												</div>
+											</div>
+											<div class="base_text">
+												<dd class="product_brand">
+													<p class="brand">스타벅스</p>
+												</dd>
+												<dd class="product_name">
+													<p class="name">아이스 아메리카노</p>
+												</dd>
+												<dd class="product_price">
+													<p class="discount">20%</p>
+													<p class="sell_price">3200원</p>
+													<p class="price">4000원</p>
+												</dd>
+												<dd class="product_validity">
+													<span class="validity_icon"> <img
+														src="icon_201912171144461700.gif">
+													</span>
+													<p class="validity">2023년 12월 31일</p>
+												</dd>
+												<div class="cart_in_icon">
+													<img src="">
+												</div>
+											</div>
+										</dl>
+									</div>
+								</li>
+								<li>
+									<div class="product_img">
+										<dl>
+											<a href="" class="img_link"></a>
+											<div class="base_img">
+												<div class="thumb">
+													<img class="thumb_img">
+												</div>
+											</div>
+											<div class="base_text">
+												<dd class="product_brand">
+													<p class="brand">스타벅스</p>
+												</dd>
+												<dd class="product_name">
+													<p class="name">아이스 아메리카노</p>
+												</dd>
+												<dd class="product_price">
+													<p class="discount">20%</p>
+													<p class="sell_price">3200원</p>
+													<p class="price">4000원</p>
+												</dd>
+												<dd class="product_validity">
+													<span class="validity_icon"> <img
+														src="icon_201912171144461700.gif">
+													</span>
+													<p class="validity">2023년 12월 31일</p>
+												</dd>
+												<div class="cart_in_icon">
+													<img src="">
+												</div>
+											</div>
+										</dl>
+									</div>
+								</li>
+								<li>
+									<div class="product_img">
+										<dl>
+											<a href="" class="img_link"></a>
+											<div class="base_img">
+												<div class="thumb">
+													<img class="thumb_img">
+												</div>
+											</div>
+											<div class="base_text">
+												<dd class="product_brand">
+													<p class="brand">스타벅스</p>
+												</dd>
+												<dd class="product_name">
+													<p class="name">아이스 아메리카노</p>
+												</dd>
+												<dd class="product_price">
+													<p class="discount">20%</p>
+													<p class="sell_price">3200원</p>
+													<p class="price">4000원</p>
+												</dd>
+												<dd class="product_validity">
+													<span class="validity_icon"> <img
+														src="icon_201912171144461700.gif">
+													</span>
+													<p class="validity">2023년 12월 31일</p>
+												</dd>
+												<div class="cart_in_icon">
+													<img src="">
+												</div>
+											</div>
+										</dl>
+									</div>
+								</li>
+								<li>
+									<div class="product_img">
+										<dl>
+											<a href="" class="img_link"></a>
+											<div class="base_img">
+												<div class="thumb">
+													<img class="thumb_img">
+												</div>
+											</div>
+											<div class="base_text">
+												<dd class="product_brand">
+													<p class="brand">스타벅스</p>
+												</dd>
+												<dd class="product_name">
+													<p class="name">아이스 아메리카노</p>
+												</dd>
+												<dd class="product_price">
+													<p class="discount">20%</p>
+													<p class="sell_price">3200원</p>
+													<p class="price">4000원</p>
+												</dd>
+												<dd class="product_validity">
+													<span class="validity_icon"> <img
+														src="icon_201912171144461700.gif">
+													</span>
+													<p class="validity">2023년 12월 31일</p>
+												</dd>
+												<div class="cart_in_icon">
+													<img src="">
+												</div>
+											</div>
+										</dl>
+									</div>
+								</li>
+							</ul>
+							<div class="main_how_list_bar">
+								<div class="main_how_list_bar_in"></div>
+							</div>
+						</div>
+						<div class="main_how_list_btn_next"></div>
+						<div class="main_how_list_btn_prev"></div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<th:block layout:fragment="script">
+		<script src="js/main.js"></script>
+	</th:block>
 </body>
 </html>

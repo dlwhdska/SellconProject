@@ -17,9 +17,12 @@
                 <div class="top_menu">
                     <div class="top_menu_size">
                         <div class="top_menu_element">
-                            <a th:href="@{/join}"><span class="top_menu_join">회원가입</span></a>
-                            <a th:unless="${session.member != null}" th:href="@{/login}"><span class="top_menu_login">로그인</span></a>
-                            <a th:if="${session.member != null}" th:href="@{/logout}" th:text="LOGOUT"></a>
+                        
+                            <a th:if ="${session.member == null and session.admin == null}" th:href="@{/join}"><span class="top_menu_join">회원가입</span></a>
+                            <a th:if="${session.member != null}" th:href="@{/mypage}" th:text="${session.member.name} + '(마이페이지)'"></a>
+                            <a th:if="${session.admin != null}" th:href="@{/adminIndex}" target="_blank" th:text="어드민페이지"></a>
+                            <a th:unless="${session.member != null or session.admin != null}" th:href="@{/login}"><span class="top_menu_login">로그인</span></a>
+                            <a th:if="${session.member != null or session.admin != null}" th:href="@{/logout}" th:text="LOGOUT"></a>
                         </div>
                     </div>
                 </div>
@@ -33,7 +36,7 @@
                             <li><a href="">NEW</a></li>
                             <li><a th:href="@{/product}">PRODUCT</a></li>
                             <li><a th:href="@{/notice}">NOTICE</a></li>
-                            <li><a href="">SELL</a></li>
+                            <li><a th:href="@{/sell}">SELL</a></li>
                         </ul>
                     </div>
 
