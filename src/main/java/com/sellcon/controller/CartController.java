@@ -5,22 +5,15 @@ import java.util.*;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-import com.sellcon.domain.Cart;
-import com.sellcon.domain.Member;
-import com.sellcon.domain.Selling_Product;
-import com.sellcon.dto.CartDTO;
-import com.sellcon.repository.CartRepository;
-import com.sellcon.service.CartService;
+import com.sellcon.domain.*;
+import com.sellcon.dto.*;
+import com.sellcon.repository.*;
+import com.sellcon.service.*;
 
 
 @Controller
@@ -45,8 +38,6 @@ public class CartController {
 	    
 	    return "cart";
 	}
-
-	
 	
 	@PostMapping("/addToCart")
 	@ResponseBody
@@ -61,7 +52,7 @@ public class CartController {
 	    }
 
 	    // 중복 상품 체크
-	    boolean isDuplicate = cartService.checkDuplicateProduct(sseq);
+	    boolean isDuplicate = cartService.checkDuplicateProduct(sseq, member.getId());
 
 	    if (isDuplicate) {
 	        return ResponseEntity.ok(Collections.singletonMap("duplicate", true));
@@ -85,22 +76,28 @@ public class CartController {
 
 	@PostMapping("/deleteCart")
 	@ResponseBody
-	public ResponseEntity<String> deleteCart(@RequestParam("sseq") Long sseq) {
+	public ResponseEntity<String> deleteCart(HttpSession session,
+											@RequestParam("sseq") Long sseq) {
+		Member member = (Member) session.getAttribute("member");
+		
 	    try {
-	        cartService.deleteCart(sseq);
+	        cartService.deleteCart(sseq, member.getId());
 	        return ResponseEntity.ok("Cart item deleted");
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to delete cart item");
 	    }
 	}
-
+	
 	@PostMapping("/selectDeleteCarts")
-	public ResponseEntity<String> selectDeleteCarts(@RequestBody Map<String, List<Long>> request) {
+	public ResponseEntity<String> selectDeleteCarts(HttpSession session,
+													@RequestBody Map<String, List<Long>> request) {
+		Member member = (Member) session.getAttribute("member");
+		
 	    try {
 	        List<Long> sseqs = request.get("sseqs");
 	        for (Long sseq : sseqs) {
-	            cartService.deleteCart(sseq);
+	            cartService.deleteCart(sseq, member.getId());
 	        }
 	        return ResponseEntity.ok("Selected cart items deleted");
 	    } catch (Exception e) {
@@ -108,5 +105,5 @@ public class CartController {
 	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to delete selected cart items");
 	    }
 	}
-
+	
 }

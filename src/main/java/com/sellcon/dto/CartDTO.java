@@ -17,7 +17,7 @@ import lombok.ToString;
 @NoArgsConstructor
 public class CartDTO {
 
-	 private Long oseq;
+	 private Long cseq;
 	 private String member_id;
 	 private Long sseq;
 	 private String image;

@@ -7,13 +7,13 @@
 	padding: 0;
 }
 
-#wrap{
-  padding-top: 156px !important;
-  overflow-x: hidden;
-  letter-spacing: 0px;
+#wrap {
+	padding-top: 156px !important;
+	overflow-x: hidden;
+	letter-spacing: 0px;
 }
 
-.container{
+.container {
 	width: 1200px;
 	margin: 0 auto;
 }
@@ -68,17 +68,18 @@
 	position: relative;
 	padding: 30px 20px;
 	margin: 0 0 20px;
-	border: 1px solid #b4b4b4;
+	border: 1px solid #dcdee0;
+	border-radius: 0.2em;
 }
 
-.del_btn{
+.del_btn {
 	position: absolute;
-	top:25px;
+	top: 25px;
 	width: 20px;
 	height: 20px;
 	right: 25px;
 	background-image: url(../images/closebtn.png);
-	background-position: center;	
+	background-position: center;
 }
 
 .ul, li, ol, dl, dt, dd {
@@ -111,7 +112,7 @@
 	display: flex;
 	align-items: flex-start;
 	justify-content: flex-end;
-	padding-top: 56px;
+	padding-top: 60px;
 	top: 156px;
 	width: 415px;
 	height: 518px;
@@ -132,7 +133,7 @@
 	justify-content: space-between;
 	flex-wrap: wrap;
 	align-items: center;
-  	margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 .priceArea_final {
@@ -140,7 +141,7 @@
 	justify-content: space-between;
 	flex-wrap: wrap;
 	align-items: center;
-  	font-size: 23px;
+	font-size: 23px;
 	margin-top: 20px;
 	padding-top: 20px;
 	margin-bottom: 0;
@@ -148,14 +149,14 @@
 }
 
 .priceArea_final span {
-  font-size: 18px;
+	font-size: 18px;
 }
 
 .sell_price {
 	font-weight: normal;
 	color: #000;
 	font-size: 16px;
-  margin: 0 5px 0;
+	margin: 0 5px 0;
 }
 
 .price {
@@ -187,6 +188,6 @@
 .buy_btn {
 	width: 410px;
 	height: 54px;
-  background-color: #000;
-  color: white;
+	background-color: #000;
+	color: white;
 }

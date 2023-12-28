@@ -12,13 +12,14 @@ public interface CartService {
 	// 장바구니 리스트
 	List<CartDTO> getCartList(String member_id);
 	
-	boolean checkDuplicateProduct(Long sseq);
+	boolean checkDuplicateProduct(Long sseq, String member_id);
 	
 	void insertCart(Cart cart);
 	
-	void deleteCart(Long sseq);
+	void deleteCart(Long sseq, String member_id);
 	
-
+	void updateCart(List<Long> sseqList);
+	
 	/*
 	 * 화면에서 수신한 DTO 객체를 Entity 객체로 변환하는 메소드
 	 */
@@ -31,7 +32,7 @@ public interface CartService {
 				.sseq(dto.getSseq()).build();
 		
 		Cart cart = Cart.builder()
-				.oseq(dto.getOseq())
+				.cseq(dto.getCseq())
 				.member(member)
 				.selling_product(selling_product)
 				.build();
@@ -46,7 +47,7 @@ public interface CartService {
 		 */
 		
 		CartDTO cartDTO = CartDTO.builder()
-				.oseq(Long.parseLong(obj[0].toString()))
+				.cseq(Long.parseLong(obj[0].toString()))
 				.member_id(obj[1].toString())
 				.sseq(Long.parseLong(obj[2].toString()))
 				.image(obj[3].toString())

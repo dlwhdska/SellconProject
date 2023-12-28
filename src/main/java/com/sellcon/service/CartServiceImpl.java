@@ -35,9 +35,9 @@ public class CartServiceImpl implements CartService {
 	
 	// 장바구니 내 중복 상품 여부 확인
 	@Override
-	public boolean checkDuplicateProduct(Long sseq) {
+	public boolean checkDuplicateProduct(Long sseq, String member_id) {
 		
-		return cartRepo.existsBySseq(sseq);
+		return cartRepo.existsBySseq(sseq, member_id);
 	}
 
 	// 장바구니 상품 추가
@@ -46,17 +46,34 @@ public class CartServiceImpl implements CartService {
 	
 		cartRepo.save(cart);
 	}
-
-	// 장바구니 상품 삭제
+	
 	@Override
 	@Transactional
-	public void deleteCart(Long sseq) {
+	public void deleteCart(Long sseq, String member_id) {
 		
-		Long oseq = cartRepo.findOseqBySseq(sseq);
+		Long cseq = cartRepo.findCseqByMemberBySseq(sseq, member_id);
 		
-	    cartRepo.deleteByOseq(oseq);
+	    cartRepo.deleteByCseq(cseq);
 	}
+	
+	@Transactional
+	public void updateCart(List<Long> sseqList) {
+		
+        List<Long> cseqs = new ArrayList<>();
 
+        for (Long sseq : sseqList) {
+            List<Long> findCseqs = cartRepo.findCseqsBySseq(sseq);
+            
+            // 만약 해당 sseq에 대한 cseq가 존재하면 cseqs 리스트에 모두 추가
+            if (findCseqs != null && !findCseqs.isEmpty()) {
+            	cseqs.addAll(findCseqs);
+            }
+        }
 
+        // 장바구니에 상품이 비어있지 않다면 update
+        if (!cseqs.isEmpty()) {
+            cartRepo.updateByCseqList(cseqs);
+        }
+    }
 	
 }
