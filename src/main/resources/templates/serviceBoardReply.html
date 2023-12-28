@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>셀콘 관리자 페이지</title>
+
+<!-- Custom fonts for this template-->
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
+	type="text/css">
+<link
+	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+	rel="stylesheet">
+<link href="css/sb-admin-2.min.css" rel="stylesheet">
+<style>
+h1 {
+	text-align: center;
+}
+
+button {
+	padding: 9px 16px;
+	background-color: #4e73df;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	margin: 0 auto;
+	display: block;
+}
+
+table {
+	width: 70%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	margin: 0 auto;
+}
+
+th, td {
+	border: 1px solid #ddd;
+	padding: 8px;
+	text-align: left;
+}
+
+th {
+	background-color: #f2f2f2;
+}
+
+form {
+	margin-top: 20px;
+}
+
+textarea {
+	width: 70%;
+	height: 150px;
+	padding: 10px;
+	resize: vertical;
+	margin: 0 auto;
+	display: block;
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background-color: #fff;
+	border-top: 1px solid #ddd;
+	text-align: center;
+	padding: 10px 0;
+}
+</style>
+</head>
+<body>
+	<h1>QnA 문의글 답변 달기</h1>
+	<hr>
+	<table border="1">
+		<tr>
+			<td style="text-align: center;">번호</td>
+			<td th:text="${serviceBoard.qseq}">번호 없음</td>
+		</tr>
+		<tr>
+			<td style="text-align: center;">카테고리</td>
+			<td th:text="${serviceBoard.category}">유형 없음</td>
+		</tr>
+		<tr>
+			<td style="text-align: center;">작성일</td>
+			<td th:text="${serviceBoard.regdate}">작성일 없음</td>
+		</tr>
+		<tr>
+			<td style="text-align: center;">작성자</td>
+			<td th:text="${serviceBoard.member.id}"></td>
+		</tr>
+		<tr>
+			<td style="text-align: center;">제목</td>
+			<td th:text="${serviceBoard.title}">제목 없음</td>
+		</tr>
+		<tr>
+			<td style="text-align: center;">내용</td>
+			<td th:text="${serviceBoard.content}">내용 없음</td>
+		</tr>
+	</table>
+	<script th:inline="javascript">
+    var serviceBoardQseq = /*[[${serviceBoard.qseq}]]*/ 0; // 0은 기본값, 필요에 따라 변경할 수 있습니다.
+</script>
+
+	<form method="post"
+		th:action="@{'/serviceBoardReply/' + ${serviceBoard.qseq}}">
+		<input type="hidden" th:value="${serviceBoard.qseq}" name="qseq" />
+		<textarea name="replyContent" placeholder="여기에 답변을 작성하세요"></textarea>
+		<br>
+		<button type="submit">답변 작성</button>
+	</form>
+
+	<footer class="sticky-footer bg-white">
+		<div class="container my-auto">
+			<div class="copyright text-center my-auto">
+				<span>Copyright &copy; SellCon Website 2023</span>
+			</div>
+		</div>
+	</footer>
+</body>
+
+</html>

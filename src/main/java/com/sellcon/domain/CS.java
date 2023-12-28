@@ -8,8 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,10 +27,10 @@ public class CS {
 	@Column(name="csseq", columnDefinition = "number(5)")
 	private Long csseq;
 
-	@Column(length = 20, nullable = false)
+	@Column(length = 20)
 	private String title;
 	
-	@Column(length = 1000, nullable = false)
+	@Column(length = 1000)
 	private String content;
 	
 	@Column(columnDefinition = "char(1)")
@@ -42,6 +40,6 @@ public class CS {
 	private Date regdate;
 	
 	@ManyToOne
-	@JoinColumn(name="ADMIN_ID", nullable=false, updatable=false)
+	@JoinColumn(name="ADMIN_ID", nullable=true, updatable=false)
 	private Admin admin;
 }

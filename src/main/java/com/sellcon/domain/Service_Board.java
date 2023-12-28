@@ -1,6 +1,7 @@
 package com.sellcon.domain;
 
 import java.util.Date;
+import java.util.Optional;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,23 +29,27 @@ public class Service_Board {
    @Column(name="qseq", columnDefinition = "number(5)")
    private Long qseq;
    
-   @Column(length = 20, nullable = false)
+   @Column(length = 20, nullable = true)
    private String title;
    
-   @Column(length = 1000, nullable = false)
+   @Column(length = 1000, nullable = true)
    private String content;
    
    @Column(length = 1000, nullable = true)
    private String reply;
    
-   @Column(columnDefinition = "char(1) default 'N'", nullable=false)
-   private int repyn;
+   @Column(columnDefinition="CHAR(1) default 'N'")
+   @Builder.Default
+   private String repyn="N";
    
    @Column(insertable=false, updatable=false, columnDefinition="DATE default sysdate")
    private Date regdate;
    
+   @Column(columnDefinition="CHAR(1)")
+   private String category;
+   
    @ManyToOne
-   @JoinColumn(name="MEMBER_ID", nullable=true, updatable=false)
+   @JoinColumn(name="MEMBER_ID", nullable=true, updatable=true)
    private Member member;
    
 }

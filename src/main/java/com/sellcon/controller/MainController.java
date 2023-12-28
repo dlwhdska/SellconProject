@@ -25,10 +25,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sellcon.domain.Brand;
+import com.sellcon.domain.CS;
 import com.sellcon.domain.Member;
 import com.sellcon.domain.Product;
 import com.sellcon.domain.Search;
 import com.sellcon.domain.Selling_Product;
+import com.sellcon.service.CSService;
 import com.sellcon.service.ProductService;
 
 @Controller
@@ -36,6 +38,8 @@ public class MainController {
 
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private CSService csService;
 
 	// 메인 페이지
 	@GetMapping("main")
@@ -213,7 +217,10 @@ public class MainController {
 	}
 
 	@GetMapping("notice")
-	public String showNotice() {
+	public String showNotice(Model model) {
+		List<CS> CSList = csService.getAllCSList();
+		model.addAttribute("CSList", CSList);
+		System.out.println(CSList);
 		return "notice";
 	}
 	
