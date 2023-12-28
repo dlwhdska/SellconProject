@@ -16,9 +16,7 @@
 <body>
 
 <div layout:fragment="content" id="wrap">
-
-<form th:action="@{/orders}" method="post" enctype="multipart/form-data">
-<input type="hidden" id="member_id" name="member_id" value="member">
+<form th:action="@{/orders}" id="ordersForm" method="post" enctype="multipart/form-data">
   <div class="container">
 	<div class="layoutFix">
 
@@ -32,14 +30,16 @@
 
 					<div class="selectAllProduct">
 						<input type="checkbox" id="selectAll" class="selectAll" onclick="toggleAllCheckBoxes(this)"/>
-						<span>전체 상품(<span th:text="${cartItems.size()}"></span>)</span>
+						<span>전체 상품(<span th:text="${cartItems.size()}" id="size"></span>)</span>
 						<div class="del_btn" onclick="selectDeleteCart()"></div>
 					</div>
 
 					<!-- 개별 상품 정보 -->
 					<!-- 타임리프를 사용한 반복 -->
 					<div th:each="cartItem, stat : ${cartItems}" class="prdInfo">
-						<input type="checkbox" id="'selectCheckbox' + ${stat.index}" class="selectCheckbox" th:attr="data-sseq=${cartItem.sseq}" th:onclick="toggleIndividualCheckbox(this)">
+						<input type="checkbox" id="'selectCheckbox' + ${stat.index}" class="selectCheckbox" th:attr="data-sseq=${cartItem.sseq}, data-cseq=${cartItem.cseq}" th:onclick="toggleIndividualCheckbox(this)">
+						<input type="hidden" name="sseq" id="sseq${stat.count}" th:value="${cartItem.sseq}" />
+						<input type="hidden" name="cseq" id="cseq${stat.count}" th:value="${cartItem.cseq}" />
 						<div class="description">
 							<img th:src="${cartItem.image}" class="prdImg">
 							<div class="preDesc">
@@ -55,7 +55,6 @@
 							</div>
 						</div><!-- description 닫는 태그 -->
 							<div class="del_btn" th:onclick="deleteCart([[${cartItem.sseq}]])"></div>
-							<input type="hidden" th:value="${cartItem.sseq}">
 					</div><!-- prdInfo 닫는 태그 -->
 
 
@@ -77,14 +76,14 @@
 								<strong class="totalDiscount"></strong>
 						</div>
 						<div class="priceArea_final">
-								<h4>총 결제예정금액</h3>
+								<h4>총 결제예정금액</h4>
 								<strong class="finalPayment"></strong>
 						</div>
 				</div><!-- totalsummary 닫는 태그 -->
 
 					<!-- 결제 버튼 -->
 					<div class="btn_box">
-						<input type="submit" value="주문하기" class="buy_btn">
+						<input type="button" value="주문하기" class="buy_btn" th:onclick="selectOrder()">
 					</div>
 
 				</div><!-- total_order_inner 닫는 태그 -->
@@ -96,6 +95,6 @@
 	</div><!-- layoutFix 닫는 태그 -->
 </div><!-- container 닫는 태그 -->
 </form>
-</div>
+</div><!-- wrap 닫는 태그 -->
 </body>
 </html>

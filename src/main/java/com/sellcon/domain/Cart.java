@@ -22,9 +22,9 @@ import lombok.ToString;
 @Entity
 public class Cart {
 	@Id
-	@Column(name="oseq", columnDefinition = "NUMBER(5)")
+	@Column(name="cseq", columnDefinition = "NUMBER(5)")
 	@GeneratedValue
-	private Long oseq;
+	private Long cseq;
 	
 	@Column(columnDefinition="char(1) default '1'", nullable = false)
 	@Builder.Default

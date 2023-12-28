@@ -155,6 +155,19 @@
 				
 			</div>
 		</div>
+		
+			<!-- 모달 창 -->
+			<div id="myModal" class="modal">
+			  <div class="modal-content">
+			    <span class="close">&times;</span>
+				<p>장바구니에 상품이 추가되었습니다.</p>
+				<div class="btn_modalBox">
+			    <button class="btn_modal" id="moveToCartBtn"><a th:href="@{/cart}">장바구니로 이동</a></button>
+			    <button class="btn_modal" id="continueShoppingBtn">계속 쇼핑하기</button>
+			    </div>
+			  </div>
+			</div>
+		
 	</div>
 	<th:block layout:fragment="script">
 		<script src="js/product.js"></script>

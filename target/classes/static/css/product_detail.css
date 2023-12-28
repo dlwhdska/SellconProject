@@ -607,4 +607,74 @@ h3>a{
   border-radius: 10px;
 }
 
+/* 모달 스타일 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
 
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto; /* 화면 세로 높이의 5% 위치에 위치 */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 70%; /* 화면 너비의 70% 크기로 조정 */
+  max-width: 400px; /* 최대 너비 제한 */
+  transform: translate(-50%, -50%);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+
+.modal-content p {
+  margin: 10% auto;
+  text-align: center;
+  max-width: 80%
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn_modalBox{
+  text-align: center;
+}
+
+.btn_modal{
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.btn_modal a{
+	color: inherit;
+}
