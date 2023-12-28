@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/default_layout}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Boards</title>
+<link rel="stylesheet" href="/css/getserviceboard.css">
+</head>
+<body layout:fragment="content" id="wrap">
+	<h1>게시글 상세보기</h1>
+	<form th:action="@{/updateBoard}" method="post" id="questionForm">
+		<table>
+			<tr>
+				<br>
+				<td>카테고리</td>
+				<td th:text="${serviceBoard.category}"></td>
+			</tr>
+			<tr>
+				<td>작성자</td>
+				<td th:text="${session['member'].name}"></td>
+			</tr>
+			<tr>
+				<td>작성일</td>
+				<td th:text="${serviceBoard.regdate}"><script
+						th:inline="javascript">
+               var today = new Date();
+               var DD = String(today.getDate()).padStart(2, '0');
+               var MM = String(today.getMonth() + 1).padStart(2, '0');
+               var YYYY = today.getFullYear();
+
+               today = yyyy + '-' + mm + '-' + dd;
+               document.getElementById('regDate').value = today;
+            </script></td>
+			</tr>
+			<tr>
+				<td>제목</td>
+				<td th:text="${serviceBoard.title}"></td>
+			</tr>
+			<tr>
+				<td>내용</td>
+				<td class="content" th:text="${serviceBoard.content}"></td>
+			</tr>
+			<tr>
+				<td>답변</td>
+				<td class="content" th:text="${serviceBoard.reply}"></td>
+			</tr>
+		</table>
+		<br>
+	</form>
+	<div class="btnsection">
+		<form th:action="@{/serviceBoardList}" method="post">
+			<input type="submit" value="글 목록" class="write-button">
+		</form>
+		<form th:action="@{'/modify/' + ${qseq}}" method="get">
+			<input type="submit" value="글 수정" class="write-button">
+		</form>
+		<form th:action="@{/deleteBoard(qseq=${serviceBoard.qseq})}"
+			method="post" id="deleteForm">
+			<input type="submit" value="글 삭제" class="write-button"
+				onclick="confirmDelete(); showDeleteConfirmation();">
+		</form>
+	</div>
+	<script>
+    function confirmDelete() {
+        if (confirm('정말로 이 게시글을 삭제하시겠습니까?')) {
+            document.getElementById('deleteForm').submit();
+        } else {}
+    }
+    
+    function showDeleteConfirmation() {
+        alert('삭제되었습니다');
+    }
+</script>
+
+</body>
+</html>

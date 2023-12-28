@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>회원가입</title>
+    <link rel="stylesheet" href="css/join.css">
 </head>
 <body>
     <h2>회원가입</h2>
@@ -29,7 +30,7 @@
         <input type="tel" id="phone" name="phone" ><br><br>
         
         <input type="submit" value="가입하기" onclick="return goSave();">
-        <input type="reset" value="취소">
+        <input type="reset" value="취소" onclick="goToMainPage();">
     </form>
     
     <script>
@@ -152,5 +153,10 @@
 	    }
 	    
     </script>
+    <script>
+    function goToMainPage() {
+      window.location.href = '/main';
+    }
+  </script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -47,15 +48,35 @@ table tr:hover {
 }
 
 .write-button {
-    background-color: #4CAF50;
+    background-color: #000;
+    color: #fff;
+    padding: 10px 15px;
     border: none;
-    color: white;
-    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 5px;
+   margin-bottom: 40px;
 }
+
+.write-button:hover {
+    background-color: #F3F781;
+    color: #000;
+}
+
+.btnsection{
+	width : 1200px;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+
+.write-button{
+	position : relative;
+	right: 50%;
+	left: 50%;
+	transform:translate(-50%);
+}
+

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>sellcon admin</title>
+    <title>셀콘 관리자 페이지</title>
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -91,8 +91,8 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="">공지사항 / FAQ</a>
-                        <a class="collapse-item" href="">1:1 문의</a>
+                        <a class="collapse-item" th:href="@{adminNotice}">공지사항 / FAQ</a>
+                        <a class="collapse-item" th:href="@{/tables}">1:1 문의</a>
                     </div>
                 </div>
             </li>

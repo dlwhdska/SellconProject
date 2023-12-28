@@ -3,53 +3,57 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layout/default_layout}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QnA Board</title>
-    <th:block layout:fragment="css">
-        <link rel="stylesheet" href="css/qna.css">
-    </th:block>
-    <style>
-        table {
-            margin: 0 auto;
-            text-align: left;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QnA Board</title>
+<th:block layout:fragment="css">
+	<link rel="stylesheet" href="css/qna.css">
+</th:block>
+<style>
+table {
+	margin: 0 auto;
+	text-align: left;
+}
+</style>
 </head>
 <body layout:fragment="content" id="wrap">
-    <h1>QnA Board</h1>
-    <form th:action="@{/serviceBoardList}" method="post" id="questionForm">
-        <table>
-            <tr>
-            <br>
-                <td>카테고리</td>
-                <td>
-                    <select id="type" name="type">
-                        <option value="유형1">신고</option>
-                        <option value="유형2">상품추가요청</option>
-                        <option value="유형3">문의</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>작성자</td>
-                <td><input type="text" id="writer" name="writer" th:required></td>
-            </tr>
-            <tr>
-                <td>작성일</td>
-                <td><input type="text" id="regDate" name="regDate" value="" disabled></td>
-            </tr>
-            <tr>
-                <td>제목</td>
-                <td><input type="text" id="title" name="title" th:required></td>
-            </tr>
-            <tr>
-                <td>내용</td>
-                <td><textarea id="content" name="content" rows="8" cols="500" th:required></textarea></td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <script th:inline="javascript">
+	<h1>QnA Board</h1>
+	<form th:action="@{/insertBoard}" method="post" id="questionForm">
+		<table>
+			<tr>
+				<br>
+				<td>카테고리</td>
+				<td><select id="type" name="category">
+						<option value="1">신고</option>
+						<option value="2">상품추가요청</option>
+						<option value="3">문의</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td>작성자</td>
+				<td><input type="text" id="writer" name="name" 
+				th:value="${session['member'].name}" readonly>
+				<input type="hidden" id="member" name="member" th:value="${session['member'].id}" readonly/>
+
+				</td>
+				
+			</tr>
+			<tr>
+				<td>작성일</td>
+				<td><input type="text" id="regDate" name="regDate" value=""
+					disabled></td>
+			</tr>
+			<tr>
+				<td>제목</td>
+				<td><input type="text" id="title" name="title" th:required></td>
+			</tr>
+			<tr>
+				<td>내용</td>
+				<td><textarea id="content" name="content" rows="10" cols="700"
+						th:required></textarea></td>
+			</tr>
+			<tr>
+				<td colspan="2"><script th:inline="javascript">
                         var today = new Date();
                         var dd = String(today.getDate()).padStart(2, '0');
                         var mm = String(today.getMonth() + 1).padStart(2, '0');
@@ -57,16 +61,25 @@
                         
                         today = yyyy + '-' + mm + '-' + dd;
                         document.getElementById('regDate').value = today;
-                    </script>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" style="text-align:center;">
-                    <input type="submit" value="문의 등록">
-                </td>
-            </tr>
-        </table>
-    </form>  
-    <hr>
+                    </script></td>
+			</tr>
+			<tr>
+				<td colspan="2" style="text-align: center;">
+				<input type="submit" value="문의 등록" class="write-button"></td>
+			</tr>
+		</table>
+	</form>
+	<script>
+    document.getElementById('questionForm').addEventListener('submit', function(event) {
+        var writer = document.getElementById('writer').value;
+        var title = document.getElementById('title').value;
+        var content = document.getElementById('content').value;
+
+        if (!writer || !title || !content) {
+            event.preventDefault();
+            alert('입력 항목들을 모두 작성해주세요.');
+        }
+    });
+</script>
 </body>
 </html>

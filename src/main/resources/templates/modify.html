@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/default_layout}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Boards - 수정</title>
+<link rel="stylesheet" href="/css/getserviceboard.css">
+</head>
+<body layout:fragment="content" id="wrap">
+	<h1>게시글 수정하기</h1>
+	<form th:action="@{'/modify/' + ${serviceBoard.qseq}}" method="post"
+		id="modifyForm">
+		<table>
+			<tr>
+				<br>
+				<td>카테고리</td>
+				<td th:text="${serviceBoard.category}" readonly></td>
+			</tr>
+			<tr>
+				<td>작성자</td>
+				<td th:text="${session['member'].name}" readonly></td>
+			</tr>
+			<tr>
+				<td>작성일</td>
+				<td th:text="${serviceBoard.regdate}" readonly></td>
+			</tr>
+			<tr>
+				<td>제목</td>
+				<td><input type="text" th:value="${serviceBoard.title}"
+					name="title" class="modify_title"></td>
+			</tr>
+			<tr>
+				<td>내용</td>
+				<td class="content"><input type="text" class="modify_content"
+					th:value="${serviceBoard.content}" name="content"></td>
+			</tr>
+		</table>
+		<br>
+		<div class="btnsection">
+			<input type="submit" value="저장" class="write-button modify_btn">
+		</div>
+	</form>
+</body>
+</html>

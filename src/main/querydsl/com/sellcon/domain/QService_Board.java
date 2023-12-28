@@ -22,6 +22,8 @@ public class QService_Board extends EntityPathBase<Service_Board> {
 
     public static final QService_Board service_Board = new QService_Board("service_Board");
 
+    public final StringPath category = createString("category");
+
     public final StringPath content = createString("content");
 
     public final QMember member;
@@ -32,7 +34,7 @@ public class QService_Board extends EntityPathBase<Service_Board> {
 
     public final StringPath reply = createString("reply");
 
-    public final NumberPath<Integer> repyn = createNumber("repyn", Integer.class);
+    public final StringPath repyn = createString("repyn");
 
     public final StringPath title = createString("title");
 

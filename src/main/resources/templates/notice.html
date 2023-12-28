@@ -19,14 +19,18 @@
 </style>
 
 <script>
-        function showHiddenContent(elementId) {
-            var hiddenContent = document.getElementById(elementId);
-            if (hiddenContent.style.display === 'none') {
-                hiddenContent.style.display = 'block';
-            } else {
-                hiddenContent.style.display = 'none';
-            }
-        }
+function showHiddenContent(event) {
+    event.preventDefault();
+    var csseq = event.currentTarget.getAttribute('data-csseq');
+    var hiddenContent = document.getElementById('hiddenContent_' + csseq);
+    
+    if (hiddenContent.style.display === 'none') {
+        hiddenContent.style.display = 'block';
+    } else {
+        hiddenContent.style.display = 'none';
+    }
+}
+
     </script>
 </head>
 <body>
@@ -42,9 +46,8 @@
 				<div class="search-window">
 					<form action="">
 						<div class="search-wrap">
-							<label for="search" class="blind">공지사항 내용 검색</label> <input
-								id="search" type="search" name="" placeholder="검색어를 입력해주세요."
-								value="">
+							<label for="search" class="blind">공지사항 내용 검색</label> 
+							<input id="search" type="search" name="" placeholder="검색어를 입력해주세요." value="">
 							<button type="submit" class="btn btn-dark">검색</button>
 						</div>
 					</form>
@@ -63,26 +66,15 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>1</td>
-							<td><a href="#!"
-								onclick="showHiddenContent('hiddenContent1')">공지사항 안내입니다.</a>
-								<div id="hiddenContent1" class="hidden-content">뿡</div></td>
-							<td>2023.11.27</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td><a href="#!"
-								onclick="showHiddenContent('hiddenContent2')">공지사항 내용입니다.</a>
-								<div id="hiddenContent2" class="hidden-content">뿡</div></td>
-							<td>2023.11.28</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td><a href="#!"
-								onclick="showHiddenContent('hiddenContent3')">공지사항 내용입니다.</a>
-								<div id="hiddenContent3" class="hidden-content">뿡</div></td>
-							<td>2023.11.29</td>
+						<tr th:each="post : ${CSList}">
+						    <td th:text="${post.csseq}"></td>
+						    <td>
+						        <a href="#!" th:text="${post.title}" th:attr="data-csseq=${post.csseq}" onclick="showHiddenContent(event)"></a>
+						        <div th:id="'hiddenContent_' + ${post.csseq}" class="hidden-content">
+						            <span th:text="${post.content}"></span>
+						        </div>
+						    </td>
+						    <td th:text=" ${#dates.format(post.regdate, 'yyyy-MM-dd')}"></td>
 						</tr>
 					</tbody>
 				</table>
