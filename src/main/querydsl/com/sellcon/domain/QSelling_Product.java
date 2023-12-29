@@ -26,6 +26,8 @@ public class QSelling_Product extends EntityPathBase<Selling_Product> {
 
     public final StringPath barcode_image = createString("barcode_image");
 
+    public final StringPath checkp = createString("checkp");
+
     public final QMember member;
 
     public final QProduct product;

@@ -104,6 +104,11 @@ a{
     cursor: pointer;
 }
 
+.main_menu_element ul li a:hover{
+	color: #5da0d8;
+	transition: 0.4s ease;
+}
+
 .main_menu_icon{
     width: 85px;
     right: 0;

@@ -39,5 +39,10 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
     @Modifying
     @Query("UPDATE Cart c SET c.result='2' WHERE c.cseq IN :cseqList ")
     void updateByCseqList(@Param("cseqList") List<Long> cseqList);
+    
+    // selling_product 삭제 시 장바구니의 상폼 삭제
+    @Modifying
+    @Query("DELETE FROM Cart c WHERE c.selling_product.sseq LIKE %:sseq%")
+    void deleteBySseq(@Param("sseq") Long sseq);
 
 }
