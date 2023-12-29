@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+				xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+				layout:decorate="~{layout/default_layout}">
+<head>
+    <title>아이디 확인</title>
+    <link rel="stylesheet" href="/css/confirmid.css">
+</head>
+<body>
+<div layout:fragment="content" id="wrap">
+    <h2>아이디 확인</h2><br>
+    <div th:if="${successMessage}">
+        <p th:text="${successMessage}"></p>
+        <p>회원님의 아이디는 <span th:text="${id}"></span> 입니다.</p>
+        
+        <a href="/login" class="login-button">로그인하러 가기</a>
+    </div>
+    <div th:if="${errorMessage}">
+        <p th:text="${errorMessage}"></p>
+    </div>
+    </div>
+</body>
+</html>

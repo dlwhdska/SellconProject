@@ -1,162 +1,46 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org"
+				xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+				layout:decorate="~{layout/default_layout}">
 <head>
-    <meta charset="UTF-8">
-    <title>회원가입</title>
-    <link rel="stylesheet" href="css/join.css">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>네이버 회원가입 폼</title>
+<link rel="stylesheet" href="/css/join.css">
 </head>
 <body>
-    <h2>회원가입</h2>
-    <form method="post" action="/join" id="join">
-        <label for="username">아이디:</label>
-        <input type="text" id="id" name="id" >
-        <input type="button" value="중복 체크" id="idCheck" name="idCheck"><br><br>
-        
-        <label for="password">비밀번호:</label>
-        <input type="password" id="pwd" name="pwd" >
-        <p>(영문, 숫자, 특수문자를 모두 포함하여 8자~16자로 입력해주세요.)</p><br><br>
-        
-        <label for="pwdCheck">비밀번호 확인:</label>
-        <input type="password" id="pwdCheck" name="pwdCheck"><br><br>
-        
-        <label for="name">이름:</label>
-        <input type="text" id="name" name="name" ><br><br>
-        
-        <label for="email">이메일:</label>
-        <input type="text" id="email" name="email">
-        <input type="button" value="중복 체크" id="emailCheck" name="emailCheck"><br><br>
-        
-        <label for="phone">전화번호:</label>
-        <input type="tel" id="phone" name="phone" ><br><br>
-        
-        <input type="submit" value="가입하기" onclick="return goSave();">
-        <input type="reset" value="취소" onclick="goToMainPage();">
-    </form>
-    
-    <script>
-    	
-	    var isIdChecked = false;	    
-	    document.getElementById("idCheck").addEventListener('click', function() {
-	        var idCheck = document.getElementById("id");
-	        var xhr = new XMLHttpRequest();
-	        var value = 'id=' + idCheck.value;
-	        xhr.open('POST', '/idCheck', true);
-	        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	        xhr.send(value);
-	        xhr.onload = function() {
-	            var color;
-	            if (xhr.status == 200) {
-	            	
-	            	if (idCheck.value == "") {
-	                    alert("아이디를 입력해 주세요.")
-	                } else {
-	                    if (xhr.response == "true") {
-	                        alert("사용 가능한 아이디입니다.");
-	                        isIdChecked = true;
-	                    } else {
-	                        alert("아이디가 존재합니다. 다른 아이디를 입력해 주세요.");
-	                    }
-	                }
-	            }
-	        }
-	    })
-	    
-	    var isEmailChecked = false;
-	    document.getElementById("emailCheck").addEventListener('click', function() {
-	    	var emailCheck = document.getElementById("email");
-	    	var xhr = new XMLHttpRequest();
-	    	var value = "email=" + emailCheck.value;
-	    	xhr.open('POST', '/emailCheck', true);
-	    	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	        xhr.send(value);
-	        xhr.onload = function() {
-	            var color;
-	            if (xhr.status == 200) {
-	            	
-	            	if (emailCheck.value == "") {
-	                    alert("이메일을 입력해 주세요.")
-	                } else {
-	                    if (xhr.response == "true") {
-	                        alert("사용 가능한 이메일입니다.");
-	                        isEmailChecked = true;
-	                    } else {
-	                        alert("이메일이 존재합니다. 다른 이메일을 입력해 주세요.");
-	                    }
-	                }
-	            }
-	        }
-	    })
-	  
-	    
-	    function goSave() {
-	    	
-	    	var id = document.getElementById("id");
-	    	var idCheck = document.getElementById("idCheck");
-	    	var pwd = document.getElementById("pwd");
-	    	var passwordPattern = /^(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[a-z\d@$!%*?&]{8,16}$/;
-	    	var pwdCheck = document.getElementById("pwdCheck");
-	    	var name = document.getElementById("name");
-	    	var email = document.getElementById("email");
-	    	var phone = document.getElementById("phone");
-	    	
-	    	if (!isIdChecked) {
-	            alert("아이디 중복 확인을 해주세요.");
-	            return false;
-	        } else if (!isEmailChecked) {
-	            alert("이메일 중복 확인을 해주세요.");
-	            return false;
-	        } else if (id.value == "") {
-	    		alert("아이디를 입력해 주세요.");
-	    		id.focus();
-	    		return false;
-	    	} else if (id.value == " ") {
-	    		alert("아이디에 공백이 있으면 안됩니다.");
-	    		id.focus();
-	    		return false;
-	    	} else if (pwd.value == "") {
-	    		alert("비밀번호를 입력해 주세요.");
-	    		pwd.focus();
-	    		return false;
-	    	} else if (pwd.value.length < 8 || pwd.value.length > 16) {
-	            alert("비밀번호는 8자에서 16자 사이어야 합니다.");
-	            pwd.focus();
-	            return false;
-	        } else if (!passwordPattern.test(pwd.value)) {
-	            alert("영문, 숫자, 특수문자를 모두 포함하여 8자~16자로 입력해주세요.");
-	            pwd.focus();
-	            return false;
-	        } else if (pwd.value != pwdCheck.value) {
-	    		alert("비밀번호가 일치하지 않습니다.");
-	    		pwd.focus();
-	    		return false;
-	    	} else if (name.value == "") {
-	    		alert("이름을 입력해 주세요.");
-	    		name.focus();
-	    		return false;
-	    	} else if (email.value == "") {
-	    		alert("이메일을 입력해 주세요.");
-	    		email.focus();
-	    		return false;
-            } else if (phone.value == "") {
-	    		alert("전화번호를 입력해 주세요.");
-	    		phone.focus();
-	    		return false;
-            } else {
-	    		var theForm = document.getElementById("join");
-	    		alert("회원가입 완료");
-	    		theForm.action = "/join";
-	    		theForm.submit();
-	    		return false;
-	    	}
-	    	
-	    	return true;
-	    }
-	    
-    </script>
-    <script>
-    function goToMainPage() {
-      window.location.href = '/main';
-    }
-  </script>
+<div layout:fragment="content" id="wrap">
+	<form method="post" action="/join" id="join">
+		<div class="member">
+			<div class="field">
+				<b>아이디</b> <span class="placehold-text"><input type="text"
+					id="id" name="id"> <input type="button" value="중복 체크"
+					id="idCheck" name="idCheck"> </span>
+			</div>
+			<div class="field">
+				<b>비밀번호</b> <input class="pwd" type="password" id="pwd" name="pwd">
+				<p class="sub" id="sub" name="sub">(영문, 숫자, 특수문자를 모두 포함하여
+					8자~16자로 입력해주세요.)</p>
+			</div>
+			<div class="field">
+				<b>비밀번호 재확인</b> <input class="pwdCheck" type="password"
+					id="pwdCheck" name="pwdCheck">
+			</div>
+			<div class="field">
+				<b>이름</b> <input type="text" id="name" name="name">
+			</div>
+			<div class="field">
+				<b>이메일</b> <input type="text" id="email" name="email"> <input
+					type="button" value="중복 체크" id="emailCheck" name="emailCheck">
+			</div>
+			<div class="field">
+				<b>전화번호</b> <input type="text" id="phone" name="phone">
+			</div>
+			<input type="submit" value="가입하기" onclick="return goSave();">
+		</div>
+	</form>
+	<script src="js/join.js"></script>
+	</div>
 </body>
 </html>

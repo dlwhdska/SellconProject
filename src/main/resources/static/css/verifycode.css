@@ -1,0 +1,60 @@
+* {
+    box-sizing: border-box;
+    outline: none;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 14px;
+    background-color: #fff;
+    line-height: 1.5em;
+    color: #222;
+    margin: 0;
+    padding-top: 200px;
+}
+
+a {
+    text-decoration: none;
+    color: #222;
+}
+
+h2 {
+    margin-top: 50px;
+    text-align: center;
+}
+
+form {
+    width: 400px;
+    margin: auto;
+    padding: 20px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.vspan {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="submit"] {
+    border: 1px solid #dadada;
+    padding: 15px;
+    width: calc(100% - 32px);
+    margin-bottom: 10px;
+    border-radius: 3px;
+}
+
+input[type="submit"] {
+    background-color: #f9fada;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input:focus {
+    border: 1px solid #f9fada;
+}

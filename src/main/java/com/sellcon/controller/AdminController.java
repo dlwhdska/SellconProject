@@ -17,11 +17,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sellcon.domain.Admin;
 import com.sellcon.domain.CS;
+import com.sellcon.domain.Member;
 import com.sellcon.domain.Selling_Product;
 import com.sellcon.domain.Service_Board;
 import com.sellcon.repository.CSRepository;
 import com.sellcon.service.AdminService;
 import com.sellcon.service.CSService;
+import com.sellcon.service.MemberService;
 import com.sellcon.service.ProductService;
 import com.sellcon.service.Service_BoardService;
 
@@ -38,6 +40,8 @@ public class AdminController {
 	private CSRepository csRepo;
 	@Autowired
 	private CSService csService;
+	@Autowired
+	private MemberService memberService;
 
 	@GetMapping("/adminIndex")
 	public String adminIndexView(HttpSession session, Model model) {
@@ -139,6 +143,21 @@ public class AdminController {
 	public String deleteAdminNotice(@PathVariable Long csseq) {
 		csService.deleteCS(csseq);
 		return "redirect:/adminNotice";
+	}
+	
+	@GetMapping("/adminMemberList")
+	public String adminMemberList(Member member, Model model, HttpSession session) {
+		Admin adminUser = (Admin) session.getAttribute("admin");
+		if (adminUser != null) {
+			session.setAttribute("adminUser", adminUser.getId());
+			model.addAttribute("adminUser", adminUser.getId());
+		}
+		
+		List<Member> memberList = memberService.getMemberList(member);
+		
+		model.addAttribute("adminMemberList", memberList);
+		
+		return "adminMemberList";
 	}
 
 }

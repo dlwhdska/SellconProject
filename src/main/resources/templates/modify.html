@@ -1,46 +1,53 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layout/default_layout}">
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layout/default_layout}"
+>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>User Boards - 수정</title>
-<link rel="stylesheet" href="/css/getserviceboard.css">
+    <title>회원 정보</title>
+    <script src="js/modify.js"></script>
+    <link rel="stylesheet" href="/css/modify.css">
 </head>
-<body layout:fragment="content" id="wrap">
-	<h1>게시글 수정하기</h1>
-	<form th:action="@{'/modify/' + ${serviceBoard.qseq}}" method="post"
-		id="modifyForm">
-		<table>
-			<tr>
-				<br>
-				<td>카테고리</td>
-				<td th:text="${serviceBoard.category}" readonly></td>
-			</tr>
-			<tr>
-				<td>작성자</td>
-				<td th:text="${session['member'].name}" readonly></td>
-			</tr>
-			<tr>
-				<td>작성일</td>
-				<td th:text="${serviceBoard.regdate}" readonly></td>
-			</tr>
-			<tr>
-				<td>제목</td>
-				<td><input type="text" th:value="${serviceBoard.title}"
-					name="title" class="modify_title"></td>
-			</tr>
-			<tr>
-				<td>내용</td>
-				<td class="content"><input type="text" class="modify_content"
-					th:value="${serviceBoard.content}" name="content"></td>
-			</tr>
-		</table>
-		<br>
-		<div class="btnsection">
-			<input type="submit" value="저장" class="write-button modify_btn">
-		</div>
-	</form>
+<body>
+<div layout:fragment="content" class="mypage">
+    <div id="userInfo">
+        <h1>회원 정보</h1>
+        <form action="/modify" method="post" id="modify">
+        <div>
+            <label for="id">아이디:</label>
+            <input type="text" id="id" th:value="${member.id}" name="id">
+        </div>
+        <div>
+            <label for="pwd">비밀번호:</label>
+            <input type="password" id="pwd" th:value="${member.pwd}" name="pwd">
+        </div>
+        <div>
+            <label for="name">이름:</label>
+            <input type="text" id="name" th:value="${member.name}" name="name">
+        </div>
+        <div>
+            <label for="email">이메일:</label>
+            <input type="email" id="email" th:value="${member.email}" name="email">
+        </div>
+        <div>
+            <label for="phone">전화번호:</label>
+            <input type="tel" id="phone" th:value="${member.phone}" name="phone">
+        </div>
+        <div>
+            <label for="bank">은행:</label>
+            <input type="text" id="bank" th:value="${member.bank}" name="bank">
+        </div>
+        <div>
+            <label for="account">계좌 번호:</label>
+            <input type="text" id="account" th:value="${member.account}" name="account">
+        </div>
+        <div>
+            <label for="regdate">생성 날짜:</label>
+            <input type="text" id="regdate" th:value="${#dates.format(member.regdate, 'yyyy/MM/dd HH:mm:ss')}" readonly>
+        </div>
+        </form>
+        <button onclick="modify()">수정</button>
+    </div>
+    </div>
 </body>
 </html>

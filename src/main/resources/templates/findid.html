@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+				xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+				layout:decorate="~{layout/default_layout}">
+<head>
+    <title>아이디 찾기</title>
+    <link rel="stylesheet" href="/css/findid.css"> <!-- CSS 파일 연결 -->
+    <script src="js/findid.js"></script>
+</head>
+<body>
+    <div layout:fragment="content" id="wrap">
+    <h2>아이디 찾기</h2>
+    <form action="/findid" method="post" id="findid" onsubmit="return checkNameEmail();">
+        <label for="name">이름:</label>
+        <input type="text" id="name" name="name"><br>
+        <label for="email">이메일:</label>
+        <input type="email" id="email" name="email"><br><br>
+        <input type="submit" value="인증번호 요청">
+    </form>
+    </div>
+</body>
+</html>

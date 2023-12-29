@@ -1,83 +1,102 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+*{
+    box-sizing: border-box; /*전체에 박스사이징*/
+    outline: none; /*focus 했을때 테두리 나오게 */
 }
 
-body {
-  font-family: 'Poppins', 'Noto Sans KR', sans-serif;
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size:14px;
+    background-color: #fff;
+    line-height: 1.5em;
+    color : #222;
+    margin: 0;
 }
 
-h2 {
-  text-align: center;
-  margin-top: 30px;
-  margin-bottom: 20px;
+a{
+    text-decoration: none;
+    color: #222;
 }
 
-form {
-  width: 80%;
-  margin: 0 auto;
+/*member sign in*/
+.member{
+    width: 400px;
+    margin: auto; /*중앙 정렬*/
+    padding: 0 20px;
+    padding-top: 200px;
+    margin-bottom: 20px;
 }
 
-label {
-  display: block;
-  margin-bottom: 8px;
+.member .field{
+    margin :5px 0; /*상하로 좀 띄워주기*/
 }
 
-input[type="text"],
-input[type="password"],
-input[type="tel"] {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  transition: border-color 0.3s ease;
+.member b{
+    display: block; /*수직 정렬하기 */
+    margin-bottom: 5px;
 }
 
-input[type="submit"],
-input[type="reset"],
-input[type="button"] {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+.member input:not(input[type=radio]),.member select{
+    border: 1px solid #dadada;
+    padding: 15px;
+    width: 100%;
+    margin-bottom: 5px;
 }
 
-input[type="submit"] {
-  background-color: #F3F781;
-  color: #000;
+.member input[type=button],
+.member input[type=submit]{
+background-color: #f9fada;
+color:black
 }
 
-input[type="reset"],
-input[type="button"] {
-  background-color: #F3F781;
-  color: #000;
+.member input:focus, .member select:focus{
+    border: 1px solid #f9fada;
 }
 
-input[type="submit"]:hover,
-input[type="reset"]:hover,
-input[type="button"]:hover {
-  filter: brightness(90%);
+.field.birth div{ /*field 이면서 birth*/
+    display: flex;
+    gap:10px; /*간격 벌려줄때 공식처럼 사용핟나 */
 }
 
-p {
-  font-size: 14px;
-  color: #777;
+.field.tel-number div {
+    display: flex;
 }
 
-#idCheck {
-  padding: 8px 12px;
-  margin-left: 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  background-color: #F3F781;
-  color: #000;
-  border: none;
-  transition: background-color 0.3s ease;
+.field.tel-number div input:nth-child(1){
+    flex:2;
 }
 
-#idCheck:hover {
-  filter: brightness(90%);
+.field.tel-number div input:nth-child(2){
+    flex:1;
+}
+
+.placehold-text{
+    display: block; /*span 으로 감싸서 크기영역을 블록요소로 만들어ㅜ저야한다*/
+    position:relative;
+}
+
+.placehold-text:before{ 
+    position:absolute; /*before은 inline 요소이기 때문에 span으로 감싸줌 */
+    right : 20px;
+    top:13px;
+    pointer-events: none; /*자체가 가지고 있는 pointer event 를 없애준다 */
+}
+
+.pwd{
+    background-color: #fff;
+}
+
+.pwdCheck{
+    background-size: 20px;
+    background-color: #fff;
+}
+
+@media (max-width:768px) {
+    .member{
+        width: 100%;
+    }
+}
+
+.member .field .sub {
+    font-size: 12px;
+    color: #a7a7a7;
 }
