@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+				xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+				layout:decorate="~{layout/default_layout}">
+<head>
+    <title>인증번호 확인</title>
+    <script src="js/verifycode.js"></script>
+    <link rel="stylesheet" href="/css/verifycode.css">
+</head>
+<body>
+<div layout:fragment="content" id="wrap">
+    <h2>인증번호 확인</h2>
+    <form action="/verifycode" method="post" id="verifycode" onsubmit="return checkCode();">
+	    <div>
+	    	<label for="name">이름:</label>
+	        <span class="vspan" th:text="${session.name}"></span><br>
+	        <label for="email">이메일:</label>
+	        <span class="vspan" th:text="${session.email}"></span><br>
+	        <label for="code">인증번호:</label>
+	        <input type="text" id="code" name="code"><br>
+	        <input type="submit" value="확인">
+	    </div>
+	</form>
+	</div>
+</body>
+</html>

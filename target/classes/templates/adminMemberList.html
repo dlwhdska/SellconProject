@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<th:block th:include="adminIndex :: adminHead"></th:block>
+<link href="vendor/datatables/dataTables.bootstrap4.min.css"
+	rel="stylesheet">
+</head>
+<body id="page-top">
+
+	<div id="wrapper">
+
+		<th:block th:include="adminIndex :: adminnav"></th:block>
+
+		<div id="content-wrapper" class="d-flex flex-column">
+			<div id="content">
+
+				<nav
+					class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+					<!-- Sidebar Toggle (Topbar) -->
+					<button id="sidebarToggleTop"
+						class="btn btn-link d-md-none rounded-circle mr-3">
+						<i class="fa fa-bars"></i>
+					</button>
+
+					<!-- Topbar Navbar -->
+					<ul class="navbar-nav ml-auto">
+						<!-- Nav Item - User Information -->
+						<li class="nav-item dropdown no-arrow"><a
+							class="nav-link dropdown-toggle" href="#" id="userDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> <span
+								class="mr-2 d-none d-lg-inline text-gray-600 small"
+								th:text="${adminUser != null ? adminUser : '이름없음'}"></span>
+						</a></li>
+
+						<div class="topbar-divider d-none d-sm-block"></div>
+
+						<li class="nav-item dropdown no-arrow"><a
+							class="dropdown-item nav-link dropdown-toggle" href="#"
+							id="userDropdown" role="button" data-toggle="modal"
+							data-target="#logoutModal" aria-expanded="false"> <span
+								class="mr-2 d-none d-lg-inline text-gray-600 small">
+									Logout <i
+									class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+							</span>
+						</a></li>
+					</ul>
+				</nav>
+
+				<div class="container-fluid">
+
+					<br>
+					<h1 class="h3 mb-2 text-gray-800">회원목록</h1>
+					<br>
+
+					<div class="card shadow mb-4">
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-bordered" id="dataTable" width="100%"
+									cellspacing="0">
+									<thead>
+										<tr>
+											<th>아이디</th>
+											<th>이름</th>
+											<th>이메일</th>
+											<th>핸드폰번호</th>
+											<th>은행</th>
+											<th>계좌번호</th>
+											<th>생성날짜</th>
+											<th>신고여부(Y/N)</th>
+											<th>관리</th>
+										</tr>
+									</thead>
+									<tfoot>
+										<tr>
+											<th>아이디</th>
+											<th>이름</th>
+											<th>이메일</th>
+											<th>핸드폰번호</th>
+											<th>은행</th>
+											<th>계좌번호</th>
+											<th>생성날짜</th>
+											<th>신고여부(Y/N)</th>
+											<th>관리</th>
+										</tr>
+									</tfoot>
+									<tbody>
+										<tr th:each="member : ${adminMemberList}">
+											<td th:text="${member.id}"></td>
+											<td th:text="${member.name}"></td>
+											<td th:text="${member.email}"></td>
+											<td th:text="${member.phone}"></td>
+											<td th:text="${member.bank}"></td>
+											<td th:text="${member.account}"></td>
+											<td th:text="${#dates.format(member.regdate, 'yyyy-MM-dd')}"></td>
+											<td th:text="${member.scamyn}"></td>
+											<td>
+												<button class="table-button-edit">수정</button>
+												<button class="table-button-delete">삭제</button>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+			<th:block th:include="adminIndex :: adminFooter"></th:block>
+
+		</div>
+
+	</div>
+
+	<th:block th:include="adminIndex :: adminPageUp"></th:block>
+	<th:block th:include="adminIndex :: adminModal"></th:block>
+
+	<th:block th:include="adminIndex :: adminScript"></th:block>
+	<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+	<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+	<script src="js/demo/datatables-demo.js"></script>
+</body>
+</html>
