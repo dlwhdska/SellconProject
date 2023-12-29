@@ -1,3 +1,7 @@
+function showSuccessModal() {
+  $('#myModal').css('display', 'block');
+}
+
 function addCart(sseq) {
     console.log("sseq=" + sseq);
 
@@ -21,14 +25,26 @@ function addCart(sseq) {
             if (response.duplicate) {
                 alert("이미 장바구니에 담긴 상품입니다.");
             } else {
-                alert("장바구니에 상품이 추가되었습니다.");
+                showSuccessModal();
             }
         }
     });
 }
 
+// 모달 닫기
+$(document).ready(function() {
+  $('#continueShoppingBtn').on('click', function() {
+    $('#myModal').css('display', 'none');
+  });
+
+  $('.close').on('click', function() {
+    $('#myModal').css('display', 'none');
+  });
+});
+
 function toggleAllCheckBoxes(selectAll) {
-    $('.selectCheckbox').prop('checked', true);
+    var isChecked = selectAll.checked;
+    $('.selectCheckbox').prop('checked', isChecked);
 }
 
 function toggleIndividualCheckbox(selectCheckbox) {
@@ -88,7 +104,6 @@ function deleteCart(sseq) {
         success: function(response) {
             if (response) {
                 alert("장바구니 상품을 삭제했습니다.");
-                // 클라이언트 측에서 리로드를 트리거하여 페이지 새로고침
                 location.reload();
             } else {
                 console.error('장바구니 삭제 중 오류가 발생했습니다.');
@@ -98,6 +113,41 @@ function deleteCart(sseq) {
             console.error('요청 중 오류가 발생했습니다.', error);
         }
     });
+}
+
+function selectOrder() {
+	var cartItemCount = parseInt($('#size').text());
+	
+	if (cartItemCount === 0) {
+        alert('장바구니가 비어 있습니다!');
+        return;
+    }
+    
+    var selectedCseqs = [];
+    
+    $('.selectCheckbox:checked').each(function() {
+        var cseq = $(this).data('cseq');
+        if (cseq) {
+            selectedCseqs.push(cseq);
+            console.log('cseq=' + cseq);
+        }
+    });
+
+    var ordersForm = $('#ordersForm');
+    
+    if(selectedCseqs.length == 0) {
+		ordersForm.submit();
+		
+		return;
+	}
+    
+    ordersForm.empty();
+
+    selectedCseqs.forEach(function(cseq) {
+        ordersForm.append('<input type="hidden" name="cseq" value="' + cseq + '">');
+    });
+
+    ordersForm.submit();
 }
 
 // totalsummary 영역 계산

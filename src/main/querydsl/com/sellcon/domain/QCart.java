@@ -22,9 +22,9 @@ public class QCart extends EntityPathBase<Cart> {
 
     public static final QCart cart = new QCart("cart");
 
-    public final QMember member;
+    public final NumberPath<Long> cseq = createNumber("cseq", Long.class);
 
-    public final NumberPath<Long> oseq = createNumber("oseq", Long.class);
+    public final QMember member;
 
     public final StringPath result = createString("result");
 

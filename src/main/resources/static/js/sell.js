@@ -74,6 +74,11 @@ function confirmBrand() {
 	});
 }
 
+$('#filteredBrandList div').click(function() {
+	$(this).addClass('choice');
+	$(this).siblings().removeClass('choice');
+});
+
 /* 상품 검색 스크립트 */
 var productSearchContainer = $(".PD_product_name");
 var productSearchShow = $(".PS_detail_search");
@@ -88,6 +93,11 @@ productSearchContainer.click(function(event) {
 		alert('브랜드를 먼저 선택해주세요.');
 		return;
 	}
+
+	$('#filteredProductList div').click(function() {
+		$(this).addClass('choice2');
+		$(this).siblings().removeClass('choice2');
+	});
 
 	event.stopPropagation();
 	productSearchShow.show();
@@ -270,7 +280,7 @@ function sellingPriceListView(sellingProduct) {
 		});
 	} else {
 		var noProductRow = $('<tr>')
-			.append('<td colspan="3" class="no-product-message"><p>현재 판매 중인 상품이 없습니다<img src="images/logo_round.png" alt="로고"></p></td>');
+			.append('<td colspan="3" class="no-product-message"><img src="images/yello_1.png" alt="로고"><p>현재 판매 중인 상품이 없습니다.</p></td>');
 		tableBody.append(noProductRow);
 	}
 }
@@ -281,22 +291,29 @@ function submitSellForm() {
 
 	var pseq = selectedProductPseq;
 	var sellingprice = $('.PD_detail_selling_price input').val();
-	var barcode = $('.PD_quantity input[name="barcode"]').val();
+	var barcode = $('.barcode-input').map(function() {
+		return $(this).val();
+	}).get();
+	var barcodeValue = barcode.join('');
 	var valid = $('.PD_validity input').val();
 	var barcode_image = $('#imageInput')[0].files[0];
 	var sellid = document.getElementById('sellerId').value;
 
 	console.log('Product Seq:', pseq);
 	console.log('Selling Price:', sellingprice);
-	console.log('Barcode:', barcode);
+	console.log('Barcode:', barcodeValue);
 	console.log('Validity Date:', valid);
 	console.log('Barcode Image:', barcode_image);
 	console.log('sellerId:', sellid);
 
+	if (!pseq || !sellingprice || !barcodeValue || !valid || !barcode_image || !sellid) {
+		alert('입력 정보를 모두 채워주세요.');
+	}
+
 	var formData = new FormData();
 	formData.append('pseq', pseq);
 	formData.append('sellingprice', sellingprice);
-	formData.append('barcode', barcode);
+	formData.append('barcode', barcodeValue);
 	formData.append('valid', valid);
 	formData.append('barcode_image', barcode_image);
 	formData.append('sellerId', sellid);
@@ -311,11 +328,65 @@ function submitSellForm() {
 		contentType: false,
 		dataType: 'json',
 		success: function(response) {
-			console.log(response + "야");
+			console.log(response);
+			console.log('판매 신청 성공');
+			alert('판매 신청이 완료되었습니다.');
+			window.location.href = '/mypage';
 		},
 		error: function(error) {
-			console.error("아 안돼 연결좀 해 줘ㅓ" + error);
+			console.error(error);
 		}
 	});
+
 }
+
+// 날짜제한
+var currentDate = new Date();
+
+var minDate = new Date(currentDate);
+minDate.setDate(currentDate.getDate() + 2);
+
+$('.PD_detail_validity').attr('min', minDate.toISOString().split('T')[0]);
+$('.PD_detail_validity').val(minDate.toISOString().split('T')[0]);
+
+// 판매가격 제한
+$('.PD_product_selling_price input').on('blur', function() {
+
+	var sellingPrice = parseFloat($(this).val());
+	var productPrice = parseFloat($('#productPrice').text().replace(/[^\d]/g, ''));
+	var marginTop = $('#header_wrap').outerHeight() + 50;
+
+	$('html, body').animate({
+		scrollTop: $('#cont1').offset().top - marginTop
+	}, 500);
+
+	if (sellingPrice < 1 || sellingPrice > productPrice) {
+		alert('올바른 판매가를 입력해주세요.');
+		$(this).val('');
+	}
+
+});
+
+// 바코드 제한
+$('.barcode-input').on('input', function() {
+	var position = $(this).data('position');
+	var currentValue = $(this).val().replace(/[^0-9]/g, ''); // 숫자 이외의 문자 제거
+
+	if (currentValue.length > 4) {
+		// 입력된 숫자가 4자리를 넘어갈 경우 자르기
+		currentValue = currentValue.slice(0, 4);
+	}
+
+	$(this).val(currentValue);
+
+	if (currentValue.length === 4) {
+		// 입력된 숫자가 4자리일 때만 다음 입력란으로 포커스 이동
+		var nextInput = $('.barcode-input[data-position="' + (position + 1) + '"]');
+		if (nextInput.length > 0) {
+			nextInput.focus();
+		}
+	}
+});
+
+
 

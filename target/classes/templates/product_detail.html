@@ -14,7 +14,6 @@
     <th:block layout:fragment="css"><link rel="stylesheet" href="../css/product_detail.css"></th:block>
 </head>
 <body>
-
     <div layout:fragment="content" id="wrap">
         <div id="container">
             <div id="contests">
@@ -26,7 +25,7 @@
                             <div class="product_detail_main">
 
                                 <div class="pd_main_img_wrap">
-                                    <img th:src="@{${sproduct[0].product.image}}">
+                                    <img th:src="@{${sproduct.product.image}}">
                                 </div>
 
                                 <div class="pd_main_text_wrap">
@@ -35,17 +34,17 @@
                                         <div class="pd_main_text_product">
                                             <ul>
                                                 <li class="PD_product_brand PD_product_brnad">
-                                                    <span class="PD_detail_brnad" th:text="${sproduct[0].product.brand.brandName}"></span>
+                                                    <span class="PD_detail_brnad" th:text="${sproduct.product.brand.brandName}"></span>
                                                 </li>
                                                 <li class="PD_product_name">
-                                                    <span class="PD_detail_name" th:text="${sproduct[0].product.productName}"></span>
+                                                    <span class="PD_detail_name" th:text="${sproduct.product.productName}"></span>
                                                 </li>
                                                 <li class="PD_product_price">
                                                     <span class="PD_title">가격</span>
                                                     <span class="PD_detail_price">
-                                                        <span class="canclePrice"><strong th:text="${sproduct[0].product.price}"></strong></span>
-                                                        <span class="salesPrice text" th:text="${sproduct[0].sellingprice}"></span>
-                                                        <span class="dcPercent">%</span>
+                                                        <span class="canclePrice"><strong th:text="${#numbers.formatInteger(sproduct.product.price, 3, 'COMMA')}"></strong></span>
+                                                        <span class="salesPrice text" th:text="${#numbers.formatInteger(sproduct.sellingprice, 3, 'COMMA')}"></span>
+                                                        <span class="dcPercent" th:text="${sproduct.discount + '%'}"></span>
                                                     </span>
                                                 </li>
                                                 <li class="PD_quantity">
@@ -54,16 +53,35 @@
                                                 </li>
                                                 <li class="PD_validity">
                                                     <span class="PD_title">사용기한</span>
-                                                    <span class="PD_detail_validity" th:text="${#dates.format(sproduct[0].valid, 'yyyy년 MM월 dd일')}">2023년 12월 28일</span>
+                                                    <span class="PD_detail_validity" th:text="${#dates.format(sproduct.valid, 'yyyy년 MM월 dd일')}"></span>
                                                 </li>
                                             </ul>
+                                            
+											<div class="PD_ohter_sproduct">
+												<div class="PD_othersproduct_title">
+													<h3>판매상품</h3>
+												</div>
+												<ul class="PD_othersproduct_wrap">
+													<li th:each="otherProduct : ${othersproduct}" class="PD_othersproduct">
+														<div class="othersproduct_text">
+	                                                       	<p class="sell_price" th:text="${#numbers.formatInteger(otherProduct.sellingprice, 3, 'COMMA')}"></p>
+	                                                       	<p class="discount" th:text=${otherProduct.discount}></p>
+	                                                       	<p class="validity" th:text="${#dates.format(otherProduct.valid, 'yyyy년 MM월 dd일')}"></p>
+															<div class="cart_in_icon_s" th:onclick="addCart([[${otherProduct.sseq}]])">
+	                                                    		<img src="">
+	                                                 		</div>													
+														</div>
+
+													</li>
+												</ul>
+											</div>
                                         </div>
 
                                         <div class="pd_main_btn_wrap">
                                             <a href="" class="PD_btn_buy">
                                                 <span id="btn_buy">바로구매</span>
                                             </a>
-                                            <div class="PD_btn_cart" th:onclick="addCart([[${sproduct[0].sseq}]])">
+                                            <div class="PD_btn_cart" th:onclick="addCart([[${sproduct.sseq}]])">
                                                 장바구니 담기
                                             </div>
                                         </div>
@@ -73,7 +91,7 @@
 
                             </div>
                         </div>
-                        
+                       
                         <div class="product_detail_section2">
                             <div class="product_detail_information">
 
@@ -161,346 +179,40 @@
 
                         <div class="main_section1 main_section_set">
                             <h3>
-                                <strong>셀콘이 추천하는 상품</strong>
+                                <strong><span th:text="${recomendsproduct[0].product.brand.brandName}" class="namecolor"></span>의 이런 상품은 어떠세요?</strong>
                             </h3>
             
                             <div class="main_how_list">
                                 <div class="product_img_container">
                                     <ul class="slides">
-                                        <li>
+                                        <li th:each="rsproduct : ${recomendsproduct}">
                                             <div class="product_img">
                                                 <dl>
-                                                    <a href="" class="img_link"></a>
+                                                    <a th:href="@{'product_detail=' + ${rsproduct.sseq}}" class="img_link"></a>
                                                     <div class="base_img">
                                                         <div class="thumb">
-                                                            <img class="thumb_img">
+                                                            <img class="thumb_img" th:src="${rsproduct.product.image}">
                                                         </div>
                                                     </div>
                                                     <div class="base_text">
                                                         <dd class="product_brand">
-                                                            <p class="brand">스타벅스</p>
+                                                            <p class="brand" th:text=${rsproduct.product.brand.brandName}></p>
                                                         </dd>
                                                         <dd class="product_name">
-                                                            <p class="name">아이스 아메리카노</p>
+                                                            <p class="name" th:text=${rsproduct.product.productName}></p>
                                                         </dd>
                                                         <dd class="product_price">
-                                                            <p class="discount">20%</p>
-                                                            <p class="sell_price">3200원</p>
-                                                            <p class="price">4000원</p>
+                                                            <p class="discount" th:text="${rsproduct.discount + '%'}"></p>
+                                                            <p class="sell_price" th:text="${#numbers.formatInteger(rsproduct.sellingprice, 3, 'COMMA')}"></p>
+                                                            <p class="price" th:text="${#numbers.formatInteger(rsproduct.product.price, 3, 'COMMA')}"></p>
                                                         </dd>
                                                         <dd class="product_validity">
                                                             <span class="validity_icon">
                                                                 <img src="images/icon_new_white.gif">
                                                             </span>
-                                                            <p class="validity">2023년 12월 31일</p>
+                                                            <p class="validity" th:text="${#dates.format(rsproduct.valid, 'yyyy년 MM월 dd일')}"></p>
                                                         </dd>
-                                                        <div class="cart_in_icon">
-                                                            <img src="">
-                                                        </div>
-                                                    </div>
-                                                </dl>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="product_img">
-                                                <dl>
-                                                    <a href="" class="img_link"></a>
-                                                    <div class="base_img">
-                                                        <div class="thumb">
-                                                            <img class="thumb_img">
-                                                        </div>
-                                                    </div>
-                                                    <div class="base_text">
-                                                        <dd class="product_brand">
-                                                            <p class="brand">스타벅스</p>
-                                                        </dd>
-                                                        <dd class="product_name">
-                                                            <p class="name">아이스 아메리카노</p>
-                                                        </dd>
-                                                        <dd class="product_price">
-                                                            <p class="discount">20%</p>
-                                                            <p class="sell_price">3200원</p>
-                                                            <p class="price">4000원</p>
-                                                        </dd>
-                                                        <dd class="product_validity">
-                                                            <span class="validity_icon">
-                                                                <img src="icon_201912171144461700.gif">
-                                                            </span>
-                                                            <p class="validity">2023년 12월 31일</p>
-                                                        </dd>
-                                                        <div class="cart_in_icon">
-                                                            <img src="">
-                                                        </div>
-                                                    </div>
-                                                </dl>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="product_img">
-                                                <dl>
-                                                    <a href="" class="img_link"></a>
-                                                    <div class="base_img">
-                                                        <div class="thumb">
-                                                            <img class="thumb_img">
-                                                        </div>
-                                                    </div>
-                                                    <div class="base_text">
-                                                        <dd class="product_brand">
-                                                            <p class="brand">스타벅스</p>
-                                                        </dd>
-                                                        <dd class="product_name">
-                                                            <p class="name">아이스 아메리카노</p>
-                                                        </dd>
-                                                        <dd class="product_price">
-                                                            <p class="discount">20%</p>
-                                                            <p class="sell_price">3200원</p>
-                                                            <p class="price">4000원</p>
-                                                        </dd>
-                                                        <dd class="product_validity">
-                                                            <span class="validity_icon">
-                                                                <img src="icon_201912171144461700.gif">
-                                                            </span>
-                                                            <p class="validity">2023년 12월 31일</p>
-                                                        </dd>
-                                                        <div class="cart_in_icon">
-                                                            <img src="">
-                                                        </div>
-                                                    </div>
-                                                </dl>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="product_img">
-                                                <dl>
-                                                    <a href="" class="img_link"></a>
-                                                    <div class="base_img">
-                                                        <div class="thumb">
-                                                            <img class="thumb_img">
-                                                        </div>
-                                                    </div>
-                                                    <div class="base_text">
-                                                        <dd class="product_brand">
-                                                            <p class="brand">스타벅스</p>
-                                                        </dd>
-                                                        <dd class="product_name">
-                                                            <p class="name">아이스 아메리카노</p>
-                                                        </dd>
-                                                        <dd class="product_price">
-                                                            <p class="discount">20%</p>
-                                                            <p class="sell_price">3200원</p>
-                                                            <p class="price">4000원</p>
-                                                        </dd>
-                                                        <dd class="product_validity">
-                                                            <span class="validity_icon">
-                                                                <img src="icon_201912171144461700.gif">
-                                                            </span>
-                                                            <p class="validity">2023년 12월 31일</p>
-                                                        </dd>
-                                                        <div class="cart_in_icon">
-                                                            <img src="">
-                                                        </div>
-                                                    </div>
-                                                </dl>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="product_img">
-                                                <dl>
-                                                    <a href="" class="img_link"></a>
-                                                    <div class="base_img">
-                                                        <div class="thumb">
-                                                            <img class="thumb_img">
-                                                        </div>
-                                                    </div>
-                                                    <div class="base_text">
-                                                        <dd class="product_brand">
-                                                            <p class="brand">스타벅스</p>
-                                                        </dd>
-                                                        <dd class="product_name">
-                                                            <p class="name">아이스 아메리카노</p>
-                                                        </dd>
-                                                        <dd class="product_price">
-                                                            <p class="discount">20%</p>
-                                                            <p class="sell_price">3200원</p>
-                                                            <p class="price">4000원</p>
-                                                        </dd>
-                                                        <dd class="product_validity">
-                                                            <span class="validity_icon">
-                                                                <img src="icon_201912171144461700.gif">
-                                                            </span>
-                                                            <p class="validity">2023년 12월 31일</p>
-                                                        </dd>
-                                                        <div class="cart_in_icon">
-                                                            <img src="">
-                                                        </div>
-                                                    </div>
-                                                </dl>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="product_img">
-                                                <dl>
-                                                    <a href="" class="img_link"></a>
-                                                    <div class="base_img">
-                                                        <div class="thumb">
-                                                            <img class="thumb_img">
-                                                        </div>
-                                                    </div>
-                                                    <div class="base_text">
-                                                        <dd class="product_brand">
-                                                            <p class="brand">스타벅스</p>
-                                                        </dd>
-                                                        <dd class="product_name">
-                                                            <p class="name">아이스 아메리카노</p>
-                                                        </dd>
-                                                        <dd class="product_price">
-                                                            <p class="discount">20%</p>
-                                                            <p class="sell_price">3200원</p>
-                                                            <p class="price">4000원</p>
-                                                        </dd>
-                                                        <dd class="product_validity">
-                                                            <span class="validity_icon">
-                                                                <img src="icon_201912171144461700.gif">
-                                                            </span>
-                                                            <p class="validity">2023년 12월 31일</p>
-                                                        </dd>
-                                                        <div class="cart_in_icon">
-                                                            <img src="">
-                                                        </div>
-                                                    </div>
-                                                </dl>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="product_img">
-                                                <dl>
-                                                    <a href="" class="img_link"></a>
-                                                    <div class="base_img">
-                                                        <div class="thumb">
-                                                            <img class="thumb_img">
-                                                        </div>
-                                                    </div>
-                                                    <div class="base_text">
-                                                        <dd class="product_brand">
-                                                            <p class="brand">스타벅스</p>
-                                                        </dd>
-                                                        <dd class="product_name">
-                                                            <p class="name">아이스 아메리카노</p>
-                                                        </dd>
-                                                        <dd class="product_price">
-                                                            <p class="discount">20%</p>
-                                                            <p class="sell_price">3200원</p>
-                                                            <p class="price">4000원</p>
-                                                        </dd>
-                                                        <dd class="product_validity">
-                                                            <span class="validity_icon">
-                                                                <img src="icon_201912171144461700.gif">
-                                                            </span>
-                                                            <p class="validity">2023년 12월 31일</p>
-                                                        </dd>
-                                                        <div class="cart_in_icon">
-                                                            <img src="">
-                                                        </div>
-                                                    </div>
-                                                </dl>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="product_img">
-                                                <dl>
-                                                    <a href="" class="img_link"></a>
-                                                    <div class="base_img">
-                                                        <div class="thumb">
-                                                            <img class="thumb_img">
-                                                        </div>
-                                                    </div>
-                                                    <div class="base_text">
-                                                        <dd class="product_brand">
-                                                            <p class="brand">스타벅스</p>
-                                                        </dd>
-                                                        <dd class="product_name">
-                                                            <p class="name">아이스 아메리카노</p>
-                                                        </dd>
-                                                        <dd class="product_price">
-                                                            <p class="discount">20%</p>
-                                                            <p class="sell_price">3200원</p>
-                                                            <p class="price">4000원</p>
-                                                        </dd>
-                                                        <dd class="product_validity">
-                                                            <span class="validity_icon">
-                                                                <img src="icon_201912171144461700.gif">
-                                                            </span>
-                                                            <p class="validity">2023년 12월 31일</p>
-                                                        </dd>
-                                                        <div class="cart_in_icon">
-                                                            <img src="">
-                                                        </div>
-                                                    </div>
-                                                </dl>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="product_img">
-                                                <dl>
-                                                    <a href="" class="img_link"></a>
-                                                    <div class="base_img">
-                                                        <div class="thumb">
-                                                            <img class="thumb_img">
-                                                        </div>
-                                                    </div>
-                                                    <div class="base_text">
-                                                        <dd class="product_brand">
-                                                            <p class="brand">스타벅스</p>
-                                                        </dd>
-                                                        <dd class="product_name">
-                                                            <p class="name">아이스 아메리카노</p>
-                                                        </dd>
-                                                        <dd class="product_price">
-                                                            <p class="discount">20%</p>
-                                                            <p class="sell_price">3200원</p>
-                                                            <p class="price">4000원</p>
-                                                        </dd>
-                                                        <dd class="product_validity">
-                                                            <span class="validity_icon">
-                                                                <img src="icon_201912171144461700.gif">
-                                                            </span>
-                                                            <p class="validity">2023년 12월 31일</p>
-                                                        </dd>
-                                                        <div class="cart_in_icon">
-                                                            <img src="">
-                                                        </div>
-                                                    </div>
-                                                </dl>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="product_img">
-                                                <dl>
-                                                    <a href="" class="img_link"></a>
-                                                    <div class="base_img">
-                                                        <div class="thumb">
-                                                            <img class="thumb_img">
-                                                        </div>
-                                                    </div>
-                                                    <div class="base_text">
-                                                        <dd class="product_brand">
-                                                            <p class="brand">스타벅스</p>
-                                                        </dd>
-                                                        <dd class="product_name">
-                                                            <p class="name">아이스 아메리카노</p>
-                                                        </dd>
-                                                        <dd class="product_price">
-                                                            <p class="discount">20%</p>
-                                                            <p class="sell_price">3200원</p>
-                                                            <p class="price">4000원</p>
-                                                        </dd>
-                                                        <dd class="product_validity">
-                                                            <span class="validity_icon">
-                                                                <img src="icon_201912171144461700.gif">
-                                                            </span>
-                                                            <p class="validity">2023년 12월 31일</p>
-                                                        </dd>
-                                                        <div class="cart_in_icon">
+                                                        <div class="cart_in_icon" th:onclick="addCart([[${rsproduct.sseq}]])">
                                                             <img src="">
                                                         </div>
                                                     </div>
@@ -522,6 +234,19 @@
 
             </div>
         </div>
+        
+        	<!-- 모달 창 -->
+			<div id="myModal" class="modal">
+			  <div class="modal-content">
+			    <span class="close">&times;</span>
+				<p>장바구니에 상품이 추가되었습니다.</p>
+				<div class="btn_modalBox">
+			    <button class="btn_modal" id="moveToCartBtn"><a th:href="@{/cart}">장바구니로 이동</a></button>
+			    <button class="btn_modal" id="continueShoppingBtn">계속 쇼핑하기</button>
+			    </div>
+			  </div>
+			</div>
+        
     </div>
 <th:block layout:fragment="script"><script src="../js/product_detail.js"></script></th:block>
 </body>
