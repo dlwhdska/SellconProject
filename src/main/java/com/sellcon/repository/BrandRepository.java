@@ -17,4 +17,8 @@ public interface BrandRepository extends JpaRepository<Brand, Long> {
 	
 	List<Brand> findByBrandNameContaining(String brandkeyword);
 	
+	Brand findByBseq(Long bseq);
+	
+	List<Brand> findCategoryByBseq(@Param("bseq") Long bseq);
+	
 }

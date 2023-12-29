@@ -1,11 +1,3 @@
-// 할인율 계산
-$('.discount').each(function(index) {
-    var price = $('.price').eq(index).text().replace(/\D/g, '');
-    var sellingPrice = $('.sell_price').eq(index).text().replace(/\D/g, '');
-
-    var productDiscount = ((price - sellingPrice) / price) * 100;
-    $(this).text(Math.floor(productDiscount) + '%');
-});
 
 $(document).ready(function() {
 

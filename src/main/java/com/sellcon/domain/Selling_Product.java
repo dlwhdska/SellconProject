@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -45,6 +46,9 @@ public class Selling_Product {
 	@Column(insertable=false, updatable=false, columnDefinition="DATE default sysdate")
 	private Date regdate;
 	
+	@Column(columnDefinition = "char(1)")
+	private String checkp;
+	
 	@ManyToOne
 	@JoinColumn(name="Sell_ID", updatable=false)
 	private Member member;
@@ -52,5 +56,16 @@ public class Selling_Product {
 	@ManyToOne
 	@JoinColumn(name="pseq", updatable=false)
 	private Product product;
+	
+	// 할인률 계산
+	@Transient
+	private int discount;
+	
+    public int getDiscount() {
+        long price = this.getProduct().getPrice();
+        long sellingPrice = this.getSellingprice();
+        double sproductDiscount = ((double) (price - sellingPrice) / price) * 100;
+        return (int) Math.floor(sproductDiscount);
+    }
 	
 }

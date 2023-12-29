@@ -58,6 +58,29 @@ public class MainController {
 	public String mypageView() {
 		return "mypage";
 	}
+	
+	// 방금등록된 상품 페이지
+	@GetMapping("/new")
+	public String newProductView(Model model,
+			@RequestParam(name="category", defaultValue = "1") String kind) {
+		
+		List<Selling_Product> sproductList = productService.findNewProductsByCategory(kind);
+		System.out.println(sproductList);
+		model.addAttribute("sproductList", sproductList);
+		
+		return "new";
+	}
+	
+	@GetMapping("/updatenew")
+	public String updatenewProductView(Model model,
+			@RequestParam(name="category", defaultValue = "1") String kind) {
+		
+		List<Selling_Product> sproductList = productService.findNewProductsByCategory(kind);
+		System.out.println(sproductList);
+		model.addAttribute("sproductList", sproductList);
+		
+		return "new :: newproduct_list_elements";
+	}
 
 	// 상품 페이지
 	@GetMapping("/product")
@@ -69,14 +92,16 @@ public class MainController {
 
 		int pageSize = 12;
 		Pageable pageable;
-		if ("latest".equalsIgnoreCase(sort)) {
-			pageable = PageRequest.of(page, pageSize, Sort.by("sseq").descending());
+		if ("longvalid".equalsIgnoreCase(sort)) {
+			pageable = PageRequest.of(page, pageSize, Sort.by("valid").ascending());
 		} else if ("lowprice".equalsIgnoreCase(sort)) {
 			pageable = PageRequest.of(page, pageSize, Sort.by("sellingprice").ascending());
 		} else if ("highprice".equalsIgnoreCase(sort)) {
 			pageable = PageRequest.of(page, pageSize, Sort.by("sellingprice").descending());
+		} else if ("shortvalid".equalsIgnoreCase(sort)) {
+			pageable = PageRequest.of(page, pageSize, Sort.by("valid").descending());
 		} else {
-			pageable = PageRequest.of(page, pageSize, Sort.by("sseq").descending());
+			pageable = PageRequest.of(page, pageSize, Sort.by("sellingprice").ascending());
 		}
 
 		List<Brand> brandList;
@@ -92,7 +117,7 @@ public class MainController {
 		} else {
 			sproductList = productService.getSellingProductFilter(pageable, bseq, category);
 		}
-
+		
 		int currentPage = sproductList.getNumber();
 		int totalPages = sproductList.getTotalPages();
 
@@ -121,14 +146,16 @@ public class MainController {
 
 		int pageSize = 12;
 		Pageable pageable;
-		if ("latest".equalsIgnoreCase(sort)) {
-			pageable = PageRequest.of(page, pageSize, Sort.by("sseq").descending());
+		if ("longvalid".equalsIgnoreCase(sort)) {
+			pageable = PageRequest.of(page, pageSize, Sort.by("valid").ascending());
 		} else if ("lowprice".equalsIgnoreCase(sort)) {
 			pageable = PageRequest.of(page, pageSize, Sort.by("sellingprice").ascending());
 		} else if ("highprice".equalsIgnoreCase(sort)) {
 			pageable = PageRequest.of(page, pageSize, Sort.by("sellingprice").descending());
+		} else if ("shortvalid".equalsIgnoreCase(sort)) {
+			pageable = PageRequest.of(page, pageSize, Sort.by("valid").descending());
 		} else {
-			pageable = PageRequest.of(page, pageSize, Sort.by("sseq").descending());
+			pageable = PageRequest.of(page, pageSize, Sort.by("sellingprice").ascending());
 		}
 
 		List<Brand> brandList = productService.getAllBrandList();
@@ -158,18 +185,24 @@ public class MainController {
 		return "product :: product_list_elements";
 
 	}
-
+	
 	@GetMapping("product_detail={sseq}")
 	public String productDetailView(Model model, @PathVariable Long sseq) {
 
-		List<Selling_Product> sproduct = productService.getSellingProductById(sseq);
+		Selling_Product sproduct = productService.getSellingProductById(sseq).get(0);
+		List<Selling_Product> othersproduct = productService.getSellingProductSamePseq(sproduct.getProduct().getPseq(), "Y");
+		Brand brand = sproduct.getProduct().getBrand();
+		List<Selling_Product> recomendsproduct = productService.getSellingProductRecomend(brand, "Y");
+		
+		othersproduct.removeIf(product -> product.getSseq().equals(sseq));
+		recomendsproduct.removeIf(product -> product.getSseq().equals(sproduct.getSseq()));
+		
+		System.out.println(recomendsproduct);
+		
 		model.addAttribute("sproduct", sproduct);
-
-		return "product_detail";
-	}
-
-	@GetMapping("product_detail")
-	public String productDetailTestView() {
+		model.addAttribute("othersproduct", othersproduct);
+		model.addAttribute("recomendsproduct", recomendsproduct);
+		
 		return "product_detail";
 	}
 
@@ -205,15 +238,16 @@ public class MainController {
 	}
 
 	@PostMapping("/submitSellForm")
-	@ResponseBody
-	public List<Selling_Product> submitSellFormf(@RequestParam("pseq") Long pseq,
-			@RequestParam("sellingprice") int sellingprice, @RequestParam("barcode") Long barcode,
+	public String submitSellFormf(@RequestParam("pseq") Long pseq,
+			@RequestParam("sellingprice") int sellingprice,
+			@RequestParam("barcode") Long barcode,
 			@RequestParam("valid") @DateTimeFormat(pattern = "yyyy-MM-dd") Date valid,
 			@RequestParam("barcode_image") MultipartFile barcodeImage,
 			@RequestParam("sellerId") String sellerId) throws IOException{
 
-		List<Selling_Product> result = productService.submitSellForm(pseq, sellingprice, barcode, valid, barcodeImage, sellerId);
-		return result;
+		productService.submitSellForm(pseq, sellingprice, barcode, valid, barcodeImage, sellerId);
+		
+		return "redirect:/mypage";
 	}
 
 	@GetMapping("notice")

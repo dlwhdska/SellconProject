@@ -36,12 +36,12 @@
 								<div class="product_title_sub">
 									<div class="product_title">
 										<ul>
-											<li><a href="">NEW</a></li>
+											<li>ALL PRODUCT</li>
 										</ul>
 									</div>
 									<div class="product_sub">
 										<ul>
-											<li><a href="/product" data-category="">ALL</a></li>
+											<li><a href="/product" data-category="">전체보기</a></li>
 											<li><a href="/product?category=1" data-category="1">카페 / 디저트</a></li>
 											<li><a href="/product?category=2" data-category="2">패스트푸드</a></li>
 											<li><a href="/product?category=3" data-category="3">여행 / 숙박</a></li>
@@ -86,9 +86,10 @@
 												총<strong id="product_total" th:text="${totalProducts}"></strong>개
 											</p>
 											<div class="pd_sort" id="Product_ListMenu">
-												<a href="#" class="latest sort-button active" data-sort="latest">최신순</a>
-												<a href="#" class="lowprice sort-button" data-sort="lowprice">낮은가격순</a>
-												<a href="#" class="highPrice sort-button" data-sort="highprice">높은가격순</a>
+												<a href="#" class="lowprice sort-button active" data-sort="lowprice">최저가순</a>
+												<a href="#" class="highPrice sort-button" data-sort="highprice">최고가순</a>
+												<a href="#" class="longvalid sort-button" data-sort="longvalid">짧은기한순</a>
+												<a href="#" class="shortvalid sort-button" data-sort="shortvalid">긴기한순</a>
 											</div>
 										</div>
 									</div>
@@ -114,7 +115,7 @@
 																<p class="name" th:text=${product.product.productName}></p>
 															</dd>
 															<dd class="product_price">
-																<p class="discount">%</p>
+																<p class="discount" th:text="${product.discount + '%'}"></p>
 																<p class="sell_price" th:text="${#numbers.formatInteger(product.sellingprice, 3, 'COMMA')}"></p>
 																<p class="price" th:text="${#numbers.formatInteger(product.product.price, 3, 'COMMA')}"></p>
 															</dd>

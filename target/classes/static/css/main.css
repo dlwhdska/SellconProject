@@ -226,7 +226,7 @@ h3>a{
   padding-right: 8px;
   margin: 0;
   font-size: 16px;
-  color: #964e50;
+  color: #5da0d8;
   font-weight: bold;
 }
 
@@ -238,7 +238,7 @@ h3>a{
 }
 
 .validity_icon{
-  width: 38.750px;
+  width: 55px;
   height: 20px;
   border-radius: 15px;
   overflow: hidden;
@@ -262,7 +262,7 @@ h3>a{
 }
 
 .validity{
-  color: #964e50;
+  color: #221f20;
   font-size: 15px;
   line-height: 1;
   padding: 2px 1px;
@@ -285,6 +285,13 @@ h3>a{
   z-index: 3;
 }
 
+.cart_in_icon:hover {
+	background: url(../images/icon_cart_blue.png) no-repeat;
+	background-size: 100% auto;
+	background-position: center;
+	transition: background 0.3s ease-in-out;
+}
+
 .product_brand{
   position: static;
   width: 100%;
@@ -292,7 +299,7 @@ h3>a{
 }
 
 .brand{
-  color: #964e50;
+  color: #5da0d8;
   font-size: 15px;
 }
 
@@ -470,6 +477,10 @@ h3>a{
   background-color: #33cccc;
   color: white;
   transition: 0.3s ease-in-out;
+}
+
+.hover-move-active{
+		
 }
 
 /*login*/
@@ -726,7 +737,6 @@ fieldset{
   line-height: 65px;
   margin-bottom: 10px;
 }
-
 /* 모달 스타일 */
 .modal {
   display: none;
