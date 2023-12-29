@@ -1,0 +1,126 @@
+/* 테이블 전체 스타일 */
+.settlement_page {
+	font-family: Arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+/* 테이블 헤더 스타일 */
+.settlement_page th {
+	background-color: #f2f2f2;
+	color: #333;
+	font-weight: bold;
+	padding: 8px;
+	border-bottom: 1px solid #ddd;
+	text-align: center;
+}
+
+/* 테이블 셀 스타일 */
+.settlement_page td {
+	font-size: small;
+	padding: 8px;
+	border-bottom: 1px solid #ddd;
+	text-align: center;
+}
+
+/* 짝수 행의 배경색 변경 */
+.settlement_page tbody tr:nth-child(even) {
+	background-color: white;
+}
+
+.st_sort {
+	float: right;
+	font-size: 15px;
+}
+
+.st_sort a {
+	position: relative;
+	display: inline-block;
+	padding: 0 15px;
+	color: #7e7e7e;
+}
+
+.st_sort a:last-child {
+	padding-right: 0;
+}
+
+.rateValue {
+	font-size: 16px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+#rate {
+	border: none;
+	width: 50px;
+	border-bottom: 1px solid #bababa;
+	margin-bottom: 10px;
+	text-align: right;
+	background: transparent;
+}
+
+#rate:focus {
+	outline: none;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.rateValue span {
+	margin-left: 5px;
+}
+
+#btn_settlement {
+	width: 100px;
+	height: 35px;
+	background-color: #000;
+	color: white;
+	margin-left: 15px;
+	margin-bottom: 16px;
+}
+
+.btn_return {
+	width: 60px;
+	height: 30px;
+	background-color: #000;
+	color: white;
+}
+
+/* 페이지 */
+.pagination-wrapper {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px; /* 페이지네이션과 테이블 사이 여백 조절 */
+}
+
+.pagination {
+	list-style-type: none;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.pagination li {
+	margin: 0 5px;
+}
+
+/* 이전/다음 버튼 디자인 */
+.pagination li a {
+	text-decoration: none;
+	padding: 5px 10px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #333;
+}
+
+.pagination li.active a {
+	background-color: #007bff;
+	color: #fff;
+	border-color: #007bff;
+}
+
+.pagination li.disabled a {
+	pointer-events: none;
+	color: #ccc;
+}
