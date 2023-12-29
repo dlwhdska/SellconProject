@@ -33,6 +33,10 @@ public interface MemberService {
 	
 	List<Member> getMemberList(Member member);
 	
+	void memberListModify(Member member);
+	
+	void memberListDelete(Member member);
+	
 	default Member dtoToEntity(Member member) {
 		Member entity = member.builder()
 				.id(member.getId())

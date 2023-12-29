@@ -4,6 +4,8 @@
 <th:block th:include="adminIndex :: adminHead"></th:block>
 <link href="vendor/datatables/dataTables.bootstrap4.min.css"
 	rel="stylesheet">
+<script src="js/memberListModify.js"></script>
+<script src="js/memberListDelete.js"></script>
 </head>
 <body id="page-top">
 
@@ -55,7 +57,7 @@
 
 					<div class="card shadow mb-4">
 						<div class="card-body">
-							<div class="table-responsive">
+							<div class="table-responsive" id="mydiv">
 								<table class="table table-bordered" id="dataTable" width="100%"
 									cellspacing="0">
 									<thead>
@@ -85,18 +87,25 @@
 										</tr>
 									</tfoot>
 									<tbody>
-										<tr th:each="member : ${adminMemberList}">
-											<td th:text="${member.id}"></td>
-											<td th:text="${member.name}"></td>
-											<td th:text="${member.email}"></td>
-											<td th:text="${member.phone}"></td>
-											<td th:text="${member.bank}"></td>
-											<td th:text="${member.account}"></td>
-											<td th:text="${#dates.format(member.regdate, 'yyyy-MM-dd')}"></td>
-											<td th:text="${member.scamyn}"></td>
+										<tr th:each="member : ${adminMemberList}" class="member-row">
+											<td th:text="${member.id}" class="id"></td>
+											<td th:text="${member.name}" class="name"></td>
+											<td th:text="${member.email}" class="email"></td>
+											<td th:text="${member.phone}" class="phone"></td>
+											<td th:text="${member.bank}" class="bank"></td>
+											<td th:text="${member.account}" class="account"></td>
+											<td th:text="${#dates.format(member.regdate, 'yyyy-MM-dd')}"
+												class="regdate"></td>
+											<td><select class="scamyn" name="scamyn"
+												style="width: 50px; border: none; background-color: transparent; padding: 2px;">
+													<option th:selected="${member.scamyn == 'Y'}" value="Y">Y</option>
+													<option th:selected="${member.scamyn == 'N'}" value="N">N</option>
+											</select></td>
 											<td>
-												<button class="table-button-edit">수정</button>
-												<button class="table-button-delete">삭제</button>
+												<button class="table-button-edit"
+													onclick="memberListModify(this)">수정</button>
+												<button class="table-button-delete"
+													onclick="memberListDelete(this)">삭제</button>
 											</td>
 										</tr>
 									</tbody>

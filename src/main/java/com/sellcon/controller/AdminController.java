@@ -159,5 +159,24 @@ public class AdminController {
 		
 		return "adminMemberList";
 	}
+	
+	@PostMapping("/memberListModify")
+	public String memberListModify(Member member, RedirectAttributes rattr, HttpSession session) {
+		memberService.memberListModify(member);
+		
+		session.setAttribute("member", member);
+		
+		rattr.addAttribute("id", member.getId());
+		
+		return "redirect:adminMemberList";
+	} 
+	
+	@PostMapping("/memberListDelete")
+	public String memberListDelete(Member member) {
+		
+		memberService.memberListDelete(member);
+		
+		return "redirect:adminMemberList";
+	}
 
 }
