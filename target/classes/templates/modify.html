@@ -43,7 +43,7 @@
         </div>
         <div>
             <label for="regdate">생성 날짜:</label>
-            <input type="text" id="regdate" th:value="${#dates.format(member.regdate, 'yyyy/MM/dd HH:mm:ss')}" readonly>
+            <input type="text" id="regdate" th:value="${#dates.format(member.regdate, 'yyyy/MM/dd')}" readonly>
         </div>
         </form>
         <button onclick="modify()">수정</button>
