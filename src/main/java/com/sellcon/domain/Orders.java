@@ -36,7 +36,4 @@ public class Orders {
 	@JoinColumn(name="MEMBER_ID", updatable = false)
 	private Member member;
 
-	//@OneToMany(mappedBy="orders")
-	//private List<Order_Detail> orderdetails = new ArrayList<>();
-
 }

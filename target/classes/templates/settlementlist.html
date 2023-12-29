@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:include="adminIndex :: adminHead"></th:block>
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script src="js/settlement.js" defer></script>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="css/settlement.css">
+    <title>SettlementList</title>
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+	<th:block th:include="adminIndex :: adminnav"></th:block>
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Search 검색 -->
+                    <form id="searchForm" th:action="@{/settlementlist}" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <input type="hidden" id="search_keyword">
+					    <div class="input-group">
+					        <input id="searchInput" type="text" name="keyword" class="form-control bg-light border-0 small" placeholder="Search for..."
+					            aria-label="Search" aria-describedby="basic-addon2">
+					        <div class="input-group-append">
+					            <button id="searchButton" class="btn btn-primary" type="submit">
+					                <i class="fas fa-search fa-sm"></i>
+					            </button>
+					        </div>
+					    </div>
+					</form>
+
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                            placeholder="Search for..." aria-label="Search"
+                                            aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+                        <!-- Nav Item - Alerts -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bell fa-fw"></i>
+                                <!-- Counter - Alerts -->
+                                <span class="badge badge-danger badge-counter">3+</span>
+                            </a>
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="alertsDropdown">
+                                <h6 class="dropdown-header">
+                                    Alerts Center
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-primary">
+                                            <i class="fas fa-file-alt text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">December 12, 2019</div>
+                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-success">
+                                            <i class="fas fa-donate text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">December 7, 2019</div>
+                                        $290.29 has been deposited into your account!
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-warning">
+                                            <i class="fas fa-exclamation-triangle text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">December 2, 2019</div>
+                                        Spending Alert: We've noticed unusually high spending for your account.
+                                    </div>
+                                </a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                            </div>
+                        </li>
+
+                        <!-- Nav Item - Messages -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-envelope fa-fw"></i>
+                                <!-- Counter - Messages -->
+                                <span class="badge badge-danger badge-counter">7</span>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="messagesDropdown">
+                                <h6 class="dropdown-header">
+                                    Message Center
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
+                                            alt="...">
+                                        <div class="status-indicator bg-success"></div>
+                                    </div>
+                                    <div class="font-weight-bold">
+                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
+                                            problem I've been having.</div>
+                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
+                                            alt="...">
+                                        <div class="status-indicator"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">I have the photos that you ordered last month, how
+                                            would you like them sent to you?</div>
+                                        <div class="small text-gray-500">Jae Chun · 1d</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
+                                            alt="...">
+                                        <div class="status-indicator bg-warning"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">Last month's report looks great, I am very happy with
+                                            the progress so far, keep up the good work!</div>
+                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
+                                            alt="...">
+                                        <div class="status-indicator bg-success"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
+                                            told me that people say this to all dogs, even if they aren't good...</div>
+                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                            </div>
+                        </li>
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <img class="img-profile rounded-circle"
+                                    src="img/undraw_profile.svg">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Settings
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Activity Log
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-4 text-gray-800">Settlement</h1>
+                    <form th:action="@{updateSettlement}" id="settlementForm" method="post">
+                    	<div class="rateValue">
+                    		<span>수수료</span>
+                    		<input type="text" id="rate" name="rate" oninput="updateTableCell(this.value)">
+                    		<span>%</span>
+                    		<input type="button" id="btn_settlement" value="정산하기" th:onclick="selectUpdateSettlement()">
+                    	</div>
+                    
+						<div class="st_sort">
+							<a href="#" id="stynY" data-styn="Y">완료정산</a><a href="#" id="stynN" data-styn="N">미정산</a><a href="#" id="stynR" data-styn="R">반려</a>
+						</div>
+
+				<div class="settlement-container" th:fragment="settlementList">
+					<table class="settlement_page">
+					  <thead>
+					    <tr>
+					      <th th:if="${styn ne 'Y'}"><input type="checkbox" id="selectAll" class="selectAll" onclick="toggleAllCheckBoxes(this)"></th>
+					      <th>No</th>
+					      <th>주문번호</th>
+					      <th>상품명</th>
+					      <th>판매가격</th>
+					      <th>수수료</th>
+					      <th>정산금액</th>
+					      <th>판매자ID</th>
+					      <th>정산여부</th>
+					      <th>주문일</th>
+					      <th><div th:text="정산일" th:unless="${styn ne 'Y'}"></div></th>
+					    </tr>
+					  </thead>
+					  <tbody>
+						    <tr th:each="settlement, stat : ${settlementList}">
+						        <input type="hidden" th:id="'stseq' + ${settlement.stseq}" th:value="${settlement.stseq}">
+						        <td th:if="${styn ne 'Y'}"><input type="checkbox" id="'selectCheckbox' + ${stat.index}" class="selectCheckbox" th:onclick="toggleIndividualCheckbox(this)" th:data-stseq="${settlement.stseq}"></td>
+						        <td th:text="${settlementList.totalElements - (size * (currentPage - 1)) - stat.count + 1}" class="no"></td> 
+						        <td th:text="${settlement.oseq}" class="oseq"></td>
+						        <td th:text="${settlement.productNames}" class="pName"></td>
+						        <td th:text="${#numbers.formatInteger(settlement.totalPrice, 3, 'COMMA')}" class="sellPrice"></td>
+						        <td class="rateArea">
+								    	<div th:text="${settlement.rate}" th:if="${settlement.styn == 'Y'}"></div>
+								    	<div th:unless="${settlement.styn == 'Y'}" class="updateRate"></div>
+								</td>
+								<td class="settleAmountArea">
+								    	<div th:text="${#numbers.formatInteger(settlement.settle_amount, 3, 'COMMA')}" th:if="${settlement.styn == 'Y'}"></div>
+								    	<div th:unless="${settlement.styn == 'Y'}" class="settlementAmount"></div>
+								</td>
+						        <td th:text="${settlement.sell_id}" class="seller"></td>
+						        <td th:text="${settlement.styn}" class="styn"></td>
+						        <td th:text="${#dates.format(settlement.orderdate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+						        <td class="settledate">
+						        	<div th:text="${#dates.format(settlement.settledate, 'yyyy-MM-dd HH:mm:ss')}" th:if="${settlement.styn == 'Y'}"></div>
+						            <button type="button" class="btn_return" th:if="${settlement.styn == 'N'}" th:onclick="returnSettlement([[${settlement.stseq}]])">반려</button>
+						            <button type="button" class="btn_return" th:if="${settlement.styn == 'R'}" th:onclick="returnReverseSettlement([[${settlement.stseq}]])">취소</button>
+						        </td>
+						    </tr>
+						</tbody>
+
+					</table><!-- settlement_page 닫는 태그 -->
+
+
+						<!-- settlement 페이지 표시 -->
+							<div class="pagination-wrapper">
+							    <ul class="pagination">
+							        <li th:class="${currentPage == 1} ? 'disabled' : ''">
+							            <a th:href="@{/settlementList(styn=${styn}, page=1, keyword=${keyword})}">&laquo;</a>
+							        </li>
+							        <li th:each="pageNumber : ${#numbers.sequence(1, totalPages > 0 ? totalPages : 1)}"
+							            th:class="${currentPage == pageNumber} ? 'active' : ''">
+							            <a th:href="@{/settlementList(styn=${styn}, page=${pageNumber}, keyword=${keyword})}"
+							                th:text="${pageNumber}"></a>
+							        </li>
+							        <li th:class="${currentPage == totalPages} ? 'disabled' : ''">
+							            <a th:href="@{/settlementList(styn=${styn}, page=${totalPages}, keyword=${keyword})}">&raquo;</a>
+							        </li>
+							    </ul>
+							</div>
+
+
+
+							<!-- settlement-container 닫는 태그 -->
+				
+				</form>
+				
+			</div><!-- /.container-fluid -->
+			
+           </div><!-- End of Main Content -->
+
+        </div>
+        
+        <!-- End of Content Wrapper -->
+        
+	<th:block th:include="adminIndex :: adminFooter"></th:block>
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+	<th:block th:include="adminIndex :: adminPageUp"></th:block>
+ 	<th:block th:include="adminIndex :: adminModal"></th:block>
+
+	<th:block th:include="adminIndex :: adminScript"></th:block>
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="js/demo/datatables-demo.js"></script>
+
+</body>
+</html>
