@@ -24,11 +24,17 @@ public class QSettlement extends EntityPathBase<Settlement> {
 
     public final QOrders orders;
 
+    public final NumberPath<java.math.BigDecimal> rate = createNumber("rate", java.math.BigDecimal.class);
+
+    public final StringPath sell_id = createString("sell_id");
+
+    public final NumberPath<Integer> settle_amount = createNumber("settle_amount", Integer.class);
+
     public final DateTimePath<java.util.Date> settledate = createDateTime("settledate", java.util.Date.class);
 
-    public final NumberPath<Long> settlseq = createNumber("settlseq", Long.class);
+    public final NumberPath<Long> stseq = createNumber("stseq", Long.class);
 
-    public final StringPath settlyn = createString("settlyn");
+    public final StringPath styn = createString("styn");
 
     public QSettlement(String variable) {
         this(Settlement.class, forVariable(variable), INITS);
