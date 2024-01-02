@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.sellcon.domain.Settlement;
+import com.sellcon.dto.MySettlementDTO;
 import com.sellcon.dto.SettlementDTO;
 import com.sellcon.repository.SettlementRepository;
 
@@ -89,6 +90,37 @@ public class SettlementServiceImpl implements SettlementService {
 		Integer unsettlements = settlementRepo.getTotalSettlementStynNR(sell_id);
 		
 		return unsettlements;
+	}
+	
+	public List<MySettlementDTO> getMySettlementList(String sell_id, String styn) {
+	    List<Object[]> mySettlementList = settlementRepo.findMySettlementList(sell_id, styn);
+
+	    Set<Long> oseqSet = new HashSet<>();
+	    List<MySettlementDTO> resultList = new ArrayList<>();
+
+	    for (Object[] obj : mySettlementList) {
+	        Long oseq = Long.parseLong(obj[0].toString());
+
+	        if (!oseqSet.contains(oseq)) {
+	            MySettlementDTO settlementDTO = mySettlementList(obj);
+	            resultList.add(settlementDTO);
+	            oseqSet.add(oseq);
+	        }
+	    }
+ 	    return resultList;
+	}
+	
+	public List<MySettlementDTO> getSettlementDetail(Long oseq) {
+	    List<Object[]> settlementDetail = settlementRepo.findSettlementDetails(oseq);
+	    
+	    List<MySettlementDTO> settlementDTOList = new ArrayList<>();
+
+	    for (Object[] detail : settlementDetail) {
+	        MySettlementDTO mySettlementDTO = mySettlementList(detail);
+	        settlementDTOList.add(mySettlementDTO);
+	    }
+
+	    return settlementDTOList;
 	}
 
 }

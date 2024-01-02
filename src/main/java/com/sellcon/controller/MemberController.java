@@ -118,6 +118,7 @@ public class MemberController {
 		return "redirect:modify";
 	}
 	
+
 	@PostMapping("/remove")
 	public String remove(Member member, HttpSession session) {
 		memberService.remove(member);
@@ -139,6 +140,7 @@ public class MemberController {
 	    }
 	}
 	
+
 	@GetMapping("/findpwd")
 	public void findpwdView() {
 		

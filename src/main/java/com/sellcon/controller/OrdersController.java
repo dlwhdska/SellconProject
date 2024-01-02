@@ -112,7 +112,7 @@ public class OrdersController {
 
 		Long oseq = orders.getOseq();
 
-		return "redirect:/main";
+		return "redirect:/myOrderDetail?oseq=" + oseq;
 	}
 
 }

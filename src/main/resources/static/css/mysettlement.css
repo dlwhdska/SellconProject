@@ -1,0 +1,119 @@
+* {
+	box-sizing: border-box;
+	font-family: 'Poppins', 'Noto Sans KR', sans-serif;
+	list-style: none;
+	text-decoration: none;
+	padding: 0;
+}
+
+#wrap{
+  padding-top: 156px !important;
+  overflow-x: hidden;
+  letter-spacing: 0px;
+}
+
+a{
+    color: #000;
+    font-size: 15px;
+}
+
+.plus{
+	padding-right: 10px;
+}
+
+.container{
+   max-width: 1200px;
+   margin: 0px auto;
+}
+
+.mySettlementPage{
+	display: flex;
+	width: 1050px;
+}
+
+.mySettlementInfo{
+	margin-top: 5%;
+	width: auto;
+	margin-left: auto;
+	margin-right: auto;
+	align-items: center;
+	justify-content: center
+}
+
+.MP_layoutFix{
+    width: 1200px;
+    margin: 0 auto;
+    letter-spacing: 0;
+    font-family: 'Noto Sans KR';
+}
+
+.MP_subSection{
+    padding: 60px 0 30px;
+}
+
+.MP_title_wrap .MP_fontsize{
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
+.MP_fontsize{
+    color: #000;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.MP_moreBtn{
+    display: inline-block;
+    float: right;
+}
+
+.MP_moreBtn a{
+    font-size: 15px;
+    color: #000;
+    position: relative;
+}
+
+
+table{
+    width: 100%;
+    border: 0;
+    border-style: 0;
+    border-collapse: collapse;
+}
+
+thead{
+    width: 100%;
+}
+
+thead th{
+    height: 50px;
+    font-size: 17px;
+    vertical-align: middle;
+    color: #000;
+    background-color: #eeeeee;
+}
+
+tbody td{
+    height: 80px;
+    text-align: center;
+    padding-left: 0;
+    font-size: 15px;
+    color: #000;
+    border-top: 1px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee;
+}
+
+#totalAmount {
+	width: 100%;
+	text-align: center;
+	margin: 20px 0;
+	padding: 10px;
+	font-size: 20px;
+	border: 1px solid #dddddd;
+}
+
+.pName {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
