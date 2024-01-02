@@ -48,24 +48,6 @@ public class MypageController {
 	        return "redirect:/login"; 
 	    }
 	}
-	
-	/*
-	@RequestMapping("/mypage")
-	public String getMySettleAmount(HttpSession session, Model model) {
-		Member member = (Member) session.getAttribute("member");
-		int totalSettleAmount = settlementService.getMySettleAmount(member.getId());
-		int notYetSettleAmount = settlementService.getMyEstimateSettleAmount(member.getId());
-		int completedSettlements = settlementService.completedSettlements(member.getId());
-		int unsettlemnts = settlementService.unsettlements(member.getId());
-
-		model.addAttribute("totalSettleAmount", totalSettleAmount);
-		model.addAttribute("notYetSettleAmount", notYetSettleAmount);
-		model.addAttribute("completedSettlements", completedSettlements);
-		model.addAttribute("unsettlemnts", unsettlemnts);
-
-		return "mypage";
-	}
-	*/
 
 	// 주문 요약 정보
 	@RequestMapping("/myOrder")
@@ -81,7 +63,6 @@ public class MypageController {
 		model.addAttribute("currentPage", page);
 		model.addAttribute("totalItems", myOrder.getTotalElements());
 		model.addAttribute("totalPages", myOrder.getTotalPages());
-
 		model.addAttribute("size", size);
 
 		return "myorder";

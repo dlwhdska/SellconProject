@@ -1,3 +1,14 @@
+// 할인율 계산
+$(document).ready(function() {
+   $('.discount').each(function(index) {
+      var price = $('.price').eq(index).text().replace(/\D/g, '');
+      var sellingPrice = $('.sell_price').eq(index).text().replace(/\D/g, '');
+
+      var productDiscount = ((price - sellingPrice) / price) * 100;
+      $(this).text(Math.floor(productDiscount) + '%');
+   });
+});
+
 function showSuccessModal() {
   $('#myModal').css('display', 'block');
 }
@@ -151,25 +162,27 @@ function selectOrder() {
 }
 
 // totalsummary 영역 계산
-var sellingPrices = $('.sell_price');
-var prices = $('.price');
-var totalPrice = 0;
-var finalPrice = 0;
+$(document).ready(function() {
+    var sellingPrices = $('.sell_price');
+    var prices = $('.price');
+    var totalPrice = 0;
+    var finalPrice = 0;
 
-sellingPrices.each(function(index) {
-    var sellPrice = parseInt(prices.eq(index).text().replace(/\D/g, ''));
-    var price = parseInt($(this).text().replace(/\D/g, ''));
+    sellingPrices.each(function(index) {
+        var sellPrice = parseInt(prices.eq(index).text().replace(/\D/g, ''));
+        var price = parseInt($(this).text().replace(/\D/g, ''));
 
-    totalPrice += sellPrice;
-    finalPrice += price;
+        totalPrice += sellPrice;
+        finalPrice += price;
+    });
+
+    var totalDiscountPrice = finalPrice - totalPrice;
+
+    var totalProductPrice = $('.totalProductPrice');
+    var totalDiscount = $('.totalDiscount');
+    var finalPayment = $('.finalPayment');
+
+    totalProductPrice.text(totalPrice.toLocaleString('ko-KR'));
+    totalDiscount.text(totalDiscountPrice.toLocaleString('ko-KR'));
+    finalPayment.text(finalPrice.toLocaleString('ko-KR'));
 });
-
-var totalDiscountPrice = finalPrice - totalPrice;
-
-var totalProductPrice = $('.totalProductPrice');
-var totalDiscount = $('.totalDiscount');
-var finalPayment = $('.finalPayment');
-
-totalProductPrice.text(totalPrice.toLocaleString('ko-KR'));
-totalDiscount.text(totalDiscountPrice.toLocaleString('ko-KR'));
-finalPayment.text(finalPrice.toLocaleString('ko-KR'));
