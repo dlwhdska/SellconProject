@@ -4,6 +4,36 @@
 	<th:block th:include="adminIndex :: adminHead"></th:block>
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
+<style>
+	.checkN{
+		color: rgb(210, 45, 45);
+	}
+	
+	.checkY{
+		color: #4e73df;
+	}
+	
+	.image-preview-container{
+		position: fixed;
+		top: 50%;
+		right: 50%;
+		transform: translate(-53%, -50%);
+		z-index: 999;
+		background-color: #fff;
+		padding: 30px;
+		border: 1px solid #ccc;
+		border-radius: 10px;
+		width: 420px;
+	}
+	
+	.image-preview-container{
+		text-align: center;
+	}
+	
+	.image-cell:hover{
+		color: #4e73df;
+	}
+</style>
 <body id="page-top">
 
     <div id="wrapper">
@@ -60,6 +90,7 @@
                                             <th>바코드이미지</th>
                                             <th>유효기간</th>
                                             <th>신청일</th>
+                                            <th>판매자</th>
                                             <th>승인</th>
                                         </tr>
                                     </thead>
@@ -72,18 +103,25 @@
                                             <th>바코드이미지</th>
                                             <th>유효기간</th>
                                             <th>신청일</th>
+                                            <th>판매자</th>
                                             <th>승인</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <tr th:each="sproduct : ${sproductList}">
-                                        	<td th:text="${sproduct.sseq}"></td>
+                                        	<td><a th:text="${sproduct.sseq}" th:href="@{'adminSellDetail=' + ${sproduct.sseq}}"></a></td>
                                             <td th:text="${sproduct.product.productName}"></td>
                                             <td th:text="${sproduct.sellingprice}"></td>
                                             <td th:text="${sproduct.barcode}"></td>
-                                            <td>이미지</td>
-                                            <td th:text="${sproduct.valid}"></td>
-                                            <td th:text="${sproduct.regdate}"></td>
+                                            <td th:text="${sproduct.barcode_image}" class="image-cell" th:data-image="${sproduct.barcode_image}" onmouseover="showImagePreview(this)" style="cursor: pointer;"></td>
+                                            <td th:text="${#dates.format(sproduct.valid, 'YYYY-MM-dd')}"></td>
+                                            <td th:text="${#dates.format(sproduct.regdate, 'YYYY-MM-dd HH:mm')}"></td>
+                                            <td th:text="${sproduct.member.name}"></td>
+                                            <td th:text="${sproduct.checkp == null ? '미승인' : '승인'}"
+                                            th:class="${sproduct.checkp == null ? 'checkN' : 'checkY'}"
+                                            class="approval-cell" th:data-sseq="${sproduct.sseq}"
+                                            th:data-checkp="${sproduct.checkp}"
+                                            onclick="toggleApproval(this)" style="cursor: pointer;"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -103,7 +141,60 @@
 
     <th:block th:include="adminIndex :: adminPageUp"></th:block>
  	<th:block th:include="adminIndex :: adminModal"></th:block>
-
+ 	<script>
+	    function toggleApproval(cell) {
+			
+	        var sseq = cell.getAttribute('data-sseq');
+	        var currentApproval = cell.getAttribute('data-checkp');
+	        var newApproval = (currentApproval === 'Y') ? '' : 'Y';
+	
+			console.log(sseq);
+			console.log(currentApproval);
+			
+	        $.ajax({
+	            type: 'POST',
+	            url: '/updateCheckP', // 서버에서 해당 업데이트를 처리하는 엔드포인트로 변경
+	            data: {
+	                sseq: sseq,
+	                checkp: newApproval
+	            },
+	            success: function () {
+	                cell.textContent = (newApproval == 'Y') ? '승인' : '미승인';
+	                cell.setAttribute('data-checkp', newApproval);
+	                
+	                if(newApproval === 'Y'){
+						cell.classList.remove('checkN');
+						cell.classList.add('checkY');
+					}else{
+						cell.classList.remove('checkY');
+						cell.classList.add('checkN');
+					}
+	            },
+	            error: function () {
+	                console.error('서버 요청 실패');
+	            }
+	        });
+	    }
+	    
+    function showImagePreview(element) {
+        var imagePath = element.getAttribute('data-image');
+        console.log('Mouse Over!');
+        
+        var previewContainer = document.createElement('div');
+        previewContainer.className = 'image-preview-container';
+        
+        var previewImage = document.createElement('img');
+        previewImage.src = imagePath;
+        previewImage.style.maxWidth = '100%';
+        
+        previewContainer.appendChild(previewImage);
+        document.body.appendChild(previewContainer);
+        
+        element.addEventListener('mouseout', function() {
+            document.body.removeChild(previewContainer);
+        });
+    }
+	 </script>
 	<th:block th:include="adminIndex :: adminScript"></th:block>
     <script src="vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>

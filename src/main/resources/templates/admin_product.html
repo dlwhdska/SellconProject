@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:include="adminIndex :: adminHead"></th:block>
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+</head>
+<body id="page-top">
+
+    <div id="wrapper">
+
+		<th:block th:include="adminIndex :: adminnav"></th:block>
+
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+
+				<th:block th:include="adminIndex :: adminTopbar"></th:block>
+                
+                <div class="container-fluid">
+
+                    <br><h1 class="h3 mb-2 text-gray-800">상품목록</h1><br>
+
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>번호</th>
+                                            <th>브랜드</th>
+                                            <th>상품명</th>
+                                            <th>가격</th>
+                                            <th>상품정보</th>
+                                            <th>생성일</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>번호</th>
+                                            <th>브랜드</th>
+                                            <th>상품명</th>
+                                            <th>가격</th>
+                                            <th>상품정보</th>
+                                            <th>생성일</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr th:each="product : ${productList}">
+                                        	<td><a th:text="${product.pseq}" th:href="@{'adminProductDetail=' + ${product.pseq}}"></td>
+                                            <td th:text="${product.brand.brandName}"></td>                                        	
+                                            <td th:text="${product.productName}"></td>
+                                            <td th:text="${product.price}"></td>
+                                            <td th:text="${product.content}"></td>
+                                            <td th:text="${product.regdate}"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <a class="btn btn-primary" href="/addProduct">상품추가</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <th:block th:include="adminIndex :: adminFooter"></th:block>
+
+        </div>
+
+    </div>
+
+    <th:block th:include="adminIndex :: adminPageUp"></th:block>
+ 	<th:block th:include="adminIndex :: adminModal"></th:block>
+
+	<th:block th:include="adminIndex :: adminScript"></th:block>
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="js/demo/datatables-demo.js"></script>
+</body>
+</html>

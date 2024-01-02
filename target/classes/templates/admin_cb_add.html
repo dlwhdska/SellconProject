@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:include="adminIndex :: adminHead"></th:block>
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+</head>
+<body id="page-top">
+
+    <div id="wrapper">
+
+		<th:block th:include="adminIndex :: adminnav"></th:block>
+
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+
+				<th:block th:include="adminIndex :: adminTopbar"></th:block>
+                
+                <div class="container-fluid">
+
+                    <br><h1 class="h3 mb-2 text-gray-800">상품품목관리</h1><br>
+
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+							<p class="h5" style="padding: 10px 0;">상품품목 추가</p>
+							<div class=bordersection style="border: 1px solid rgb(215, 215, 215); width: 100%; height: 100%; border-radius: 8px; padding: 30px;">
+								<img id="brandImage" src="images/noimage.png" class="rounded img-fluid mx-auto d-block img-thumbnail" alt="Cinque Terre" style="width: 510px; height: 510px;">
+							</div>
+							<div class="d-grid mt-4">
+							    <label for="brandImageInput" class="btn btn-warning btn-block" style="padding: 10px 0;">
+							        브랜드 이미지파일 선택
+							        <input type="file" id="brandImageInput" style="display: none;" onchange="displayImage(this)">
+							    </label>
+							</div>
+							<div class="input-group mb-3 mt-4">
+								<span class="input-group-text">카테고리</span>
+								<select id="categoryInput" class="form-control mr-3" field="" name="category">
+								<th:block th:each="category : ${categoryList}">
+								 	<option th:value="${category.kind}" th:text="${category.ct_name}"></option>
+								</th:block>     							
+    							</select>
+								<span class="input-group-text ml-3">브랜드명</span>
+								<input type="text" class="form-control brandName" placeholder="브랜드명을 입력해주세요">
+							</div>
+							<div class="mb-3 d-flex justify-content-end" style="width: 100%;">
+								<div class="btn btn-warning" onclick="uploadBrand()">등록</div>
+								<div class="btn btn-dark ml-2" onclick="goBack()">취소</div>
+							</div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <th:block th:include="adminIndex :: adminFooter"></th:block>
+
+        </div>
+
+    </div>
+
+    <th:block th:include="adminIndex :: adminPageUp"></th:block>
+ 	<th:block th:include="adminIndex :: adminModal"></th:block>
+	<th:block th:include="adminIndex :: adminScript"></th:block>
+	<script>
+		function displayImage(input) {
+	        if (input.files && input.files[0]) {
+	            var reader = new FileReader();
+	
+	            reader.onload = function (e) {
+	                document.getElementById('brandImage').src = e.target.result;
+	            };
+	
+	            reader.readAsDataURL(input.files[0]);
+	        }
+	    }
+	    
+	    function uploadBrand(){
+			
+			var selectCategory = document.getElementById('categoryInput').value;
+			var brandName = document.querySelector('.brandName').value;
+			var brandImage = document.getElementById('brandImageInput').files[0];
+
+			console.log(selectCategory);
+			console.log(brandName);
+			console.log(brandImage);
+			
+			if (!selectCategory || !brandName || !brandImage) {
+		        alert('모든 브랜드 정보를 채워주세요.');
+		        return;
+		    }			
+
+			var formData = new FormData();
+			formData.append('kind', selectCategory);
+			formData.append('brandName', brandName);
+			formData.append('brandImage', brandImage);
+			
+			$.ajax({
+				type: 'POST',
+				url: '/uploadBrand',
+				data: formData,
+				processData: false,
+				contentType: false,
+				dataType: 'json',
+				success: function(response) {
+					console.log(response + "성불");
+				},
+				error: function(error) {
+					console.error(error.message);
+				}
+			});
+			
+			alert('등록이 완료되었습니다.');
+			window.location.href = '/admin_cb';
+			
+		}
+		
+		function goBack() {
+			window.history.back();
+		}
+		
+	</script>
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="js/demo/datatables-demo.js"></script>
+</body>
+</html>

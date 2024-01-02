@@ -26,7 +26,7 @@
 
 				<div class="main_container">
 					<div class="main_banner">
-						<img src="images/001.png">
+						<img src="images/main_01.png">
 					</div>
 				</div>
 
@@ -97,13 +97,11 @@
 
 				<div class="main_section1 main_section_set">
 					<h3>
-						<strong>셀콘이 추천하는 상품</strong> <a href=""> + 더보기<span
+						<strong>셀콘에 등록된 최신 상품</strong><a th:href="@{/new}"> + 더보기<span
 							class="more"></span></a>
 					</h3>
 
-					<div class="sub_tap">
-						<span class="on">all</span> <span>new</span> <span>sale</span>
-					</div>
+					<div class="sub_tap"></div>
 
 					<div class="main_how_list">
 						<div class="product_img_container">
@@ -130,11 +128,11 @@
 													<p class="name" th:text=${product.product.productName}></p>
 												</dd>
 												<dd class="product_price">
-													<p class="discount"></p>
+													<p class="discount" th:text="${product.discount + '%'}"></p>
 													<p class="sell_price"
-														th:text="${#numbers.formatInteger(product.sellingprice, 3, 'COMMA')}"></p>
+														th:text="${#numbers.formatInteger(product.sellingprice, 3, 'COMMA') + '원'}"></p>
 													<p class="price"
-														th:text="${#numbers.formatInteger(product.product.price, 3, 'COMMA')}"></p>
+														th:text="${#numbers.formatInteger(product.product.price, 3, 'COMMA') + '원'}"></p>
 												</dd>
 												<dd class="product_validity">
 													<span class="validity_icon"> <img
@@ -164,7 +162,7 @@
 				<div class="main_section2" id="main_section2">
 					<div class="main_section_set find_brand_list">
 						<h3>
-							<strong>내가 원하는 브랜드 찾기</strong>
+							<strong>내가 찾는 다양한 브랜드</strong>
 						</h3>
 
 						<div class="brand_list">
@@ -172,12 +170,13 @@
 								<span value="" name="" th:each="brand, iterStat : ${brandList}" th:if="${iterStat.index < 16}"> <a
 									th:href="@{/product(category=${categoryKind}, brand=${brand.bseq})}"
 									th:data-brandcategory="${categoryKind}"
-									th:data-brand="${brand.bseq}"}> <img
-										th:src="${brand.brandImage}">
+									th:data-brand="${brand.bseq}"
+									th:data-brandname="${brand.brandName}"> 
+									<img th:src="${brand.brandImage}">
 								</a>
 								</span>
 							</div>
-							<div class="find_brand_btn">보러가기</div>
+							<div class="find_brand_btn"><a th:href="@{/product}">보러가기</a></div>
 						</div>
 					</div>
 				</div>

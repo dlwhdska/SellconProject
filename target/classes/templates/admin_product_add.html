@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:include="adminIndex :: adminHead"></th:block>
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+</head>
+<body id="page-top">
+
+    <div id="wrapper">
+
+		<th:block th:include="adminIndex :: adminnav"></th:block>
+
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+
+				<th:block th:include="adminIndex :: adminTopbar"></th:block>
+                
+                <div class="container-fluid">
+
+                    <br><h1 class="h3 mb-2 text-gray-800">상품관리</h1><br>
+
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+							<p class="h5" style="padding: 10px 0;">상품 추가</p>
+							<div class=bordersection style="border: 1px solid rgb(215, 215, 215); width: 100%; height: 100%; border-radius: 8px; padding: 30px;">
+								<img id="productImage" src="images/noimage.png" class="rounded img-fluid mx-auto d-block img-thumbnail" alt="Cinque Terre" style="width: 510px;">
+							</div>
+							<div class="d-grid mt-4">
+							    <label for="productImageInput" class="btn btn-warning btn-block" style="padding: 10px 0;">
+							        상품 이미지파일 선택
+							        <input type="file" id="productImageInput" style="display: none;" onchange="displayImage(this)">
+							    </label>
+							</div>
+							<div class="input-group mb-3 mt-4">
+								
+								<span class="input-group-text">브랜드명</span>
+								<select id="brandInput" class="form-control mr-3" field="" name="brand">
+								<th:block th:each="brand : ${brandList}">
+								 	<option th:value="${brand.bseq}" th:text="${brand.brandName}"></option>
+								</th:block>     							
+    							</select>
+								<span class="input-group-text ml-3"  style="width: 90px;">상품명</span>
+								<input type="text" class="form-control productName" placeholder="상품명을 입력해주세요">
+								
+							</div>
+							<div class="input-group mb-3">
+								<span class="input-group-text text-center" style="width: 90px;">가격</span>
+								<input type="text" class="form-control mr-3 price" placeholder="상품가격을 입력해주세요">
+								<span class="input-group-text ml-3">상품정보</span>
+								<input type="text" class="form-control" placeholder="상품정보를 입력해주세요" id="productContent">
+							</div>
+							
+							<div class="mb-3 d-flex justify-content-end" style="width: 100%;">
+								<div class="btn btn-warning" onclick="uploadProduct()">등록</div>
+								<div class="btn btn-dark ml-2" onclick="goBack()">취소</div>
+							</div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <th:block th:include="adminIndex :: adminFooter"></th:block>
+
+        </div>
+
+    </div>
+
+    <th:block th:include="adminIndex :: adminPageUp"></th:block>
+ 	<th:block th:include="adminIndex :: adminModal"></th:block>
+	<th:block th:include="adminIndex :: adminScript"></th:block>
+	<script>
+		function displayImage(input) {
+	        if (input.files && input.files[0]) {
+	            var reader = new FileReader();
+	
+	            reader.onload = function (e) {
+	                document.getElementById('productImage').src = e.target.result;
+	            };
+	
+	            reader.readAsDataURL(input.files[0]);
+	        }
+	    }
+	    
+	    function uploadProduct(){
+			
+			var selectBrand = document.getElementById('brandInput').value;
+			var productName = document.querySelector('.productName').value;
+			var productImage = document.getElementById('productImageInput').files[0];
+			var content = document.getElementById('productContent').value;
+			var price = document.querySelector('.price').value;
+			
+			if (!selectBrand || !productName || !productImage || !content || !price) {
+		        alert('모든 상품 정보를 채워주세요.');
+		        return;
+		    }
+
+			console.log(selectBrand);
+			console.log(productName);
+			console.log(productImage);
+			console.log(content);
+			console.log(price);
+
+			var formData = new FormData();
+			formData.append('bseq', selectBrand);
+			formData.append('productName', productName);
+			formData.append('image', productImage);
+			formData.append('content', content);
+			formData.append('price', price);
+			
+			$.ajax({
+				type: 'POST',
+				url: '/uploadProduct',
+				data: formData,
+				processData: false,
+				contentType: false,
+				dataType: 'json',
+				success: function(response) {
+					console.log(response + "성불");
+				},
+				error: function(error) {
+					console.error(error.message);
+				}
+			});
+			
+			alert('등록이 완료되었습니다.');
+			window.location.href = '/admin_product';			
+			
+		}
+		
+		function goBack() {
+			window.history.back();
+		}
+	</script>
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="js/demo/datatables-demo.js"></script>
+</body>
+</html>
