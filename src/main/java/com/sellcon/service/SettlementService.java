@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.sellcon.domain.Settlement;
+import com.sellcon.dto.MySettlementDTO;
 import com.sellcon.dto.SettlementDTO;
 
 public interface SettlementService {
@@ -31,6 +32,10 @@ public interface SettlementService {
 	int completedSettlements(String sell_id);
 	
 	int unsettlements(String sell_id);
+	
+	List<MySettlementDTO> getMySettlementList(String sell_id, String styn);
+	
+	List<MySettlementDTO> getSettlementDetail(Long oseq);
 	
 	default SettlementDTO entityToDTO(Object[] obj) {
 		
@@ -58,6 +63,33 @@ public interface SettlementService {
 									.build();
 		
 		return settlementDTO;
+	}
+	
+	default MySettlementDTO mySettlementList(Object[] obj) {
+		
+		if(obj[4] == null) {
+			obj[4] = "0";
+		}
+		if(obj[5] == null) {
+			obj[5] = "0";
+		}
+		if(obj[8] == null) {
+			obj[8] = new Date("9999/01/01");
+		}
+		
+		MySettlementDTO mySettlementDTO = MySettlementDTO.builder()
+										.oseq(Long.parseLong(obj[0].toString()))
+										.sseq(Long.parseLong(obj[1].toString()))
+										.productNames(obj[2].toString())
+										.totalPrice(BigDecimal.valueOf(Double.parseDouble(obj[3].toString())))
+										.rate(BigDecimal.valueOf(Double.parseDouble(obj[4].toString())))
+										.settle_amount(BigDecimal.valueOf(Double.parseDouble(obj[5].toString())))
+										.styn(obj[6].toString())
+										.orderdate((Date)obj[7])
+										.settledate((Date)obj[8])
+										.build();
+		
+		return mySettlementDTO;
 	}
 	
 }

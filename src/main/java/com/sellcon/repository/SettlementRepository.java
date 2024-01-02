@@ -107,5 +107,41 @@ public interface SettlementRepository  extends JpaRepository<Settlement, Long>  
    @Query("SELECT COUNT(st.stseq) FROM Settlement st WHERE st.sell_id = :sell_id AND st.styn<>'Y'")
    Integer getTotalSettlementStynNR(@Param("sell_id") String sell_id);
    
-   
+   // 마이페이지 정산 목록
+   @Query(value = "SELECT st.oseq, s.sseq, " +
+		   		  "CASE " +
+		          "    WHEN COUNT(st.oseq) OVER (PARTITION BY st.oseq) > 1 " +
+		          "    THEN MIN(p.product_Name) || ' 외 ' || (COUNT(p.product_Name) OVER (PARTITION BY st.oseq) - 1) || '건' " +
+		          "    ELSE MIN(p.product_Name) " +
+		          "END as productNames, " +
+		          "SUM(s.sellingPrice) as totalPrice, " +
+		          "st.rate, " +
+		          "(SUM(s.sellingPrice) - (SUM(s.sellingPrice) * (st.rate/100))) AS settle_amount, " +
+		          "st.styn, " +
+		          "o.regdate, " +
+		          "st.settledate " +
+		          "FROM Settlement st " +
+		          "JOIN Orders o ON o.oseq = st.oseq " +
+		          "JOIN Order_Detail od ON od.oseq = st.oseq " +
+		          "JOIN Selling_Product s ON od.sseq = s.sseq " +
+		          "JOIN Product p ON s.pseq = p.pseq " +
+		          "WHERE st.sell_id= :sell_id AND st.styn= :styn AND s.sell_id = st.sell_id " +
+		          "GROUP BY st.oseq, s.sseq, st.rate, st.styn, o.regdate, st.settledate, p.product_Name " +
+		          "ORDER BY st.settledate DESC", nativeQuery = true)
+   List<Object[]> findMySettlementList(@Param("sell_id") String sell_id, @Param("styn") String styn);
+		
+  
+  // 마이페이지 정산 상세내역
+  @Query(value = "SELECT od.oseq, s.sseq, p.product_name, s.sellingPrice, st.rate, " +
+		         "s.sellingPrice - (s.sellingPrice * (st.rate / 100)) AS settle_amount, " +
+		         "st.styn, o.regdate, st.settledate " +
+		         "FROM Settlement st " +
+		         "JOIN Orders o ON o.oseq = st.oseq " +
+		         "JOIN Order_Detail od ON od.oseq = st.oseq " +
+		         "JOIN Selling_Product s ON od.sseq = s.sseq " +
+		         "JOIN Product p ON s.pseq = p.pseq " +
+		         "WHERE st.oseq = :oseq AND s.sell_id = st.sell_id " +
+		         "ORDER BY st.settledate DESC", nativeQuery = true)
+   List<Object[]> findSettlementDetails(@Param("oseq") Long oseq);
+
 }
