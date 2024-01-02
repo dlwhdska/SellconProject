@@ -95,7 +95,6 @@ public class OrdersServiceImpl implements OrdersService {
 	            orderMap.put("totalPayment", totalPayment);
 
 	            myOrder.add(orderMap);
-	            System.out.println("확인용: " + myOrder);
 	        }
 	    }
 

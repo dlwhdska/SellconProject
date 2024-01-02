@@ -64,6 +64,10 @@ $(document).ready(function() {
                       </div><!-- description 닫는 태그 -->
                   </div><!-- prdInfo 닫는 태그 -->
                   
+                  <div>
+					<div class="empty" th:if="${myOrder.isEmpty()}">구매 내역이 없습니다</td>
+				 </div>
+                  
                   
 				<!-- 페이징 부분 -->
 				<div class="pagination-wrapper">

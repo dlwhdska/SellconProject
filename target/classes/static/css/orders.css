@@ -367,3 +367,8 @@ h4, li, ol, p, select, table, td, textarea, th, ul{
 .barcode{
 	margin: 10px 0;
 }
+
+.empty {
+	margin: 10% 0;
+	text-align: center;
+}
