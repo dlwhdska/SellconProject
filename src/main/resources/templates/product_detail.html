@@ -187,7 +187,7 @@
                             <div class="main_how_list">
                                 <div class="product_img_container">
                                     <ul class="slides">
-                                        <li th:each="rsproduct : ${recomendsproduct}">
+                                        <li th:each="rsproduct, iterStat : ${recomendsproduct}" th:if="${iterStat.index < 10}">
                                             <div class="product_img">
                                                 <dl>
                                                     <a th:href="@{'product_detail=' + ${rsproduct.sseq}}" class="img_link"></a>

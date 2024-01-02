@@ -127,19 +127,6 @@ public class MemberController {
 		
 		return "redirect:main";
 	}
-	
-	@GetMapping("/mypage")
-	public String mypageView(Model model, HttpSession session) {
-	    Member member = (Member) session.getAttribute("member");
-	    if (member != null) {
-	        model.addAttribute("member", member);
-	        session.setAttribute("member", member);
-	        return "mypage"; 
-	    } else {
-	        return "redirect:/login"; 
-	    }
-	}
-	
 
 	@GetMapping("/findpwd")
 	public void findpwdView() {

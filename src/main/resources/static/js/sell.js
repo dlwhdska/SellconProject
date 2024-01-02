@@ -1,3 +1,9 @@
+
+$(document).ready(function() {
+	localStorage.setItem("selectedCategory", "");
+	updateProductList('');
+});
+
 /* 탭 스크립트 */
 const tabs = document.querySelectorAll(".tab");
 const contents = document.querySelectorAll(".cont");
@@ -159,11 +165,6 @@ $('#productSearchInput').on('input', function() {
 	var keyword = $(this).val();
 	filterProducts(keyword);
 });
-
-$(document).ready(function() {
-	updateProductList(''); // 초기설정
-});
-
 
 // pseq전역변수 선언
 var selectedProductPseq;

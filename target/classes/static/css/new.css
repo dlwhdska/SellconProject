@@ -31,7 +31,6 @@ a {
 }
 
 .product_menu {
-	max-height: 155px;
 	width: 1200px;
 	margin: 0 auto;
 }
@@ -58,70 +57,70 @@ a {
 	display: table;
 	table-layout: fixed;
 	width: 1200px;
-	border-bottom: 1px solid #e1e1e1;
 }
 
-.product_sub ul li.selected {
-	font-weight: bold;
+.new_cateboxlist {
+	display: flex;
+	flex-wrap: wrap;
 }
 
-.product_sub ul li:hover a {
+.new_cateboxlist li:first-child {
+	margin-right: 22px;
+}
+
+.new_cateboxlist li {
+	width: 130px;
+	margin-right: 23px;
+	cursor: pointer;
+}
+
+.new_cateboxlist li:last-child {
+	margin-right: 0;
+}
+
+.new_catebox {
+	width: 100%;
+}
+
+.new_cateimgbox {
+	margin: 15px auto;
+	margin-bottom: 5px;
+	width: 65%;
+}
+
+.new_cateimgbox img {
+	width: 100%;
+}
+
+.new_catebox span {
+	display: block;
+	text-align: center;
+	width: 88%;
+	padding: 10px 0;
+	font-size: 14px;
+	color: #333;
+	margin: 0 auto;
+	border-top: 1px solid #e3e3e3 ;
+	border-bottom: 1px solid #e3e3e3;
+}
+
+.new_catebox span:hover {
+	display: block;
+	text-align: center;
+	width: 88%;
+	padding: 10px 0;
+	font-size: 14px;
 	color: #5da0d8;
+	border-top: 1px solid #5da0d8;
+	border-bottom: 1px solid #5da0d8;
+	margin: 0 auto;
+	font-weight: 900;
 	transition: 0.4s ease-in-out;
-}
-
-.product_sub ul li:after {
-	content: "";
-	position: absolute;
-	display: block;
-	width: 0;
-	height: 2px;
-	left: 50%;
-	bottom: -1px;
-	background: #5da0d8;
-	transition: width 0.4s ease-in-out, left 0.4s ease-in-out;
-	transform-origin: center;
-}
-
-.product_sub ul li:hover::after {
-	width: 100%;
-	left: 0;
-}
-
-.product_sub ul>li.selected::after {
-	position: absolute;
-	content: "";
-	display: block;
-	width: 100%;
-	height: 2px;
-	left: 0;
-	bottom: -1px;
-	background: #5da0d8;
-}
-
-.product_sub ul li.selected a {
-	color: #5da0d8;
-}
-
-.product_sub ul li:first-child a {
-	padding-left: 0;
 }
 
 .product_sub ul li {
 	display: inline-block;
 	position: relative;
-	margin-right: 66px;
-}
-
-.product_sub ul li:last-child {
-	margin-right: 0;
-}
-
-.product_sub ul li a {
-	display: block;
-	padding: 20px 0;
-	font-size: 17px;
-	color: #7e7e7e;
 }
 
 .product_brand_element {
@@ -135,24 +134,13 @@ a {
 	position: relative;
 	width: 100%;
 	max-width: 100%;
+	height: 150px;
 	margin: 0;
 	padding: 0;
 	border: 0;
 	outline: 0;
-	margin-bottom: 110px;
-}
-
-.product_section2::before {
-	content: "";
-	position: absolute;
-	left: 0;
-	width: 100%;
-	height: calc(100% + 70px);
-	background-color: #f4f4f4;
-	background-image: url(../images/sub_bg2.png);
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
+	background: url(../images/sub_bg2.png);
+	margin-bottom: 40px;
 }
 
 .product_section_set {
@@ -175,7 +163,7 @@ a {
 .product_find_brand span {
 	width: calc(8.5% - 1px);
 	background-color: #fff;
-	/*	border: 1px solid #cdcdcd;*/
+	/*   border: 1px solid #cdcdcd;*/
 	height: 101px;
 	margin-top: 21px;
 }
@@ -752,75 +740,4 @@ h3>a {
 
 .product_paginate_container .paginate_on a {
 	color: #221f20;
-}
-
-/* 모달 스타일 */
-.modal {
-	display: none;
-	position: fixed;
-	z-index: 100;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	overflow: auto;
-	background-color: rgba(0, 0, 0, 0.4);
-}
-
-.modal-content {
-	background-color: #fefefe;
-	margin: 5% auto; /* 화면 세로 높이의 5% 위치에 위치 */
-	padding: 20px;
-	border: 1px solid #888;
-	width: 70%; /* 화면 너비의 70% 크기로 조정 */
-	max-width: 400px; /* 최대 너비 제한 */
-	transform: translate(-50%, -50%);
-	position: absolute;
-	left: 50%;
-	top: 50%;
-}
-
-.modal-content p {
-	margin: 10% auto;
-	text-align: center;
-	max-width: 80%
-}
-
-.close {
-	color: #aaa;
-	float: right;
-	font-size: 28px;
-	font-weight: bold;
-}
-
-.close:hover, .close:focus {
-	color: black;
-	text-decoration: none;
-	cursor: pointer;
-}
-
-.btn_modalBox {
-	text-align: center;
-}
-
-.btn_modal {
-	display: inline-block;
-	padding: 10px 20px;
-	font-size: 16px;
-	cursor: pointer;
-	text-align: center;
-	text-decoration: none;
-	outline: none;
-	color: #fff;
-	background-color: #007bff;
-	border: none;
-	border-radius: 5px;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-	transition: background-color 0.3s ease;
-	max-width: 80%;
-	margin: 0 auto;
-}
-
-.btn_modal a {
-	color: inherit;
 }

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:include="adminIndex :: adminHead"></th:block>
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+</head>
+<body id="page-top">
+
+    <div id="wrapper">
+
+		<th:block th:include="adminIndex :: adminnav"></th:block>
+
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+
+				<th:block th:include="adminIndex :: adminTopbar"></th:block>
+                
+                <div class="container-fluid">
+
+                    <br><h1 class="h3 mb-2 text-gray-800">상품품목관리</h1><br>
+
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                        	<th>브랜드번호</th>
+                                            <th>카테고리</th>
+                                            <th>브랜드명</th>
+                                            <th>브랜드로고</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                        	<th>브랜드번호</th>
+                                            <th>카테고리</th>
+                                            <th>브랜드명</th>
+                                            <th>브랜드로고</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr th:each="brand : ${brandList}">
+                                        	<td><a th:text="${brand.bseq}" th:href="@{'cbDetail=' + ${brand.bseq}}"></a></td>
+                                            <td th:text="${brand.category.ct_name}"></td>                                        	
+                                            <td th:text="${brand.brandName}"></td>
+                                            <td th:text="${brand.brandImage}"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <a class="btn btn-primary" href="/addBrand">브랜드추가</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <th:block th:include="adminIndex :: adminFooter"></th:block>
+
+        </div>
+
+    </div>
+    <th:block th:include="adminIndex :: adminPageUp"></th:block>
+ 	<th:block th:include="adminIndex :: adminModal"></th:block>
+	<th:block th:include="adminIndex :: adminScript"></th:block>
+
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="js/demo/datatables-demo.js"></script>
+</body>
+</html>

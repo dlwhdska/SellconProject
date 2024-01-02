@@ -17,7 +17,6 @@
                 <div class="top_menu">
                     <div class="top_menu_size">
                         <div class="top_menu_element">
-                        
                             <a th:if ="${session.member == null and session.admin == null}" th:href="@{/join}"><span class="top_menu_join">회원가입</span></a>
                             <a th:if="${session.member != null}" th:href="@{/mypage}" th:text="${session.member.name} + '(마이페이지)'"></a>
                             <a th:if="${session.admin != null}" th:href="@{/adminIndex}" target="_blank" th:text="어드민페이지"></a>
@@ -33,7 +32,7 @@
                     </div>
                     <div class="main_menu_element">
                         <ul>
-                            <li><a href="">NEW</a></li>
+                            <li><a th:href="@{/new}">NEW</a></li>
                             <li><a th:href="@{/product}">PRODUCT</a></li>
                             <li><a th:href="@{/notice}">NOTICE</a></li>
                             <li><a th:href="@{/sell}">SELL</a></li>

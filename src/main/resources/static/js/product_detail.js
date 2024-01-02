@@ -83,3 +83,12 @@ mousoverCategory.forEach((category) => {
         categoryMenuText.classList.remove("c_text_box_hover");
     })
 });
+
+// 스크롤
+var scrollContainer = document.querySelector(".PD_othersproduct_wrap");
+
+if(scrollContainer.scrollHeight > scrollContainer.clientHeight){
+	scrollContainer.style.overflowY = 'scroll';
+}else{
+	scrollContainer.style.overflowY = 'hidden';
+}

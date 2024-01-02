@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+   layout:decorate="~{layout/default_layout}">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link href="//fonts.googleapis.com/earlyaccess/notosanskr.css">
+<link
+   href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap"
+   rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="js/cart.js" defer></script>
+<script src="js/product.js" defer></script>
+<th:block layout:fragment="css">
+   <link rel="stylesheet" href="css/new.css">
+</th:block>
+</head>
+
+<body>
+   <div layout:fragment="content" id="wrap">
+      <input type="hidden" id="selected_brand_category" value="">
+      <input type="hidden" id="selected_brand" value="">
+      <input type="hidden" id="selected_sort" value="">
+      <div id="container">
+         <div id="contents">
+
+            <div class="product_container">
+
+               <div class="product_menu_wrap">
+
+                  <div class="product_menu">
+                     <div class="product_menu_element">
+                        <div class="product_title_sub">
+                           <div class="product_title">
+                              <ul>
+                                 <li>NEW PRODUCT</li>
+                              </ul>
+                           </div>
+                           <div class="product_sub">
+                              <ul class="new_cateboxlist">
+                                 <li><div class="new_catebox" data-category="1">
+                                    <div class="new_cateimgbox"><img src="images/icon-coffee.png"></div>
+                                    <span>카페 / 디저트</span></div>
+                                 </li>
+                                 <li><div class="new_catebox" data-category="2">
+                                    <div class="new_cateimgbox"><img src="images/icon-burger.png"></div>
+                                    <span>패스트푸드</span></div>
+                                 </li>
+                                 <li><div class="new_catebox" data-category="3">
+                                    <div class="new_cateimgbox"><img src="images/icon-honeymoons.png"></div>
+                                    <span>여행 / 숙박</span></div>
+                                 </li>
+                                 <li><div class="new_catebox" data-category="4">
+                                    <div class="new_cateimgbox"><img src="images/icon-24hshop.png"></div>
+                                    <span>편의점 / 마트</span></div>
+                                 </li>
+                                 <li><div class="new_catebox" data-category="5">
+                                    <div class="new_cateimgbox"><img src="images/icon-giftcard.png"></div>
+                                    <span>상품권</span></div>
+                                 </li>
+                                 <li><div class="new_catebox" data-category="6">
+                                    <div class="new_cateimgbox"><img src="images/icon-filmtape.png"></div>
+                                    <span>영화 / 엔터</span></div>
+                                 </li>
+                                 <li><div class="new_catebox" data-category="7">
+                                    <div class="new_cateimgbox"><img src="images/icon-powder.png"></div>
+                                    <span>뷰티</span></div>
+                                 </li>
+                                 <li><div class="new_catebox" data-category="8">
+                                    <div class="new_cateimgbox"><img src="images/icon-alarm.png"></div>
+                                    <span>땡처리</span></div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+                  <div class="product_section2" id="product_section2">
+<!--                      <div class="product_section_set product_find_brand_list">
+                        <div class="brand_list">
+                           <div class="product_find_brand">
+                              <span value="" name="" th:each="brand : ${brandList}">
+                                 <a
+                                 th:href="@{/product(category=${categoryKind}, brand=${brand.bseq})}"
+                                 th:data-brandcategory="${categoryKind}"
+                                 th:data-brand="${brand.bseq}"
+                                 th:data-brandname="${brand.brandName}"}>
+                                 <img th:src="${brand.brandImage}">
+                                 </a>
+                              </span>
+                           </div>
+                        </div>
+                     </div> -->
+                  </div>
+
+               </div>
+
+               <div class="product_list_wrap">
+                  <div class="product_list_elements" th:fragment="newproduct_list_elements">
+                     <div class="product_list_layout">
+
+
+                        <div class="product_list_product">
+                           <div class="product_list_box">
+                              <ul class="slides">
+                                 <li th:each="product, iterStat : ${sproductList}" th:unless="${iterStat.index > 19}" id="product_id">
+                                    <div class="product_img">
+                                       <dl>
+                                          <a th:href="@{'product_detail=' + ${product.sseq}}" class="img_link"></a>
+                                          <div class="base_img">
+                                             <div class="thumb">
+                                                <img class="thumb_img" th:src="${product.product.image}">
+                                             </div>
+                                          </div>
+                                          <div class="base_text">
+                                             <dd class="product_brand">
+                                                <p class="brand" th:text=${product.product.brand.getBrandName}></p>
+                                             </dd>
+                                             <dd class="product_name">
+                                                <p class="name" th:text=${product.product.productName}></p>
+                                             </dd>
+                                             <dd class="product_price">
+                                                <p class="discount" th:text="${product.discount + '%'}"></p>
+                                                <p class="sell_price" th:text="${#numbers.formatInteger(product.sellingprice, 3, 'COMMA') + '원'}"></p>
+                                                <p class="price" th:text="${#numbers.formatInteger(product.product.price, 3, 'COMMA') + '원'}"></p>
+                                             </dd>
+                                             <dd class="product_validity">
+                                                <span class="validity_icon"><img src=""></span>
+                                                <p class="validity" th:text="${#dates.format(product.valid, 'yyyy년 MM월 dd일')}"></p>
+                                             </dd>
+                                             <div class="cart_in_icon" th:onclick="addCart([[${product.sseq}]])">
+                                                <img src="">
+                                             </div>
+                                          </div>
+                                       </dl>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+
+                  </div>
+
+               </div>
+
+            </div>
+            
+         </div>
+      </div>
+   </div>
+   <th:block layout:fragment="script">
+      <script src="js/new.js"></script>
+   </th:block>
+</body>
+
+</html>

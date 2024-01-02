@@ -1,9 +1,21 @@
 
 $(document).ready(function() {
 
+	localStorage.setItem("baseSort", "lowprice");
+	var saveSort = localStorage.getItem("baseSort");
+	$(".pd_sort a[data-sort='" + saveSort + "']").addClass("active");
+
+	var urlParams = new URLSearchParams(window.location.search);
+	var brandSeqFromURL = urlParams.get('brand');
+	$(".product_find_brand a[data-brand='" + brandSeqFromURL + "']").addClass("activebrand").parent().addClass("activebrand");
+	var categoryKingFromURL = urlParams.get('category')
+	if (categoryKingFromURL !== null) {
+		localStorage.setItem("selectedCategory", categoryKingFromURL);
+	}
+
 	// 카테고리 클릭
 	var selectedCategory = localStorage.getItem("selectedCategory");
-
+	
 	if (selectedCategory === null) {
 		$(".product_sub ul li:first-child").addClass("selected");
 	} else {
@@ -51,6 +63,7 @@ $(document).ready(function() {
 
 				$(".product_find_brand a[data-brand='" + brandSeq + "']").addClass("activebrand").parent().addClass("activebrand");
 				$(".product_find_brand a:not([data-brand='" + brandSeq + "'])").removeClass("activebrand").parent().removeClass("activebrand");
+				$(".pd_sort a[data-sort='" + saveSort + "']").addClass("active");
 			},
 			error: function(error) {
 				console.log(error);
@@ -104,7 +117,7 @@ $(document).ready(function() {
 		var selectedCategory = localStorage.getItem("selectedCategory");
 		var categoryKind = $("#selected_brand_category").val();
 		var brandSeq = $("#selected_brand").val();
-		var selectedSort = $('#selected_sort').val();
+		var selectedSort = $('#selected_sort').val() || "lowprice";;
 
 		console.log("Selected Category from localStorage: " + selectedCategory);
 		console.log("Category Kind: " + categoryKind);
@@ -124,6 +137,8 @@ $(document).ready(function() {
 			dataType: 'html',
 			success: function(data) {
 				$(".product_list_elements").html(data);
+
+				$(".pd_sort a[data-sort='" + selectedSort + "']").addClass("active");
 
 				$('li').removeClass('paginate_on');
 				$('li:has(a[data-page="' + page + '"])').addClass('paginate_on');

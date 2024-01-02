@@ -638,7 +638,6 @@ h3>a {
 
 .othersproduct_text>.discount:after {
 	font-size: 16px;
-	content: "%";
 }
 
 .othersproduct_text>.validity {
