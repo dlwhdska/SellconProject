@@ -33,7 +33,7 @@ public class MemberController {
 	}
 	
 	@PostMapping("/login")
-	public String login(Member member, Admin admin, Model model, HttpSession session) {
+	public String login(Member member, Admin admin, Model model, HttpSession session, RedirectAttributes redirectAttributes) {
 		
 		Optional<Member> findMember = memberService.getMemberById(member.getId());
 		Admin findAdmin = adminService.getId(admin);
@@ -47,6 +47,7 @@ public class MemberController {
 	        session.removeAttribute("member");
 	        return "redirect:/";
 	    } else {
+	    	redirectAttributes.addFlashAttribute("loginError", "아이디 또는 비밀번호가 잘못되었습니다.");
 	        return "redirect:login";
 	    }
 	}
@@ -115,6 +116,15 @@ public class MemberController {
 		rattr.addAttribute("id", member.getId());
 		
 		return "redirect:modify";
+	}
+	
+	@PostMapping("/remove")
+	public String remove(Member member, HttpSession session) {
+		memberService.remove(member);
+		
+		session.invalidate();
+		
+		return "redirect:main";
 	}
 	
 	@GetMapping("/mypage")

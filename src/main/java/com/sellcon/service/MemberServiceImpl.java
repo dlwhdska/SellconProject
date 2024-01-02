@@ -25,7 +25,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Autowired
 	private EmailService emailService;
-
+	
 	@Override
 	public Optional<Member> getMemberById(String id) {
 		return memberRepository.findById(id);
@@ -33,7 +33,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public Member joinMember(Member member) {
-
+		
 		return memberRepository.save(member);
 	}
 
@@ -71,6 +71,12 @@ public class MemberServiceImpl implements MemberService {
 
 			memberRepository.save(entity);
 		}
+	}
+	
+	@Override
+	public void remove(Member member) {
+		
+		memberRepository.deleteById(member.getId());
 	}
 
 	@Override
