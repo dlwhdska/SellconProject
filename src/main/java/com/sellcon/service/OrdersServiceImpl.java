@@ -70,6 +70,7 @@ public class OrdersServiceImpl implements OrdersService {
 	}
 	
 	// 주문 내역 요약
+	@Transactional
 	public Page<Map<String, Object>> getMyOrderSummary(String member_id, Pageable pageable) {
 	    List<Long> oseqList = ordersRepo.findOseqByMemberId(member_id);
 
@@ -78,6 +79,7 @@ public class OrdersServiceImpl implements OrdersService {
 	    int start = currentPage * pageSize;
 	    int end = Math.min(start + pageSize, oseqList.size());
 
+	    
 	    List<Long> pagedOseqList = oseqList.subList(start, end);
 	    List<Map<String, Object>> myOrder = new ArrayList<>();
 
@@ -93,6 +95,7 @@ public class OrdersServiceImpl implements OrdersService {
 	            orderMap.put("totalPayment", totalPayment);
 
 	            myOrder.add(orderMap);
+	            System.out.println("확인용: " + myOrder);
 	        }
 	    }
 

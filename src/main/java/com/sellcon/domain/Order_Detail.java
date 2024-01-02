@@ -27,12 +27,12 @@ public class Order_Detail {
 	private Long odseq;
 	
 	// 주문 테이블 (oseq)
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name="oseq", updatable=false)
 	private Orders order;
 	
 	// 판매 테이블과 연결(sseq)
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name="sseq", updatable=false)
 	private Selling_Product selling_product;
 	

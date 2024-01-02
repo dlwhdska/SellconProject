@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{layout/default_layout}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>주문 내역 상세</title>
+<link href="//fonts.googleapis.com/earlyaccess/notosanskr.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap" rel="stylesheet">
+<th:block layout:fragment="css"><link rel="stylesheet" href="css/orders.css"></th:block>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script src="js/cart.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+<div layout:fragment="content" id="wrap">
+
+<input type="hidden" id="member_id" name="member_id" value="member">
+   <div class="container">
+
+      <div class="orderPage">
+         <div class="content-myOrder">
+         
+         <div class="buyerInfo">
+            <div class="sectionTitle">
+              <h3>주문자 정보</h3>
+            </div><!-- sectionTitle 닫는 태그 -->
+
+            <div class="buyerArea">
+              <div class="memberView">
+                <strong class="buyerName" th:text="${session['member'].name}"></strong>
+              </div>
+
+            <div class="buyerTellArea">
+              <ul>
+                <li class="buyerTell" th:text="${session['member'].phone}"></li>
+              </ul>
+            </div><!-- buyerTellArea 닫는 태그 -->
+
+            <div class="buyerEmailArea">
+              <p class="email" th:text="${session['member'].email}"></p>
+            </div><!-- buyerEmailArea 닫는 태그 -->
+
+            </div><!-- buyerArea 닫는 태그 -->
+          </div><!-- buyerInfo 닫는 태그 -->
+          
+          <!-- 주문 상품 내역 리스트-->
+          <div class="sectionTitle" style="margin-bottom: 4.5%">
+            <h3>주문상품(<span th:text="${myOrderDetail.size()}" id="size"></span>)</h3>
+          </div><!-- sectionTitle 닫는 태그 -->
+         
+
+          <!-- 개별 상품 정보 -->
+               <!-- 타임리프를 사용한 반복 -->
+               <div th:each="order, stat : ${myOrderDetail}" class="prdInfo2">
+                  <div class="description">
+                      <div class="imagebox">
+                      <img th:src="${order.selling_product.barcode_image}" class="prdImg">
+                      <p id="sellerId" th:text="'판매자 '+${order.selling_product.member.id}"></p>
+                      </div>
+                        <div class="preDesc">
+                        	<p title="주문일" th:text="'주문일자 '+${#dates.format(order.order.regdate, 'yyyy-MM-dd HH:mm:ss')}" class="orderdate" th:if="${stat.index == 0}"></p>
+                            <strong class="pName" title="상품명" th:text="${order.selling_product.product.productName}"></strong>
+                            <div class="priceAll">
+                              <p th:text="${#numbers.formatInteger(order.selling_product.product.price, 3, 'COMMA')}" class="price" title="원가"></p>
+							  <p th:text="${#numbers.formatInteger(order.selling_product.sellingprice, 3, 'COMMA')}" class="sell_price" title="판매가격"></p>
+                              <p class="discount" title="할인율">%</p>
+                            </div>
+                            <p class="date">만료기간
+                            <strong th:text="${#dates.format(order.selling_product.valid, 'yyyy년 MM월 dd일')}" class="validity"></strong>
+                            </p>
+                            <p class="barcode">바코드
+                            <strong th:text="${order.selling_product.barcode}" class="barcode"></strong>
+                            </p>
+                        </div>
+                      </div><!-- description 닫는 태그 -->
+                  </div><!-- prdInfo 닫는 태그 -->
+                  
+                  <div class="total_order_inner">
+		       		<div class="sectionTitle">
+		              <h3>결제 정보</h3>
+		            </div><!-- sectionTitle 닫는 태그 -->
+		            
+		               <!-- 가격 정보 -->
+		               <div class="totalsummaryMyOrder">
+		                  <div class="priceArea">
+		                        <p>총 상품금액</p>
+		                        <strong class="totalProductPrice"></strong>
+		                  </div>
+		                  <div class="priceArea">
+		                        <p>상품할인금액</p>
+		                        <strong class="totalDiscount"></strong>
+		                  </div>
+		                  <div class="priceArea_final">
+		                        <h4>총 결제금액</h4>
+		                        <strong class="finalPayment"></strong>
+		           		 </div>
+            </div><!-- totalsummary 닫는 태그 -->
+           </div><!-- total_order_inner 닫는 태그 -->
+
+         </div><!-- content-left 닫는 태그 -->
+
+      </div><!-- orderPage 닫는 태그 -->
+
+   	</div><!-- container 닫는 태그 -->
+   </form>
+</div><!-- wrap 닫는 태그-->
+</body>
+</html>

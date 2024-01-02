@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{layout/default_layout}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>주문 내역</title>
+<link href="//fonts.googleapis.com/earlyaccess/notosanskr.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap" rel="stylesheet">
+<th:block layout:fragment="css"><link rel="stylesheet" href="css/orders.css"></th:block>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    function sortByRegdate() {
+        const prdInfoElements = $('.prdInfo');
+        prdInfoElements.sort(function(a, b) {
+            const regdateA = new Date($(a).find('.orderdate').text());
+            const regdateB = new Date($(b).find('.orderdate').text());
+
+            return regdateB - regdateA;
+        });
+
+        const container = $('.orderPage .ordersInfo');
+        prdInfoElements.detach().appendTo(container);
+
+        const paginationWrapper = $('.pagination-wrapper');
+        container.append(paginationWrapper);
+    }
+
+    sortByRegdate();
+});
+</script>
+</head>
+<body onload="sortByRegdate()">
+<div layout:fragment="content" id="wrap">
+
+   <div class="container">
+
+      <div class="orderPage">
+		<div class="ordersInfo">
+		
+          <!-- 개별 상품 정보 -->
+               <!-- 타임리프를 사용한 반복 -->
+               <div th:each="order, stat : ${myOrder}" class="prdInfo" style="margin-bottom: 8%">
+               <input type="hidden" name="oseq" id="oseq${stat.count}" th:value="${order.orderDetail.order.oseq}" />
+                  <div class="description">
+                      <div class="imagebox">
+                      <img th:src="${order.orderDetail.selling_product.product.image}" class="prdImg">
+                      <p id="sellerId" th:text="'판매자 '+${order.orderDetail.selling_product.member.id}"></p>
+                      </div>
+                        <div class="preDesc">
+                        	<p title="주문일" th:text="'주문일자 '+ ${#dates.format(order.orderDetail.order.regdate, 'yyyy-MM-dd HH:mm:ss')}" class="orderdate"></p>
+                            <strong class="pName" title="상품명" th:text="${order.orderDetail.selling_product.product.productName}"></strong>
+                            <div class="priceAll">
+                              <strong th:text="${#numbers.formatInteger(order.totalPayment, 3, 'COMMA')}" class="totalPayment"></strong>
+                              <p class="totalpayment_text">총 결제금액</p>
+                            </div>
+                            <p class="date">만료기간
+                            <strong th:text="${#dates.format(order.orderDetail.selling_product.valid, 'yyyy년 MM월 dd일')}" class="validity"></strong>
+                            </p>
+                            <a th:href="@{/myOrderDetail(oseq=${order.orderDetail.order.oseq})}" class="details">상세보기</a>
+                        </div>
+                      </div><!-- description 닫는 태그 -->
+                  </div><!-- prdInfo 닫는 태그 -->
+                  
+                  
+				<!-- 페이징 부분 -->
+				<div class="pagination-wrapper">
+				    <ul class="pagination">
+				        <!-- 이전 페이지 -->
+				        <li th:class="${currentPage == 1} ? 'disabled' : ''">
+				            <a th:href="@{/myOrder(page=1, size=${size})}">&laquo;</a>
+				        </li>
+				        
+				        <!-- 페이지 번호 표시 -->
+				        <li th:each="pageNumber : ${#numbers.sequence(1, totalPages > 0 ? totalPages : 1)}"
+				            th:class="${currentPage == pageNumber} ? 'active' : ''">
+				            <a th:href="@{/myOrder(page=${pageNumber}, size=${size})}" th:text="${pageNumber}"></a>
+				        </li>
+				        
+				        <!-- 다음 페이지 -->
+				        <li th:class="${currentPage == totalPages} ? 'disabled' : ''">
+				            <a th:href="@{/myOrder(page=${totalPages}, size=${size})}">&raquo;</a>
+				        </li>
+				    </ul>
+				</div>
+
+      	</div>
+      </div><!-- orderPage 닫는 태그 -->
+		
+   	</div><!-- container 닫는 태그 -->
+   </form>
+</div><!-- wrap 닫는 태그-->
+</body>
+</html>
