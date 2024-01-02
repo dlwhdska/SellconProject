@@ -6,6 +6,7 @@
 <head>
     <title>회원 정보</title>
     <script src="js/modify.js"></script>
+    <script src="js/remove.js"></script>
     <link rel="stylesheet" href="/css/modify.css">
 </head>
 <body>
@@ -46,7 +47,10 @@
             <input type="text" id="regdate" th:value="${#dates.format(member.regdate, 'yyyy/MM/dd')}" readonly>
         </div>
         </form>
-        <button onclick="modify()">수정</button>
+        <div style="display: flex; justify-content: space-between; width:325px;">
+            <button onclick="modify()">수정</button>
+            <button onclick="remove()">회원탈퇴</button>
+        </div>
     </div>
     </div>
 </body>

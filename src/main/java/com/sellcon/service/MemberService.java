@@ -50,4 +50,6 @@ public interface MemberService {
 		
 		return entity;
 	}
+
+	void remove(Member member);
 }
