@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/default_layout}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="//fonts.googleapis.com/earlyaccess/notosanskr.css">
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap"
+	rel="stylesheet">
+<th:block layout:fragment="css">
+	<link rel="stylesheet" href="css/mysettlement.css">
+</th:block>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    var totalAmount = 0;
+
+    $(".settle_amount").each(function() {
+        var settleAmount = parseInt($(this).text().replace(/[^0-9.-]+/g, ""));
+        totalAmount += settleAmount;
+    });
+
+    $("#totalSettlemAmount").text("총 정산금액 : " + totalAmount.toLocaleString('ko-KR') + "원");
+});
+
+$(document).ready(function() {
+    var totalAmount = 0;
+
+    $(".selling_amount").each(function() {
+        var settleAmount = parseInt($(this).text().replace(/[^0-9.-]+/g, ""));
+        totalAmount += settleAmount;
+    });
+
+    $("#totalSellingAmount").text("총 판매금액 : " + totalAmount.toLocaleString('ko-KR') + "원");
+});
+
+</script>
+
+</head>
+<body>
+
+	<div layout:fragment="content" id="wrap">
+		<div class="container">
+
+			<div class="mySettlementPage">
+				<div class="mySettlementInfo">
+
+					<div class="mypage_settlement_wrap MP_layoutFix">
+						<div class="mypage_settlement MP_subSection">
+							<div class="settlement_title MP_title_wrap">
+								<h3 class="MP_fontsize">정산내역</h3>
+							</div>
+							<table class="MP_tbl">
+
+								<colgroup>
+									<col width="150px">
+									<col width="auto">
+									<col width="110px">
+									<col width="110px" th:unless="${mySettlementDetail[0].styn == 'N'}">
+									<col width="110px" th:unless="${mySettlementDetail[0].styn == 'N'}">
+									<col width="110px">
+									<col width="200px">
+									<col width="200px" th:unless="${mySettlementDetail[0].styn == 'N'}">
+								</colgroup>
+
+								<thead>
+									<tr>
+										<th>상품번호</th>
+										<th>상품명</th>
+										<th>판매가격</th>
+										<th th:if="${mySettlementDetail[0].styn == 'Y'}">수수료</th>
+										<th th:if="${mySettlementDetail[0].styn == 'Y'}">정산금액</th>
+										<th>정산여부</th>
+										<th>판매일자</th>
+										<th th:if="${mySettlementDetail[0].styn == 'Y'}">정산일자</th>
+									</tr>
+								</thead>
+
+
+								<tbody>
+									<tr th:each="mySettlement, stat : ${mySettlementDetail}">
+										<td th:text="${mySettlement.sseq}"></td>
+										<td class="pName">
+											<p th:text="${mySettlement.productNames}">
+											<p>
+										</td>
+										<td th:text="${#numbers.formatInteger(mySettlement.totalPrice, 3, 'COMMA')}" class="selling_amount"></td>
+										<td th:if="${mySettlement.styn == 'Y'}" th:text="${mySettlement.rate} + '%'"></td>
+										<td th:if="${mySettlement.styn == 'Y'}" th:text="${#numbers.formatInteger(mySettlement.settle_amount, 3, 'COMMA')}" class="settle_amount"></td>
+										<td th:if="${mySettlement.styn == 'Y'}" th:text="${mySettlement.styn == 'Y' ? '완료' : ''}"></td>
+										<td th:if="${mySettlement.styn == 'N'}" th:text="${mySettlement.styn == 'N' ? '미정산' : ''}"></td>
+										<td th:text="${#dates.format(mySettlement.orderdate, 'yyyy년 MM월 dd일')}"></td>
+										<td th:if="${mySettlement.styn == 'Y'}" th:text="${#dates.format(mySettlement.settledate, 'yyyy년 MM월 dd일')}"></td>
+									</tr>
+								</tbody>
+
+							</table>
+
+							<div id="totalAmount" th:unless="${mySettlementDetail[0].styn == 'N'}">
+								<strong id="totalSettlemAmount"></strong>
+							</div>
+							
+							<div id="totalAmount" th:unless="${mySettlementDetail[0].styn == 'Y'}">
+								<strong id="totalSellingAmount"></strong>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</body>
+</html>

@@ -50,15 +50,17 @@
                                             <div class="displayTable">
                                                 <div class="displayTableInr">
                                                     <div class="cash_title">정산금</div>
-                                                    <div class="cash_cont">5,000원</div>
+                                                    <div class="cash_cont" th:if="${totalSettleAmount != 0}" th:text="${#numbers.formatInteger(totalSettleAmount, 3, 'COMMA')} + '원'"></div>
+													<div class="cash_cont" th:if="${totalSettleAmount == 0}" th:text="0  + '원'"></div>
                                                 </div>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="displayTable">
                                                 <div class="displayTableInr">
-                                                    <div class="cash_title">정산예정금</div>
-                                                    <div class="cash_cont">99,000원</div>
+                                                	<div class="cash_title">정산예정금</div>
+                                                    <div class="cash_cont" th:if="${notYetSettleAmount != 0}" th:text="${#numbers.formatInteger(notYetSettleAmount, 3, 'COMMA')} + '원'"></div>
+													<div class="cash_cont" th:if="${notYetSettleAmount == 0}" th:text="0 + '원'"></div>
                                                 </div>
                                             </div>
                                         </li>
@@ -103,18 +105,18 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="">
+                                        <a th:href="@{/mySettlementList(styn='N')}">
                                             <span>정산예정</span>
                                             <span class="count">
-                                                <span id="sell_count">1</span>
+                                                <span id="sell_count" th:text=${unsettlemnts}></span>
                                             </span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="">
+                                        <a th:href="@{/mySettlementList(styn='Y')}">
                                             <span>정산완료</span>
                                             <span class="count">
-                                                <span id="sell_count">3</span>
+                                                <span id="sell_count" th:text="${completedSettlements}"></span>
                                             </span>
                                         </a>
                                     </li>
