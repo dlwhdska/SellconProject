@@ -105,5 +105,7 @@ public interface ProductService {
 	
 	// 최신 등록 상품
 	List<Selling_Product> findNewProductsByCategory(String kind);
+	
+	public void updateSellingProductCheckp(Selling_Product sellingProduct);
 
 }

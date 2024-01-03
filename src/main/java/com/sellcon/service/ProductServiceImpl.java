@@ -228,7 +228,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<Brand> updateBrandList(Long bseq, String kind, String brandName,MultipartFile brandImage)
+	public List<Brand> updateBrandList(Long bseq, String kind, String brandName, MultipartFile brandImage)
 			throws IOException {
 
 		Optional<Brand> brand = brandRepo.findById(bseq);
@@ -544,6 +544,12 @@ public class ProductServiceImpl implements ProductService {
 	// 최신 상품
 	public List<Selling_Product> findNewProductsByCategory(String kind) {
 		return sproRepo.findLatestProductsByCategory(kind);
+	}
+
+	// 구매완료
+	@Override
+	public void updateSellingProductCheckp(Selling_Product sellingProduct) {
+		sproRepo.updateCheckpToCompleted(sellingProduct.getSseq());
 	}
 
 }

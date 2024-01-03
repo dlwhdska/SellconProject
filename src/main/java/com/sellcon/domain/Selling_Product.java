@@ -50,11 +50,11 @@ public class Selling_Product {
 	private String checkp;
 	
 	@ManyToOne
-	@JoinColumn(name="Sell_ID", updatable=false)
+	@JoinColumn(name="Sell_ID", updatable=true)
 	private Member member;
 	
 	@ManyToOne
-	@JoinColumn(name="pseq", updatable=false)
+	@JoinColumn(name="pseq", updatable=true)
 	private Product product;
 	
 	// 할인률 계산
@@ -67,5 +67,5 @@ public class Selling_Product {
         double sproductDiscount = ((double) (price - sellingPrice) / price) * 100;
         return (int) Math.floor(sproductDiscount);
     }
-	
+    
 }

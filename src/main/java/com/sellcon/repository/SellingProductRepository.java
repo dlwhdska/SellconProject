@@ -6,8 +6,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
+import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sellcon.domain.Brand;
 import com.sellcon.domain.Selling_Product;
@@ -72,5 +75,11 @@ public interface SellingProductRepository extends JpaRepository<Selling_Product,
 	Page<Selling_Product> findAllByMemberIdAndCheckpIsNullOrderBySseqDesc(Pageable pageable, String memberId);
 	
 	Page<Selling_Product> findAllByMemberIdAndCheckpOrderBySseqDesc(Pageable pageable, String memberId, String checkp);
+	
+	// 구매완료 시 checkp를 C로 변경
+    @Modifying
+    @Transactional
+    @Query("UPDATE Selling_Product sp SET sp.checkp = 'C' WHERE sp.sseq = :sseq")
+    void updateCheckpToCompleted(@Param("sseq") Long sseq);
 
 }

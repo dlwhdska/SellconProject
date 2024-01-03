@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,12 +25,49 @@ public class MypageController {
 	OrdersService ordersService;
 	@Autowired
 	SettlementService settlementService;
+	@Autowired
+	ProductService productService;
 
 	
 	@GetMapping("/mypage")
-	public String mypageView(Model model, HttpSession session) {
+	public String mypageView(Model model, HttpSession session,
+			@RequestParam(value="page", defaultValue = "0") int page,
+			@RequestParam(value="pageY", defaultValue = "0") int pageY) {
 	    Member member = (Member) session.getAttribute("member");
+	    String checkp = "Y";
 	    if (member != null) {
+	    	
+	    	String userId = member.getId();
+	    	
+	        Map<String, Long> counts = productService.salesApplication(userId);
+	        
+	        int pageSize = 5;
+	        Pageable pageable = PageRequest.of(page, pageSize);
+	        Pageable pageableY = PageRequest.of(pageY, pageSize);
+	        
+	        Page<Selling_Product> sproductList = productService.salesApplicationList(pageable, userId);
+	        Page<Selling_Product> sproductYList = productService.salesApplicationListY(pageableY, userId, checkp);
+	        
+	        System.out.println(sproductYList);
+	        
+	        int currentPage = sproductList.getNumber();
+	        int totalPages = sproductList.getTotalPages();
+	        
+	        int currentPageY = sproductYList.getNumber();
+	        int totalPagesY = sproductYList.getTotalPages();
+
+	        
+	        model.addAttribute("countY", counts.get("countY"));
+	        model.addAttribute("countNull", counts.get("countNull"));
+	        
+	        model.addAttribute("sproductList", sproductList);
+			model.addAttribute("currentPage", currentPage);
+			model.addAttribute("totalPages", totalPages);
+			
+			model.addAttribute("currentPageY", currentPageY);
+			model.addAttribute("totalPagesY", totalPagesY);
+			model.addAttribute("sproductYList", sproductYList);	
+			
 	        model.addAttribute("member", member);
 	        session.setAttribute("member", member);
 	        
