@@ -27,13 +27,13 @@
                                     </div>
                                     <div class="infoBox_wrap">
                                         <p class="ment">
-                                            <strong>루루</strong>님 반갑습니다.
+                                            <strong th:text="${session['member'].name}"></strong>님 반갑습니다.
                                         </p>
                                         <p class="info1">
-                                            회원님의 등급은 <strong>[Friend]</strong>입니다.
+                                            지금 나의 소중한 물건을 공유합니다.
                                         </p>
                                         <p class="info2">
-                                            다음 등급까지 <span>1,000</span>원 남았습니다.
+                                            새로운 가치를 발견하는 중이에요!
                                         </p>
                                         <div class="inforUserLink_wrap">
                                             <a href="/modify">정보관리</a>
@@ -66,9 +66,11 @@
                                             </div>
                                         </li>
                                         <li>
+                                        <!-- 
                                             <div class="cash_btn">
                                                 <a href="">출금</a>
                                             </div>
+                                             -->
                                         </li>
                                     </ul>
                                 </div>
