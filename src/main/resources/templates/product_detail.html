@@ -29,6 +29,8 @@
                                 </div>
 
                                 <div class="pd_main_text_wrap">
+                                 <form th:action="@{/orderdirectly}" id="ordersForm" method="post" enctype="multipart/form-data">
+                                        <input type="hidden" name="sseq" id="sseq" th:value="${sproduct.sseq}" />
 
                                     <div class="pa_main_text">
                                         <div class="pd_main_text_product">
@@ -78,9 +80,9 @@
                                         </div>
 
                                         <div class="pd_main_btn_wrap">
-                                            <a href="" class="PD_btn_buy">
+                                            <button type="submit" class="PD_btn_buy">
                                                 <span id="btn_buy">바로구매</span>
-                                            </a>
+                                            </button>
                                             <div class="PD_btn_cart" th:onclick="addCart([[${sproduct.sseq}]])">
                                                 장바구니 담기
                                             </div>

@@ -297,20 +297,18 @@
 							<div class="pagination-wrapper">
 							    <ul class="pagination">
 							        <li th:class="${currentPage == 1} ? 'disabled' : ''">
-							            <a th:href="@{/settlementList(styn=${styn}, page=1, keyword=${keyword})}">&laquo;</a>
+							            <a th:href="@{/settlementlist(styn=${styn}, page=1, keyword=${keyword})}">&laquo;</a>
 							        </li>
 							        <li th:each="pageNumber : ${#numbers.sequence(1, totalPages > 0 ? totalPages : 1)}"
 							            th:class="${currentPage == pageNumber} ? 'active' : ''">
-							            <a th:href="@{/settlementList(styn=${styn}, page=${pageNumber}, keyword=${keyword})}"
+							            <a th:href="@{/settlementlist(styn=${styn}, page=${pageNumber}, keyword=${keyword})}"
 							                th:text="${pageNumber}"></a>
 							        </li>
 							        <li th:class="${currentPage == totalPages} ? 'disabled' : ''">
-							            <a th:href="@{/settlementList(styn=${styn}, page=${totalPages}, keyword=${keyword})}">&raquo;</a>
+							            <a th:href="@{/settlementlist(styn=${styn}, page=${totalPages}, keyword=${keyword})}">&raquo;</a>
 							        </li>
 							    </ul>
 							</div>
-
-
 
 							<!-- settlement-container 닫는 태그 -->
 				

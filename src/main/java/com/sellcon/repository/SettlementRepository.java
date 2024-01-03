@@ -104,7 +104,7 @@ public interface SettlementRepository  extends JpaRepository<Settlement, Long>  
    Integer getTotalSettlementStynY(@Param("sell_id") String sell_id);
    
    // sell_id에 해당하는 미정산 및 반려건
-   @Query("SELECT COUNT(st.stseq) FROM Settlement st WHERE st.sell_id = :sell_id AND st.styn<>'Y'")
+   @Query("SELECT COUNT(st.stseq) FROM Settlement st WHERE st.sell_id = :sell_id AND st.styn='N'")
    Integer getTotalSettlementStynNR(@Param("sell_id") String sell_id);
    
    // 마이페이지 정산 목록
