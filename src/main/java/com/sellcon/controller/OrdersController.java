@@ -104,6 +104,11 @@ public class OrdersController {
 				settlements.add(settlement);
 				sellerIdsProcessed.add(sellId);
 			}
+			
+			// 구매완료 시 checkp를 "C"로 변경
+			sellingProduct.setCheckp("C");
+			productService.updateSellingProductCheckp(sellingProduct);
+			
 		}
 
 		// Order_Detail과 Settlement을 일괄 삽입

@@ -89,22 +89,13 @@
                             
                             <div class="sell_box">
                                 <ul>
-                                    <li>
-                                        <a href="">
-                                            <span>검수중</span>
-                                            <span class="count">
-                                                <span id="sell_count">1</span>
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="">
-                                            <span>검수완료</span>
-                                            <span class="count">
-                                                <span id="sell_count">2</span>
-                                            </span>
-                                        </a>
-                                    </li>
+									<li><a href="" onclick="showOrderTab('order_wrap_1')"><span>검수중</span>
+										<span class="count"><span id="sell_count" th:text="${countNull}"></span></span>
+									</a></li>
+									<li><a href="" onclick="showOrderTab('order_wrap_2')"><span>검수완료</span> <span class="count">
+												<span id="sell_count" th:text="${countY}"></span>
+										</span>
+									</a></li>
                                     <li>
                                         <a th:href="@{/mySettlementList(styn='N')}">
                                             <span>정산예정</span>
@@ -126,7 +117,7 @@
                         </div>
                     </div>
 
-                    <div class="mypage_order_wrap MP_layoutFix">
+<!--                     <div class="mypage_order_wrap MP_layoutFix">
                         <div class="mypage_order MP_subSection">
                             <div class="order_title MP_title_wrap">
                                 <h3 class="MP_fontsize">구매내역</h3>
@@ -177,7 +168,7 @@
                                 </table>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
 
