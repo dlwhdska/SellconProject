@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -27,14 +28,14 @@ import lombok.ToString;
 public class Selling_Product {
 
 	@Id
-	@GeneratedValue
-	@Column(name="sseq", columnDefinition = "NUMBER(5)")
+	@GeneratedValue(strategy = GenerationType.IDENTITY) 
+	@Column(name="sseq", length=5)
 	private Long sseq;
 	
-	@Column(columnDefinition = "number(7)", nullable=false)
+	@Column(length=7, nullable=false)
 	private int sellingprice;
 	
-	@Column(columnDefinition = "number(20)", nullable=false)
+	@Column(length=20, nullable=false)
 	private Long barcode;
 	
 	@Column(length = 1000)
@@ -43,7 +44,7 @@ public class Selling_Product {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date valid;
 
-	@Column(insertable=false, updatable=false, columnDefinition="DATE default sysdate")
+	@Column(insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private Date regdate;
 	
 	@Column(columnDefinition = "char(1)")

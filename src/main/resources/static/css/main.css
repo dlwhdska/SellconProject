@@ -11,6 +11,11 @@ a {
 	color: #000;
 }
 
+.main_banner img {
+    max-width: 100%; 
+    height: auto;
+}
+
 #wrap {
 	padding-top: 156px !important;
 	overflow-x: hidden;

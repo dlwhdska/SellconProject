@@ -3,6 +3,7 @@ package com.sellcon.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -22,8 +23,8 @@ import lombok.ToString;
 public class Brand {
 	
 	@Id
-	@GeneratedValue
-	@Column(columnDefinition = "number(5)")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="bseq", length=5)
 	private Long bseq;
 	
 	@Column(name="brand_name", length = 40, nullable = false)

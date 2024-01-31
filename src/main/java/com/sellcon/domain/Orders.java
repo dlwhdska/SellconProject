@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -24,11 +25,11 @@ import lombok.ToString;
 @Entity
 public class Orders {
 	@Id
-	@Column(name="oseq", columnDefinition = "NUMBER(5)")
-	@GeneratedValue
-	private Long oseq;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    @Column(name = "oseq", length=5)
+    private Long oseq;
 	
-	@Column(insertable=false, updatable=false, columnDefinition="date default sysdate")
+	@Column(insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private Date regdate;
 	
 	// 회원 테이블과 연결 (member_id)

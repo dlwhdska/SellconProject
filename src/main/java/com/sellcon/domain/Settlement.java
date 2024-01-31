@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -27,8 +28,8 @@ import lombok.ToString;
 @NoArgsConstructor
 public class Settlement {
 	@Id
-	@Column(name="stseq", columnDefinition = "NUMBER(5)")
-	@GeneratedValue
+	@Column(name="stseq", length=5)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long stseq;
 	
 	@Column(precision = 3, scale = 2)

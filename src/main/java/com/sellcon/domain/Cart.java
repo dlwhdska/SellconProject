@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -22,8 +23,8 @@ import lombok.ToString;
 @Entity
 public class Cart {
 	@Id
-	@Column(name="cseq", columnDefinition = "NUMBER(5)")
-	@GeneratedValue
+	@Column(name="cseq", length=5)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long cseq;
 	
 	@Column(columnDefinition="char(1) default '1'", nullable = false)

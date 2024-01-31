@@ -51,8 +51,9 @@ public class Member {
 	@Builder.Default
 	private String scamyn="N";
 	
-	@Column(insertable=false, updatable=false, columnDefinition="DATE default sysdate")
+	@Column(insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private Date regdate;
+
 	
 
 	
