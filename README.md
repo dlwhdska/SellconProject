@@ -12,21 +12,21 @@
 
 ### Tech Stacks
 <hr/>
-<img width="800" alt="image" src="https://github.com/likelion-backendschool/Jumunui_Mihak/assets/71378475/64eff44f-1017-4906-9a72-7b028ae16de5">
+<img width="548" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/5fc6adb2-c81c-4c49-a0f4-6eb5135f7248">
 
 <br/>
 <br/>
 
 ### Infra Structures
 <hr/>
-<img width="800" alt="image" src="https://github.com/likelion-backendschool/Jumunui_Mihak/assets/71378475/21b684a1-665f-474e-bdc1-3a28b8df5c33">
+![image](https://github.com/dlwhdska/SellconProject/assets/150890939/db4b860a-87a8-4c0b-a34b-789e6ffa2459)
 
 <br/>
 <br/>
 
 ### ERD
 <hr/>
-<img width="800" alt="image" src="https://github.com/likelion-backendschool/Jumunui_Mihak/assets/71378475/4e1d5196-aa3c-4998-91ef-045f6dc53e0c">
+![Uploading image.png…]()
 
 <br/>
 <br/>
