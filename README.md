@@ -1,10 +1,11 @@
 <div align="center">
-<img src="https://user-images.githubusercontent.com/53210680/196109460-cbe2fb60-0e15-42e3-90c9-9f79a91649a0.png" width="200"></img><br>
+<img width="960" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/a2fee6ec-2d4e-4cce-a474-6f7a40d4e355">
+</img><br>
 </div>
 
 ### 프로젝트 소개
 <hr/>
-식당을 이용하는 손님이 테이블에서 간편하게 메뉴를 선택하고 결제할 수 있는 서비스입니다.
+사용자 간 기프티콘 거래 할 수 있는 플랫폼입니다.
 
 <br/>
 <br/>
