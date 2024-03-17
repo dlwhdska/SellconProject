@@ -31,6 +31,7 @@
 
 #### 관리자 회원 관리 페이지
 -수정(신고여부(Y/N)) 기능 구현
+<br/>
 -삭제 기능 구현
 
 <img width="575" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/e98d38d6-ec7c-40d8-9bbe-798492784b10">
@@ -48,6 +49,7 @@
 
 #### 로그인 페이지
 -JPA를 이용해 로그인 기능 구현
+<br/>
 -JavaScript와 Thymeleaf 템플릿 엔진을 이용해 로그인 유효성 검사 기능 구현
 
 
@@ -57,6 +59,7 @@
 
 #### 회원가입 페이지
 -Ajax를 이용해 중복 체크 기능 구현
+<br/>
 -JavaScript를 이용해 회원가입 유효성 검사 기능 구현
 
 <img width="520" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/708886fd-228e-4876-8f8e-45953e142e69">
@@ -65,6 +68,7 @@
 
 #### 아이디 찾기 페이지
 -Mail로 인증번호 발송
+<br/>
 -아이디 찾는 기능 구현
 
 <img width="544" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/d833ed22-eb35-4912-92b9-d380206914ff">
@@ -73,6 +77,7 @@
 
 #### 비밀번호 찾기 페이지
 -Mail로 임시비밀번호 발송
+<br/>
 -임시비밀번호가 현재 비밀번호로 update되는 기능 구현
 
 <img width="430" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/088c5793-0df0-4994-b8f2-4a037c86be49">
@@ -81,6 +86,7 @@
 
 #### 회원정보 수정 페이지
 -회원정보 수정 기능 구현
+<br/>
 -회원 탈퇴 기능 구현
 
 <img width="469" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/85d6a110-5731-4588-99ff-25dfa49f19c7">
