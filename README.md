@@ -39,9 +39,7 @@
 <br/><br/>
 
 #### 메인 페이지
-<img width="391" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/1d98aa8d-417d-4e5f-aae8-c2c2935f5b9f">
-<img width="235" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/6ad5ce7e-c8cc-4349-a6a4-63b43056f772">
-<img width="243" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/6730bf09-2311-48fb-a387-dff133ce091b">
+<img width="907" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/2ba3e301-06cc-4bdd-90d6-03fa1f602358">
 
 
 
