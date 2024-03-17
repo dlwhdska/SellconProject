@@ -32,7 +32,7 @@
 #### 관리자 회원 관리
 <img width="575" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/e98d38d6-ec7c-40d8-9bbe-798492784b10">
 
-<br/>
+<br/><br/>
 
 #### 메인 페이지
 <img width="391" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/1d98aa8d-417d-4e5f-aae8-c2c2935f5b9f">
@@ -41,19 +41,22 @@
 
 
 
-<br/>
+<br/><br/>
 
 #### 로그인 페이지
 <img width="500" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/994f240b-b413-4711-acd1-36ab866bb0f9">
 
-<br/>
+<br/><br/>
 
 #### 회원가입 페이지
 <img width="520" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/708886fd-228e-4876-8f8e-45953e142e69">
 
-<br/>
+<br/><br/>
 
-#### 로그인 페이지
-<img width="500" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/994f240b-b413-4711-acd1-36ab866bb0f9">
+#### 아이디 찾기 페이지
+<img width="544" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/d833ed22-eb35-4912-92b9-d380206914ff">
 
-<br/>
+
+
+
+<br/><br/>
