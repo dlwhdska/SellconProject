@@ -17,16 +17,11 @@
 <br/>
 <br/>
 
-### Infra Structures
-<hr/>
-![image](https://github.com/dlwhdska/SellconProject/assets/150890939/db4b860a-87a8-4c0b-a34b-789e6ffa2459)
-
-<br/>
-<br/>
-
 ### ERD
 <hr/>
-![Uploading image.png…]()
+<img width="853" alt="스크린샷 2024-03-17 오후 10 11 37" src="https://github.com/dlwhdska/SellconProject/assets/150890939/2224397f-a08d-4c7e-a74c-e76529ae89fb">
+
+
 
 <br/>
 <br/>
