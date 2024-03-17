@@ -29,27 +29,31 @@
 ### UI
 <hr/>
 
-#### 관리자 메뉴 관리
-<img width="1000" alt="image" src="https://github.com/likelion-backendschool/Jumunui_Mihak/assets/71378475/c100c651-f5a3-4adc-afe3-c383854036c0">
-<img width="1000" alt="image" src="https://github.com/likelion-backendschool/Jumunui_Mihak/assets/71378475/574334c5-4732-4dfa-90a8-796dcf64e4fc">
+#### 관리자 회원 관리
+<img width="575" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/e98d38d6-ec7c-40d8-9bbe-798492784b10">
 
 <br/>
 
-#### 관리자 주문 상태 관리
-<img width="1000" alt="image" src="https://github.com/likelion-backendschool/Jumunui_Mihak/assets/71378475/2c9c5f1f-acd3-412a-87d1-4ddc0bcd95e1">
+#### 메인 페이지
+<img width="391" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/1d98aa8d-417d-4e5f-aae8-c2c2935f5b9f">
+<img width="235" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/6ad5ce7e-c8cc-4349-a6a4-63b43056f772">
+<img width="243" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/6730bf09-2311-48fb-a387-dff133ce091b">
+
+
 
 <br/>
 
-#### 매장 관리 (주문 내역)
-<img width="1000" alt="image" src="https://github.com/likelion-backendschool/Jumunui_Mihak/assets/71378475/a10e9243-9fc1-4662-965a-7250ec9dcb14">
+#### 로그인 페이지
+<img width="500" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/994f240b-b413-4711-acd1-36ab866bb0f9">
 
 <br/>
 
-#### 매장 관리 (매출 내역)
-<img width="1000" alt="image" src="https://github.com/likelion-backendschool/Jumunui_Mihak/assets/71378475/7339cb51-66b7-45bf-a3d8-6ad48cffe87e">
+#### 회원가입 페이지
+<img width="520" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/708886fd-228e-4876-8f8e-45953e142e69">
 
 <br/>
 
-#### 사용자 주문 시나리오
-<img width="1000" alt="image" src="https://github.com/likelion-backendschool/Jumunui_Mihak/assets/71378475/7ecaf0c1-947e-4cb4-b63d-fca7558182fa">
-<img width="1000" alt="image" src="https://github.com/likelion-backendschool/Jumunui_Mihak/assets/71378475/806461de-6d7e-4e24-9eff-f97701583036">
+#### 로그인 페이지
+<img width="500" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/994f240b-b413-4711-acd1-36ab866bb0f9">
+
+<br/>
