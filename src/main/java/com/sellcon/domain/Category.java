@@ -1,3 +1,4 @@
+
 package com.sellcon.domain;
 
 import javax.persistence.Column;

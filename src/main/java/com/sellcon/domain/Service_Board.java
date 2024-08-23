@@ -6,7 +6,6 @@ import java.util.Optional;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -26,8 +25,8 @@ import lombok.ToString;
 @NoArgsConstructor
 public class Service_Board {
    @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
-   @Column(name="qseq", length=5)
+   @GeneratedValue
+   @Column(name="qseq", columnDefinition = "number(5)")
    private Long qseq;
    
    @Column(length = 20, nullable = true)
@@ -43,8 +42,8 @@ public class Service_Board {
    @Builder.Default
    private String repyn="N";
    
-   @Column(insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-	private Date regdate;
+   @Column(insertable=false, updatable=false, columnDefinition="DATE default sysdate")
+   private Date regdate;
    
    @Column(columnDefinition="CHAR(1)")
    private String category;
