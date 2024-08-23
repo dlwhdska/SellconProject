@@ -38,7 +38,7 @@ public class QSelling_Product extends EntityPathBase<Selling_Product> {
 
     public final NumberPath<Long> sseq = createNumber("sseq", Long.class);
 
-    public final DateTimePath<java.util.Date> valid = createDateTime("valid", java.util.Date.class);
+    public final DatePath<java.util.Date> valid = createDate("valid", java.util.Date.class);
 
     public QSelling_Product(String variable) {
         this(Selling_Product.class, forVariable(variable), INITS);
