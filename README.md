@@ -88,3 +88,6 @@
 -회원 탈퇴 기능 구현
 
 <img width="469" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/85d6a110-5731-4588-99ff-25dfa49f19c7">
+
+![스크린샷 2024-08-23 104704](https://github.com/user-attachments/assets/993bec33-5da0-4d7f-b40d-7661137ce36d)
+
