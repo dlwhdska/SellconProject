@@ -47,15 +47,6 @@
 <img width="575" alt="image" src="https://github.com/user-attachments/assets/75fbf83d-622c-426a-a53c-1bf517276382">
 <img width="575" alt="image" src="https://github.com/user-attachments/assets/fd633d8d-b271-4d33-8ee8-ee20a66f4588">
 <img width="575" alt="image" src="https://github.com/user-attachments/assets/47fc62a5-b335-4aee-9435-1f085ccc812d">
-  
-![스크린샷 2024-08-29 110815](https://github.com/user-attachments/assets/a5f305d0-f3e5-4704-9e3c-76d1a8d61da2)
-![스크린샷 2024-08-29 110749](https://github.com/user-attachments/assets/dd01f712-db28-44e0-a632-8184ab899c21)
-![스크린샷 2024-08-29 110903](https://github.com/user-attachments/assets/611cc6fb-b44d-4b44-8ebb-ad218b8a71ba)
-![스크린샷 2024-08-29 111002](https://github.com/user-attachments/assets/5b33a545-1705-49b9-9333-1ce2152de6fe)
-![스크린샷 2024-08-29 111053](https://github.com/user-attachments/assets/b0bcb198-9999-4dc6-b224-564e18e6dacc)
-![스크린샷 2024-08-29 111110](https://github.com/user-attachments/assets/75fbf83d-622c-426a-a53c-1bf517276382)
-![스크린샷 2024-08-29 111125](https://github.com/user-attachments/assets/fd633d8d-b271-4d33-8ee8-ee20a66f4588)
-![스크린샷 2024-08-29 111139](https://github.com/user-attachments/assets/47fc62a5-b335-4aee-9435-1f085ccc812d)
 
 </details>
 
