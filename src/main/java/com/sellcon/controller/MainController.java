@@ -179,6 +179,8 @@ public class MainController {
 		model.addAttribute("categoryKind", category);
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("totalPages", totalPages);
+		System.out.println("-------------Category: " + category);
+		System.out.println("-------------Brand Seq: " + bseq);
 
 		return "product :: product_list_elements";
 
