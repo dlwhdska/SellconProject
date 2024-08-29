@@ -39,6 +39,8 @@
 <br/>
 <br/>
 <img width="575" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/e98d38d6-ec7c-40d8-9bbe-798492784b10">
+  ![스크린샷 2024-08-29 110815](https://github.com/user-attachments/assets/a25cc600-cbb7-48d8-bd91-d9008dee90eb)
+
 <img width="575" alt="image" src="https://github.com/user-attachments/assets/a5f305d0-f3e5-4704-9e3c-76d1a8d61da2">
 <img width="575" alt="image" src="https://github.com/user-attachments/assets/dd01f712-db28-44e0-a632-8184ab899c21">
 <img width="575" alt="image" src="https://github.com/user-attachments/assets/611cc6fb-b44d-4b44-8ebb-ad218b8a71ba">
