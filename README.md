@@ -34,7 +34,13 @@
 <br/>
 -삭제 기능 구현
 
+<details>
+  <summary>회원가입</summary> 
+<br/>
+<br/>
 <img width="575" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/e98d38d6-ec7c-40d8-9bbe-798492784b10">
+
+</details>
 
 <br/><br/>
 
