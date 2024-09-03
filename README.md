@@ -43,17 +43,25 @@
 <details>
   <summary>상품 관리 페이지</summary>
   <div align="center">
-    <img width="575" alt="상품 관리 페이지 이미지 1" src="https://github.com/user-attachments/assets/611cc6fb-b44d-4b44-8ebb-ad218b8a71ba">
-    <img width="575" alt="상품 관리 페이지 이미지 3" src="https://github.com/user-attachments/assets/b0bcb198-9999-4dc6-b224-564e18e6dacc">
-    <img width="575" alt="상품 관리 페이지 이미지 4" src="https://github.com/user-attachments/assets/75fbf83d-622c-426a-a53c-1bf517276382">
+    <table>
+      <tr>
+        <td><img width="575" alt="상품 관리 페이지 이미지 1" src="https://github.com/user-attachments/assets/611cc6fb-b44d-4b44-8ebb-ad218b8a71ba"></td>
+        <td><img width="575" alt="상품 관리 페이지 이미지 2" src="https://github.com/user-attachments/assets/b0bcb198-9999-4dc6-b224-564e18e6dacc"></td>
+        <td><img width="575" alt="상품 관리 페이지 이미지 3" src="https://github.com/user-attachments/assets/75fbf83d-622c-426a-a53c-1bf517276382"></td>
+      </tr>
+    </table>
   </div>
 </details>
 
 <details>
   <summary>게시판 관리 페이지</summary>
   <div align="center">
-    <img width="575" alt="게시판 관리 페이지 이미지 1" src="https://github.com/user-attachments/assets/fd633d8d-b271-4d33-8ee8-ee20a66f4588">
-    <img width="575" alt="게시판 관리 페이지 이미지 2" src="https://github.com/user-attachments/assets/47fc62a5-b335-4aee-9435-1f085ccc812d">
+    <table>
+      <tr>
+        <td><img width="575" alt="게시판 관리 페이지 이미지 1" src="https://github.com/user-attachments/assets/fd633d8d-b271-4d33-8ee8-ee20a66f4588"></td>
+        <td><img width="575" alt="게시판 관리 페이지 이미지 2" src="https://github.com/user-attachments/assets/47fc62a5-b335-4aee-9435-1f085ccc812d"></td>
+      </tr>
+    </table>
   </div>
 </details>
 
@@ -112,8 +120,12 @@
 <details>
   <summary>상품 페이지</summary> 
   <div align="center">
-    <img width="575" alt="상품 페이지 이미지 1" src="https://github.com/user-attachments/assets/d98a2404-836d-4b53-963b-ada140caa762">
-    <img width="575" alt="상품 페이지 이미지 2" src="https://github.com/user-attachments/assets/c9b2ad4d-c660-40ca-b5b1-4a02cc4ba559">
+    <table>
+      <tr>
+        <td><img width="575" alt="상품 페이지 이미지 1" src="https://github.com/user-attachments/assets/d98a2404-836d-4b53-963b-ada140caa762"></td>
+        <td><img width="575" alt="상품 페이지 이미지 2" src="https://github.com/user-attachments/assets/c9b2ad4d-c660-40ca-b5b1-4a02cc4ba559"></td>
+      </tr>
+    </table>
   </div>
 </details>
 
@@ -123,9 +135,13 @@
 <details>
   <summary>주문 페이지</summary> 
   <div align="center">
-    <img width="575" alt="주문 페이지 이미지 1" src="https://github.com/user-attachments/assets/b4de9c53-f077-4a44-aea8-667980f0047e">
-    <img width="575" alt="주문 페이지 이미지 2" src="https://github.com/user-attachments/assets/0e5caf2e-0778-4f5e-8c78-91ac2d39aaab">
-    <img width="575" alt="주문 페이지 이미지 3" src="https://github.com/user-attachments/assets/0291fc30-37b5-4350-9409-f7384d1181b3">
+    <table>
+      <tr>
+        <td><img width="575" alt="주문 페이지 이미지 1" src="https://github.com/user-attachments/assets/b4de9c53-f077-4a44-aea8-667980f0047e"></td>
+        <td><img width="575" alt="주문 페이지 이미지 2" src="https://github.com/user-attachments/assets/0e5caf2e-0778-4f5e-8c78-91ac2d39aaab"></td>
+        <td><img width="575" alt="주문 페이지 이미지 3" src="https://github.com/user-attachments/assets/0291fc30-37b5-4350-9409-f7384d1181b3"></td>
+      </tr>
+    </table>
   </div>
 </details>
 
@@ -145,9 +161,13 @@
 <details>
   <summary>결제 페이지</summary> 
   <div align="center">
-    <img width="575" alt="결제 페이지 이미지 1" src="https://github.com/user-attachments/assets/88e7c27a-2c99-445f-8548-366232cbc3de">
-    <img width="575" alt="결제 페이지 이미지 2" src="https://github.com/user-attachments/assets/afcccb55-5c7a-414b-a933-c0f670c61165">
-    <img width="575" alt="결제 페이지 이미지 3" src="https://github.com/user-attachments/assets/741c2deb-899c-4ba4-8584-78d6cd57c3f3">
+    <table>
+      <tr>
+        <td><img width="575" alt="결제 페이지 이미지 1" src="https://github.com/user-attachments/assets/88e7c27a-2c99-445f-8548-366232cbc3de"></td>
+        <td><img width="575" alt="결제 페이지 이미지 2" src="https://github.com/user-attachments/assets/afcccb55-5c7a-414b-a933-c0f670c61165"></td>
+        <td><img width="575" alt="결제 페이지 이미지 3" src="https://github.com/user-attachments/assets/741c2deb-899c-4ba4-8584-78d6cd57c3f3"></td>
+      </tr>
+    </table>
   </div>
 </details>
 
@@ -157,11 +177,14 @@
 <details>
   <summary>게시판 페이지</summary> 
   <div align="center">
-    <img width="575" alt="게시판 페이지 이미지 1" src="https://github.com/user-attachments/assets/c4c63b6d-b15b-468a-b84f-38266ca9dd2a">
-    <img width="575" alt="게시판 페이지 이미지 2" src="https://github.com/user-attachments/assets/509b959b-895f-4490-8e0e-f16dd9cbba85">
-    <img width="575" alt="게시판 페이지 이미지 3" src="https://github.com/user-attachments/assets/f95d322d-6886-4c59-9221-a15a3e6ab66a">
+    <table>
+      <tr>
+        <td><img width="575" alt="게시판 페이지 이미지 1" src="https://github.com/user-attachments/assets/c4c63b6d-b15b-468a-b84f-38266ca9dd2a"></td>
+        <td><img width="575" alt="게시판 페이지 이미지 2" src="https://github.com/user-attachments/assets/509b959b-895f-4490-8e0e-f16dd9cbba85"></td>
+        <td><img width="575" alt="게시판 페이지 이미지 3" src="https://github.com/user-attachments/assets/f95d322d-6886-4c59-9221-a15a3e6ab66a"></td>
+      </tr>
+    </table>
   </div>
 </details>
 
 ---
-
