@@ -105,7 +105,6 @@
 #### 게시판 페이지
 <details>
   <summary>게시판 페이지</summary> 
-  <img src="https://github.com/user-attachments/assets/993bec33-5da0-4d7f-b40d-7661137ce36d">
   <img src="https://github.com/user-attachments/assets/c4c63b6d-b15b-468a-b84f-38266ca9dd2a">
   <img src="https://github.com/user-attachments/assets/509b959b-895f-4490-8e0e-f16dd9cbba85">
   <img src="https://github.com/user-attachments/assets/f95d322d-6886-4c59-9221-a15a3e6ab66a">
