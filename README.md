@@ -35,7 +35,7 @@
   <img width="575" alt="image" src="https://github.com/user-attachments/assets/a5f305d0-f3e5-4704-9e3c-76d1a8d61da2">
 </details>
 <details>
-  <summary>상 관리 페이지</summary>
+  <summary>상품 관리 페이지</summary>
   <img width="575" alt="image" src="https://github.com/user-attachments/assets/611cc6fb-b44d-4b44-8ebb-ad218b8a71ba">
   <img width="575" alt="image" src="https://github.com/user-attachments/assets/5b33a545-1705-49b9-9333-1ce2152de6fe">
   <img width="575" alt="image" src="https://github.com/user-attachments/assets/b0bcb198-9999-4dc6-b224-564e18e6dacc">
@@ -59,16 +59,20 @@
 
 #### 회원 페이지
 <details>
-  <summary>회원가입 페이지</summary> 
+  <summary>로그인 페이지</summary> 
   <img width="500" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/994f240b-b413-4711-acd1-36ab866bb0f9">  
 </details>
 <details>
-  <summary>아이디 찾기 페이지</summary> 
+  <summary>회원가입 페이지</summary> 
   <img width="520" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/708886fd-228e-4876-8f8e-45953e142e69">
 </details>
 <details>
-  <summary>비밀번호 찾기 페이지</summary> 
+  <summary>아이디 찾기 페이지</summary> 
   <img width="544" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/d833ed22-eb35-4912-92b9-d380206914ff">
+</details>
+<details>
+  <summary>비밀번호 찾기 페이지</summary> 
+  <img width="430" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/088c5793-0df0-4994-b8f2-4a037c86be49">
 </details>
 <details>
   <summary>회원정보 수정 페이지</summary> 
