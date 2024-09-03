@@ -30,21 +30,24 @@
 <hr/>
 
 #### 관리자 페이지
-
 <details>
   <summary>회원 관리 페이지</summary>
   <img width="575" alt="image" src="https://github.com/user-attachments/assets/a5f305d0-f3e5-4704-9e3c-76d1a8d61da2">
-  <summary>회원 관리 페이지</summary>
+</details>
+<details>
+  <summary>상 관리 페이지</summary>
   <img width="575" alt="image" src="https://github.com/user-attachments/assets/611cc6fb-b44d-4b44-8ebb-ad218b8a71ba">
   <img width="575" alt="image" src="https://github.com/user-attachments/assets/5b33a545-1705-49b9-9333-1ce2152de6fe">
   <img width="575" alt="image" src="https://github.com/user-attachments/assets/b0bcb198-9999-4dc6-b224-564e18e6dacc">
   <img width="575" alt="image" src="https://github.com/user-attachments/assets/75fbf83d-622c-426a-a53c-1bf517276382">
-  <summary>회원 관리 페이지</summary>
+</details>
+<details>
+  <summary>게시판 관리 페이지</summary>
   <img width="575" alt="image" src="https://github.com/user-attachments/assets/fd633d8d-b271-4d33-8ee8-ee20a66f4588">
   <img width="575" alt="image" src="https://github.com/user-attachments/assets/47fc62a5-b335-4aee-9435-1f085ccc812d">
 </details>
 
-<br/><br/>
+<br/>
 
 #### 메인 페이지
 <details>
@@ -52,26 +55,28 @@
   <img width="907" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/2ba3e301-06cc-4bdd-90d6-03fa1f602358">
 </details>
 
-
-<br/><br/>
+<br/>
 
 #### 회원 페이지
--JPA를 이용해 로그인 기능 구현
-<br/>
--JavaScript와 Thymeleaf 템플릿 엔진을 이용해 로그인 유효성 검사 기능 구현
 <details>
   <summary>회원가입 페이지</summary> 
   <img width="500" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/994f240b-b413-4711-acd1-36ab866bb0f9">  
+</details>
+<details>
   <summary>아이디 찾기 페이지</summary> 
   <img width="520" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/708886fd-228e-4876-8f8e-45953e142e69">
+</details>
+<details>
   <summary>비밀번호 찾기 페이지</summary> 
   <img width="544" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/d833ed22-eb35-4912-92b9-d380206914ff">
+</details>
+<details>
   <summary>회원정보 수정 페이지</summary> 
   <img width="469" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/85d6a110-5731-4588-99ff-25dfa49f19c7">
 </details>
 
 
-<br/><br/>
+<br/>
 
 <img src="https://github.com/user-attachments/assets/993bec33-5da0-4d7f-b40d-7661137ce36d">
 
