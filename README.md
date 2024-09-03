@@ -44,7 +44,6 @@
   <summary>상품 관리 페이지</summary>
   <div align="center">
     <img width="575" alt="상품 관리 페이지 이미지 1" src="https://github.com/user-attachments/assets/611cc6fb-b44d-4b44-8ebb-ad218b8a71ba">
-    <img width="575" alt="상품 관리 페이지 이미지 2" src="https://github.com/user-attachments/assets/5b33a545-1705-49b9-9333-1ce2152de6fe">
     <img width="575" alt="상품 관리 페이지 이미지 3" src="https://github.com/user-attachments/assets/b0bcb198-9999-4dc6-b224-564e18e6dacc">
     <img width="575" alt="상품 관리 페이지 이미지 4" src="https://github.com/user-attachments/assets/75fbf83d-622c-426a-a53c-1bf517276382">
   </div>
