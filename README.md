@@ -21,8 +21,6 @@
 <hr/>
 <img width="853" alt="스크린샷 2024-03-17 오후 10 11 37" src="https://github.com/dlwhdska/SellconProject/assets/150890939/2224397f-a08d-4c7e-a74c-e76529ae89fb">
 
-
-
 <br/>
 <br/>
 
@@ -79,58 +77,36 @@
   <img width="469" alt="image" src="https://github.com/dlwhdska/SellconProject/assets/150890939/85d6a110-5731-4588-99ff-25dfa49f19c7">
 </details>
 
+<br/>
+
+#### 상품 페이지
+<details>
+  <summary>상품 페이지</summary> 
+  <img src="https://github.com/user-attachments/assets/d98a2404-836d-4b53-963b-ada140caa762">
+  <img src="https://github.com/user-attachments/assets/c9b2ad4d-c660-40ca-b5b1-4a02cc4ba559">
+  <img src="https://github.com/user-attachments/assets/6b6f5495-be75-4e60-863e-30e5b99435ef">
+  <img src="https://github.com/user-attachments/assets/b4de9c53-f077-4a44-aea8-667980f0047e">
+  <img src="https://github.com/user-attachments/assets/0e5caf2e-0778-4f5e-8c78-91ac2d39aaab">
+  <img src="https://github.com/user-attachments/assets/0291fc30-37b5-4350-9409-f7384d1181b3">
+</details>
 
 <br/>
 
-<img src="https://github.com/user-attachments/assets/993bec33-5da0-4d7f-b40d-7661137ce36d">
+#### 결제 페이지
+<details>
+  <summary>결제 페이지</summary> 
+  <img src="https://github.com/user-attachments/assets/88e7c27a-2c99-445f-8548-366232cbc3de">
+  <img src="https://github.com/user-attachments/assets/afcccb55-5c7a-414b-a933-c0f670c61165">
+  <img src="https://github.com/user-attachments/assets/741c2deb-899c-4ba4-8584-78d6cd57c3f3">
+</details>
 
-<br/><br/>
+<br/>
 
-<img src="https://github.com/user-attachments/assets/d98a2404-836d-4b53-963b-ada140caa762">
-
-<br/><br/>
-
-<img src="https://github.com/user-attachments/assets/c9b2ad4d-c660-40ca-b5b1-4a02cc4ba559">
-
-<br/><br/>
-
-<img src="https://github.com/user-attachments/assets/c4c63b6d-b15b-468a-b84f-38266ca9dd2a">
-
-<br/><br/>
-
-<img src="https://github.com/user-attachments/assets/509b959b-895f-4490-8e0e-f16dd9cbba85">
-
-<br/><br/>
-
-<img src="https://github.com/user-attachments/assets/6b6f5495-be75-4e60-863e-30e5b99435ef">
-
-<br/><br/>
-
-<img src="https://github.com/user-attachments/assets/f95d322d-6886-4c59-9221-a15a3e6ab66a">
-
-<br/><br/>
-
-
-<img src="https://github.com/user-attachments/assets/b4de9c53-f077-4a44-aea8-667980f0047e">
-
-<br/><br/>
-
-<img src="https://github.com/user-attachments/assets/0e5caf2e-0778-4f5e-8c78-91ac2d39aaab">
-
-<br/><br/>
-
-<img src="https://github.com/user-attachments/assets/0291fc30-37b5-4350-9409-f7384d1181b3">
-
-<br/><br/>
-
-<img src="https://github.com/user-attachments/assets/88e7c27a-2c99-445f-8548-366232cbc3de">
-
-<br/><br/>
-
-<img src="https://github.com/user-attachments/assets/afcccb55-5c7a-414b-a933-c0f670c61165">
-
-<br/><br/>
-
-<img src="https://github.com/user-attachments/assets/741c2deb-899c-4ba4-8584-78d6cd57c3f3">
-
-<br/><br/>
+#### 게시판 페이지
+<details>
+  <summary>게시판 페이지</summary> 
+  <img src="https://github.com/user-attachments/assets/993bec33-5da0-4d7f-b40d-7661137ce36d">
+  <img src="https://github.com/user-attachments/assets/c4c63b6d-b15b-468a-b84f-38266ca9dd2a">
+  <img src="https://github.com/user-attachments/assets/509b959b-895f-4490-8e0e-f16dd9cbba85">
+  <img src="https://github.com/user-attachments/assets/f95d322d-6886-4c59-9221-a15a3e6ab66a">
+</details>
