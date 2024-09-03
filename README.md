@@ -115,10 +115,28 @@
   <div align="center">
     <img width="575" alt="상품 페이지 이미지 1" src="https://github.com/user-attachments/assets/d98a2404-836d-4b53-963b-ada140caa762">
     <img width="575" alt="상품 페이지 이미지 2" src="https://github.com/user-attachments/assets/c9b2ad4d-c660-40ca-b5b1-4a02cc4ba559">
-    <img width="575" alt="상품 페이지 이미지 3" src="https://github.com/user-attachments/assets/6b6f5495-be75-4e60-863e-30e5b99435ef">
-    <img width="575" alt="상품 페이지 이미지 4" src="https://github.com/user-attachments/assets/b4de9c53-f077-4a44-aea8-667980f0047e">
-    <img width="575" alt="상품 페이지 이미지 5" src="https://github.com/user-attachments/assets/0e5caf2e-0778-4f5e-8c78-91ac2d39aaab">
-    <img width="575" alt="상품 페이지 이미지 6" src="https://github.com/user-attachments/assets/0291fc30-37b5-4350-9409-f7384d1181b3">
+  </div>
+</details>
+
+<br/>
+
+### 주문 페이지
+<details>
+  <summary>주문 페이지</summary> 
+  <div align="center">
+    <img width="575" alt="주문 페이지 이미지 1" src="https://github.com/user-attachments/assets/b4de9c53-f077-4a44-aea8-667980f0047e">
+    <img width="575" alt="주문 페이지 이미지 2" src="https://github.com/user-attachments/assets/0e5caf2e-0778-4f5e-8c78-91ac2d39aaab">
+    <img width="575" alt="주문 페이지 이미지 3" src="https://github.com/user-attachments/assets/0291fc30-37b5-4350-9409-f7384d1181b3">
+  </div>
+</details>
+
+<br/>
+
+### 판매 페이지
+<details>
+  <summary>판매 페이지</summary> 
+  <div align="center">
+    <img width="575" alt="판매 페이지 이미지 1" src="https://github.com/user-attachments/assets/6b6f5495-be75-4e60-863e-30e5b99435ef">
   </div>
 </details>
 
