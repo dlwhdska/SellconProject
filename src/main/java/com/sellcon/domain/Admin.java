@@ -17,6 +17,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Admin {
+	
 	@Id
 	@Column(name="ADMIN_ID", length = 20)
 	private String id;

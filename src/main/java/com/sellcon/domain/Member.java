@@ -21,6 +21,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Member {
+	
 	@Id
 	@Column(name="MEMBER_ID", length=20)
 	private String id;

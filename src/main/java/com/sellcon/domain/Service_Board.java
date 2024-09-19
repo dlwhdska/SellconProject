@@ -1,15 +1,14 @@
 package com.sellcon.domain;
 
 import java.util.Date;
-import java.util.Optional;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,10 +23,11 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Service_Board {
-   @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
-   @Column(name="qseq", length=5)
-   private Long qseq;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="qseq", length=5)
+	private Long qseq;
    
    @Column(length = 20, nullable = true)
    private String title;
