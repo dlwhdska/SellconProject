@@ -23,8 +23,8 @@ import lombok.ToString;
 @NoArgsConstructor
 public class CS {
 	@Id
-	@GeneratedValue
-	@Column(name="csseq", columnDefinition = "number(5)")
+@GeneratedValue(strategy = GenerationType.AUTO)
+@Column(name="csseq", length=5)
 	private Long csseq;
 
 	@Column(length = 20)

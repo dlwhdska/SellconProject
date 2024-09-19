@@ -22,8 +22,8 @@ import lombok.ToString;
 @Entity
 public class Order_Detail {
 	@Id
-	@Column(name="odseq", columnDefinition = "NUMBER(5)")
-	@GeneratedValue
+	@Column(name="odseq", length=5)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long odseq;
 	
 	// 주문 테이블 (oseq)

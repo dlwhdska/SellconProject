@@ -24,9 +24,9 @@ import lombok.ToString;
 @Entity
 public class Orders {
 	@Id
-	@Column(name="oseq", columnDefinition = "NUMBER(5)")
-	@GeneratedValue
-	private Long oseq;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "oseq", length=5)
+    private Long oseq;
 	
 	@Column(insertable=false, updatable=false, columnDefinition="date default sysdate")
 	private Date regdate;

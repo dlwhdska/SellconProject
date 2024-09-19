@@ -27,8 +27,8 @@ import lombok.ToString;
 public class Selling_Product {
 
 	@Id
-	@GeneratedValue
-	@Column(name="sseq", columnDefinition = "NUMBER(5)")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="sseq", length=5)
 	private Long sseq;
 	
 	@Column(columnDefinition = "number(7)", nullable=false)

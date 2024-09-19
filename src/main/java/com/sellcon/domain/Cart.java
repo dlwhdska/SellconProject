@@ -15,15 +15,15 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Getter
-@ToString(exclude = "member")
+@ToString
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 public class Cart {
 	@Id
-	@Column(name="cseq", columnDefinition = "NUMBER(5)")
-	@GeneratedValue
+	@Column(name="cseq", length=5)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long cseq;
 	
 	@Column(columnDefinition="char(1) default '1'", nullable = false)

@@ -22,8 +22,9 @@ import lombok.ToString;
 public class Brand {
 	
 	@Id
-	@GeneratedValue
-	@Column(columnDefinition = "number(5)")
+@GeneratedValue(strategy = GenerationType.AUTO)
+@Column(name="bseq", length=5)
+
 	private Long bseq;
 	
 	@Column(name="brand_name", length = 40, nullable = false)
