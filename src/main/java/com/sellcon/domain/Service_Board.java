@@ -26,7 +26,7 @@ import lombok.ToString;
 @NoArgsConstructor
 public class Service_Board {
    @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
+   @GeneratedValue(strategy = GenerationType.AUTO)
    @Column(name="qseq", length=5)
    private Long qseq;
    

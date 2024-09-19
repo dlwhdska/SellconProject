@@ -25,7 +25,7 @@ import lombok.ToString;
 public class Product {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "pseq", length=5)
 	private Long pseq;
 

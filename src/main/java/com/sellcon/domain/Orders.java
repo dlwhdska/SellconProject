@@ -25,7 +25,7 @@ import lombok.ToString;
 @Entity
 public class Orders {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) 
+	@GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "oseq", length=5)
     private Long oseq;
 	

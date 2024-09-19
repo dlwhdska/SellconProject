@@ -29,7 +29,7 @@ import lombok.ToString;
 public class Settlement {
 	@Id
 	@Column(name="stseq", length=5)
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long stseq;
 	
 	@Column(precision = 3, scale = 2)

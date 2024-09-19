@@ -24,7 +24,7 @@ import lombok.ToString;
 @NoArgsConstructor
 public class CS {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="csseq", length=5)
 	private Long csseq;
 
