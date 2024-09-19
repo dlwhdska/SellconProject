@@ -24,8 +24,8 @@ public interface SellingProductRepository extends JpaRepository<Selling_Product,
 	List<Selling_Product> findAllByOrderBySellingpriceDesc();
 	
 	// 최신 상품
-    @Query("SELECT sp FROM Selling_Product sp WHERE sp.product.brand.category.kind = :categoryKind ORDER BY sp.regdate DESC")
-    List<Selling_Product> findLatestProductsByCategory(String categoryKind);
+	@Query("SELECT sp FROM Selling_Product sp WHERE sp.product.brand.category.kind = :categoryKind ORDER BY sp.regdate DESC")
+	List<Selling_Product> findLatestProductsByCategory(@Param("categoryKind") String categoryKind);
 	
 	//프로덕트 : 브랜드목록
 	List<Selling_Product> findByProductBrand(Brand brand);
