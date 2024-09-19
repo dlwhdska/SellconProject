@@ -6,7 +6,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -29,7 +28,7 @@ public class Orders {
     @Column(name = "oseq", length=5)
     private Long oseq;
 	
-	@Column(insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+	@Column(insertable=false, updatable=false, columnDefinition="date default sysdate")
 	private Date regdate;
 	
 	// 회원 테이블과 연결 (member_id)

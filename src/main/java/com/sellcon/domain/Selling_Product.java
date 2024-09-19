@@ -5,7 +5,6 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -32,19 +31,19 @@ public class Selling_Product {
 	@Column(name="sseq", length=5)
 	private Long sseq;
 	
-	@Column(length=7, nullable=false)
+	@Column(columnDefinition = "number(7)", nullable=false)
 	private int sellingprice;
 	
-	@Column(length=20, nullable=false)
+	@Column(columnDefinition = "number(20)", nullable=false)
 	private Long barcode;
 	
 	@Column(length = 1000)
 	private String barcode_image;
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date valid;
 
-	@Column(insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+	@Column(insertable=false, updatable=false, columnDefinition="DATE default sysdate")
 	private Date regdate;
 	
 	@Column(columnDefinition = "char(1)")
